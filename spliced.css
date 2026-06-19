@@ -1,0 +1,345 @@
+
+/*----------------- Main Layout ------------------*/
+
+/* A CSS Grid example using "grid-template-areas"
+  https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
+*/
+main {
+    display: grid;
+    width: 800px;
+    /* height: 1500px; */
+    grid-gap: 2px;
+    grid-template-columns: 200px 1fr 1fr 200px ;
+    grid-template-rows: 0px 130px 50px 80px 150px 50px 600px 350px 500px;
+    grid-template-areas:
+          "title      title       title       title"
+          "charac     spliced  	spliced 	player"
+          "charac     heal  		heal 		player"
+          "stats  	heal  		heal  		def"
+          "stats      weap        weap        weap"
+          "act_pool   cond        cond        cond"
+          "abilities  abilities  	abilities  	abilities"
+          "expertise  inventory 	inventory 	inventory"
+          "passive 	passive  	passive  	passive";
+  }
+  
+  /*----------------- GENERAL CSS ------------------*/
+  
+  section {
+      padding: 5px;
+      border-style: solid;
+  }
+  
+  /* CSS Flexbox styling, used for adjusting how content inside section behaves */
+  .f-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .f-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .nowrap {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .f-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  /*----------------- Text & Input styling -----------------*/
+  
+  @import url("https://fonts.googleapis.com/css?family=Lexend&display=swap");
+  
+  
+  /* these are for overwriting default CSS that comes from Roll20 */
+  
+  .charsheet * {
+    font-family: "Lexend";
+  }
+  
+  .charsheet h3{
+    text-align: center;
+  }
+  .charsheet label{
+    margin: 3px;
+    padding: 3px 0 0 0;
+  }
+  
+  .charsheet select{
+    margin: 0px;
+    padding: 3px 0 0 0;
+  }
+  
+  /* .charsheet input{ */
+  
+  /* /* .charsheet input[type="text"], input[type="number"]{ */ */
+    /* margin: 2px 4px; */
+    /* /* font-size: 10px; */ */
+  /* } */
+  
+  
+  /*------------- Section-specific CSS -------------*/
+  .title {
+    
+    border: 1x white;
+  }
+  
+  .charac {
+    flex-direction: column;
+    align-items: stretch;
+    grid-area: charac;
+    background-color: white;
+    padding: 5px;
+    border: 1x solid black;
+    box-sizing: border-box;
+    justify-content: space-around;
+  
+  }
+  
+  .charac input{
+    width: 80%;
+    box-sizing: border-box;
+  }
+  
+  .spliced {
+    grid-area: spliced;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+  }
+  
+  .player {
+    grid-area: player;
+    background-color: white;
+  }
+  
+  .player input{
+    width: 80%;
+    box-sizing: border-box;
+  }
+  
+  .stats {
+    grid-area: stats;
+    justify-content: space-around;
+    align-items: flex-end;
+    background-color: seashell;
+  }
+  .heal {
+    grid-area: heal;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: seashell;
+  }
+  
+  .def {
+    grid-area: def;
+    justify-content: space-around;
+    align-items: flex-end;
+    align-content: flex-end;
+    background-color: seashell;
+  }
+  
+  /*------------- Weapon Table -------------*/
+  
+  .weap {
+    grid-area: weap;
+    background-color: white;
+  }
+  
+  .weap_name_title {
+    width:28%;
+  }
+  
+  .weap_attr_title {
+    width:9%;
+  }
+  
+  .weap_type_title {
+    width:8%;
+  }
+  
+  .weap_d_type_title {
+    width:12%;
+  }
+  
+  .weap_dice_title {
+    width:10%;
+  }
+  
+  .weap_effect_title {
+    width:33%;
+  }
+  
+  .weap_name {
+    width:28%;
+  }
+  
+  .weap_attr {
+    width:10%;
+  }
+  
+  .weap_type {
+    width:9%;
+  }
+  
+  .weap_d_type {
+    width:11%;
+  }
+  
+  .weap_dice_num {
+    width:4%;
+  }
+  
+  .weap_dice_size {
+    width:8%;
+  }
+  
+  .weap_effect {
+    width:30%;
+  }
+  
+  /*------------- Actions and Conditions -------------*/
+  
+  .act_pool {
+    grid-area: act_pool;
+    justify-content: space-around;
+    align-items: flex-end;
+    align-content: flex-end;
+    background-color: white;
+  }
+  
+  .cond {
+    grid-area: cond;
+    justify-content: space-around;
+    align-items: flex-end;
+    align-content: flex-end;
+    background-color: white;
+  }
+  
+  /*------------- Abilities Table -------------*/
+  
+  .abilities {
+    grid-area: abilities;
+    background-color: coral;
+  }
+  
+  .ability_name_title {
+    width:22.5%;
+  }
+  
+  .ability_cost_title {
+    width:6%;
+  }
+  
+  .ability_type_title {
+    width:7%;
+  }
+  
+  .ability_target_title {
+    width:8%;
+  }
+  
+  .ability_range_title {
+    width:10%;
+  }
+  
+  .ability_AOE_title {
+    width:7%;
+  }
+  
+  .ability_effect_title {
+    width:38.5%;
+  }
+  
+  .ability_name {
+    width:25%;
+  }
+  
+  .ability_cost {
+    width:5%;
+  }
+  
+  .ability_type {
+    width:9%;
+  }
+  
+  .ability_target {
+    width:8%;
+  }
+  
+  .ability_range {
+    width:10%;
+  }
+  
+  .ability_AOE {
+    width:10%;
+  }
+  
+  .ability_duration {
+    width:8%;
+  }
+  
+  .ability_effect {
+    width:40%;
+  }
+  
+  /*------------- Expertise Table -------------*/
+  
+  .expertise {
+    grid-area: expertise;
+    background-color: white;
+  }
+  
+  .exp_area {
+    width:50%;
+  }
+  
+  .exp_level {
+    width:50%;
+  }
+  
+  /*------------- Inventory Table -------------*/
+  
+  .inventory {
+    grid-area: inventory;
+    background-color: white;
+  }
+  
+  .inv_qty {
+    width:10%;
+  }
+  
+  
+  .inv_item {
+    width:30%;
+  }
+  
+  .inv_notes {
+    width:60%;
+  }
+  
+  
+  /*------------- Passives and Notes-------------*/
+  
+  .passive {
+    grid-area: passive;
+    justify-content: space-around;
+    background-color: white;
+  }
+  
+  .passive textarea{
+      height: 95%;
+      resize: none;
+  }
+  
+  
