@@ -5,23 +5,101 @@
   https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
 */
 main {
-    display: grid;
     width: 800px;
-    /* height: 1500px; */
+}
+
+/* Tab Containers */
+.tab-content-core {
+    display: none;
+    width: 800px;
     grid-gap: 2px;
     grid-template-columns: 200px 1fr 1fr 200px ;
-    grid-template-rows: 0px 130px 50px 80px 150px 50px 600px 350px 500px;
+    grid-template-rows: 130px 50px 80px 150px 50px 600px 350px;
     grid-template-areas:
-          "title      title       title       title"
           "charac     spliced  	spliced 	player"
           "charac     heal  		heal 		player"
           "stats  	heal  		heal  		def"
           "stats      weap        weap        weap"
           "act_pool   cond        cond        cond"
           "abilities  abilities  	abilities  	abilities"
-          "expertise  inventory 	inventory 	inventory"
-          "passive 	passive  	passive  	passive";
-  }
+          "expertise  expertise 	expertise 	expertise";
+}
+
+.tab-content-inventory {
+    display: none;
+    width: 800px;
+}
+
+.tab-content-notes {
+    display: none;
+    width: 800px;
+}
+
+/* Tab Buttons and Switch Styling */
+.tab-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+    background-color: #f7f7f7;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+}
+
+.charsheet .tab-button {
+    background: transparent;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 10px 20px;
+    font-family: "Lexend", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.2s ease-in-out;
+    border-bottom: 3px solid transparent;
+}
+
+.charsheet .tab-button:hover {
+    background-color: #e9e9e9;
+    color: #000;
+}
+
+/* Tab button active state */
+.tabstoggle[value="core"] ~ .tab-buttons .tab-button-core {
+    color: coral;
+    border-bottom: 3px solid coral;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.tabstoggle[value="inventory"] ~ .tab-buttons .tab-button-inventory {
+    color: coral;
+    border-bottom: 3px solid coral;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.tabstoggle[value="notes"] ~ .tab-buttons .tab-button-notes {
+    color: coral;
+    border-bottom: 3px solid coral;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+/* Tab Content toggles */
+.tabstoggle[value="core"] ~ .tab-content-core {
+    display: grid;
+}
+
+.tabstoggle[value="inventory"] ~ .tab-content-inventory {
+    display: block;
+}
+
+.tabstoggle[value="notes"] ~ .tab-content-notes {
+    display: block;
+}
   
   /*----------------- GENERAL CSS ------------------*/
   
@@ -87,11 +165,6 @@ main {
   
   
   /*------------- Section-specific CSS -------------*/
-  .title {
-    
-    border: 1x white;
-  }
-  
   .charac {
     flex-direction: column;
     align-items: stretch;
@@ -311,9 +384,8 @@ main {
   /*------------- Inventory Table -------------*/
   
   .inventory {
-    grid-area: inventory;
-    background-color: white;
-  }
+  background-color: white;
+}
   
   .inv_qty {
     width:10%;
@@ -332,14 +404,18 @@ main {
   /*------------- Passives and Notes-------------*/
   
   .passive {
-    grid-area: passive;
-    justify-content: space-around;
-    background-color: white;
-  }
-  
-  .passive textarea{
-      height: 95%;
-      resize: none;
-  }
-  
-  
+  justify-content: space-around;
+  background-color: white;
+  height: 500px;
+}
+
+.passive textarea {
+  width: 48%;
+  height: 95%;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: "Lexend", sans-serif;
+  box-sizing: border-box;
+}

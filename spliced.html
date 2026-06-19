@@ -1,8 +1,13 @@
 <main>
-    <section class="title f-col">
-        
-    </section>
-    
+  <input type="hidden" class="tabstoggle" name="attr_sheetTab" value="core" />
+  
+  <div class="tab-buttons f-row">
+    <button type="action" name="act_tabcore" class="tab-button tab-button-core">Core</button>
+    <button type="action" name="act_tabinventory" class="tab-button tab-button-inventory">Inventory</button>
+    <button type="action" name="act_tabnotes" class="tab-button tab-button-notes">Passives & Notes</button>
+  </div>
+
+  <div class="tab-content tab-content-core">
     <section class="charac f-col nowrap">
       <label>Name <input name="attr_character_name" type="text"></label>
       <label>Class <input name="attr_class_name" type="text"></label>
@@ -106,8 +111,7 @@
           <label>Stamina: <input type="number" name="attr_sp" value="5"> / <input type="number" name="attr_sp_max" value="5"></label>
       </div>
           <div class="f-col">
-          <label>Fatigue: <input type="number" name="attr_ftg" value="0">
-      </div>
+          <label>Fatigue: <input type="number" name="attr_ftg" value="0"></label>
       </div>
           <div class="f-col">
           <label>Effective Stamina: <input type="number" name="attr_eff_sp_max" value="0" readonly></label>
@@ -599,7 +603,9 @@
           <input type="text" name="attr_explvl_11" class="exp_level">
       </div>
     </section>
-  
+  </div>
+
+  <div class="tab-content tab-content-inventory">
     <section class="inventory f-col">
       <div class="f-row">
           <div class="inv_qty">
@@ -668,13 +674,15 @@
           <input type="text" name="attr_inv_11_notes" class="inv_notes">
       </div>
     </section>
-  
+  </div>
+
+  <div class="tab-content tab-content-notes">
     <section class="passive f-row">
       <textarea name="attr_passive_text">Passives</textarea>
       <textarea name="attr_notes_text">Notes</textarea>
     </section>
-  
-  </main>
+  </div>
+</main>
   
   <script type="text/worker">
     on("change:sp_max change:ftg", function() {
@@ -686,6 +694,24 @@
         setAttrs({
           eff_sp_max: eff_sp_max
         });
+      });
+    });
+
+    on("clicked:tabcore", function() {
+      setAttrs({
+        sheetTab: "core"
+      });
+    });
+
+    on("clicked:tabinventory", function() {
+      setAttrs({
+        sheetTab: "inventory"
+      });
+    });
+
+    on("clicked:tabnotes", function() {
+      setAttrs({
+        sheetTab: "notes"
       });
     });
   </script>
