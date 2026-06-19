@@ -9,64 +9,62 @@
 
   <div class="tab-content tab-content-core">
     <section class="charac f-col nowrap">
-      <label>Name <input name="attr_character_name" type="text"></label>
-      <label>Class <input name="attr_class_name" type="text"></label>
-      <label>Level <input name="attr_lvl" type="text"></label>
-      <!-- <span>The Template Sheet</span> -->
+      <h3>Character</h3>
+      <div class="f-row char-row">
+        <input name="attr_character_name" type="text" placeholder="Name">
+        <span class="the-word">the</span>
+        <input name="attr_class_name" type="text" placeholder="Class">
+        <label class="level-label">Lvl <input name="attr_lvl" type="text" class="level-input"></label>
+      </div>
     </section>
   
-    <section class="spliced f-row">
-      <div class="f-col nowrap">
-        <h1>S</h1>
-        <h6>STR</h6>
+    <section class="spliced f-col">
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">S</span>trength</span>
         <input type="number" name="attr_str" value="0">
         <button type="roll" name="roll_str" value="/roll [[@{str}+3]]d6"> </button>
       </div>
-      <div class="f-col nowrap">
-        <h1>P</h1>
-        <h6>PER</h6>
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">P</span>erception</span>
         <input type="number" name="attr_per" value="0">
         <button type="roll" name="roll_per" value="/roll [[@{per}+3]]d6"> </button>
       </div>
-      <div class="f-col nowrap">
-        <h1>L</h1>
-        <h6>LUK</h6>
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">L</span>uck</span>
         <input type="number" name="attr_luk" value="0">
         <button type="roll" name="roll_luk" value="/roll [[@{luk}+3]]d6"> </button>
       </div>
-      <div class="f-col nowrap">
-        <h1>I</h1>
-        <h6>INT</h6>
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">I</span>ntelligence</span>
         <input type="number" name="attr_int" value="0">
         <button type="roll" name="roll_int" value="/roll [[@{int}+3]]d6"> </button>
       </div>
-      <div class="f-col nowrap">
-        <h1>C</h1>
-        <h6>CRG</h6>
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">C</span>ourage</span>
         <input type="number" name="attr_crg" value="0">
         <button type="roll" name="roll_crg" value="/roll [[@{crg}+3]]d6"> </button>
       </div>
-      <div class="f-col nowrap">
-        <h1>E</h1>
-        <h6>END</h6>
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">E</span>ndurance</span>
         <input type="number" name="attr_end" value="0">
         <button type="roll" name="roll_end" value="/roll [[@{end}+3]]d6"> </button>
       </div>
-      <div class="f-col nowrap">
-        <h1>D</h1>
-        <h6>DEX</h6>
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">D</span>exterity</span>
         <input type="number" name="attr_dex" value="0">
         <button type="roll" name="roll_dex" value="/roll [[@{dex}+3]]d6"> </button>
       </div>
     </section>
   
     <section class="player f-col nowrap">
-      <label>Genome α <input name="attr_gena" type="text"></label>
-      <label>Genome β <input name="attr_genb" type="text"></label>
-      <label>Genome γ <input name="attr_geng" type="text"></label>
+      <h3>Genomes</h3>
+      <div class="f-row genomes-row">
+        <label>Primary <input name="attr_gena" type="text"></label>
+        <label>Secondary <input name="attr_genb" type="text"></label>
+        <label>Secondary <input name="attr_geng" type="text" value="n/a"></label>
+      </div>
     </section>
   
-    
     <section class="heal f-row">
       <div>
         <h3>0</h3>
@@ -101,40 +99,33 @@
     </section>
   
     <section class="stats f-col">
-      <div class="f-col">
-          <label>Health: <input type="number" name="attr_hp" value="7"> / <input type="number" name="attr_hp_max" value="7"></label>
-      </div>
-      <div class="f-col">	
-          <label>Luck: <input type="number" name="attr_lp" value="0"> / <input type="number" name="attr_lp_max" value="0"></label>
-      </div>
-      <div class="f-col">
-          <label>Stamina: <input type="number" name="attr_sp" value="5"> / <input type="number" name="attr_sp_max" value="5"></label>
-      </div>
-          <div class="f-col">
-          <label>Fatigue: <input type="number" name="attr_ftg" value="0"></label>
-      </div>
-          <div class="f-col">
-          <label>Effective Stamina: <input type="number" name="attr_eff_sp_max" value="0" readonly></label>
-      </div>
-      <div class="f-row">
-          <div class="exp_area">
-              <label> Currency: </label>
-          </div>
-          <input type="text" class="exp_level" name="attr_currency" value="0">
+      <h3>Stats</h3>
+      <div class="f-row wrap stats-row">
+        <div class="stat-item"><label>Health: <input type="number" name="attr_hp" value="7"> / <input type="number" name="attr_hp_max" value="7"></label></div>
+        <div class="stat-item"><label>Luck: <input type="number" name="attr_lp" value="0"> / <input type="number" name="attr_lp_max" value="0"></label></div>
+        <div class="stat-item"><label>Stamina: <input type="number" name="attr_sp" value="5"> / <input type="number" name="attr_sp_max" value="5"></label></div>
+        <div class="stat-item"><label>Fatigue: <input type="number" name="attr_ftg" value="0"></label></div>
+        <div class="stat-item"><label>Eff SP: <input type="number" name="attr_eff_sp_max" value="0" readonly></label></div>
+        <div class="stat-item"><label>Currency: <input type="text" name="attr_currency" value="0"></label></div>
       </div>
     </section>
     
     <section class="def f-col">
-      <div class="f-row">
-          <label>Physical Defense</label>
-          <input type="number" name="attr_pdef" value="2">
-      </div>
-      <div class="f-row">
-          <label>Energy Defense</label>
-          <input type="number" name="attr_edef" value="2">
+      <h3>Defense</h3>
+      <div class="f-col def-col">
+        <label>Physical <input type="number" name="attr_pdef" value="2"></label>
+        <label>Energy <input type="number" name="attr_edef" value="2"></label>
       </div>
     </section>
     
+    <section class="act_pool f-col nowrap">
+      <input name="attr_act_pool" type="text" style="width: 100%; padding: 5px; box-sizing: border-box;" placeholder="Action Pool">
+    </section>
+    
+    <section class="cond f-col nowrap">
+      <input name="attr_cond" type="text" style="width: 100%; padding: 5px; box-sizing: border-box;" placeholder="Conditions">
+    </section>
+
     <section class="weap f-col">
       <div class="weapon_title f-row">
           <div class="weap_name_title">
@@ -156,6 +147,7 @@
               <label class=> Effect </label>
           </div>
       </div>
+
   
       <div class=" main_1 f-row">
           <input type="text" name="attr_main_1_name" class="weap_name" value="Dagger">
@@ -291,15 +283,7 @@
           <button type="roll" value="/roll [[@{off_2_dice_num}]]@{off_2_dice_size}"> </button>
       </div>
     </section>
-    
-    <section class="act_pool f-col nowrap">
-      <input name="attr_act_pool" type="text" style="width: 100%; padding: 5px; box-sizing: border-box;" placeholder="Action Pool">
-    </section>
-    
-    <section class="cond f-col nowrap">
-      <input name="attr_cond" type="text" style="width: 100%; padding: 5px; box-sizing: border-box;" placeholder="Conditions">
-    </section>
-  
+
     <section class="abilities f-col">
       <div class="ability_title f-row">
           <div class="ability_name_title">
