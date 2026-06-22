@@ -1,702 +1,477 @@
+<rolltemplate class="sheet-rolltemplate-splicedroll">
+  <div class="sheet-template-container"
+    style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
+    <!-- Title Header -->
+    <div style="font-weight: bold; font-size: 14px; border-bottom: 1px solid #aaa; margin-bottom: 5px;">
+      {{name}}
+    </div>
+    <!-- Raw Dice List Layout -->
+    <div style="margin-bottom: 4px;">
+      <span style="color: #666;">Dice Results:</span> <span
+        style="font-size: 13px; letter-spacing: 2px;">{{dice_string}}</span>
+    </div>
+    <!-- Total Success Tally -->
+    <div style="font-weight: bold; margin-top: 5px; font-size: 13px;">
+      Successes: <span style="color: #d11; font-size: 15px;">{{successes}}</span>
+    </div>
+  </div>
+</rolltemplate>
+
 <main>
   <input type="hidden" class="tabstoggle" name="attr_sheetTab" value="core" />
-  
+
   <div class="tab-buttons f-row">
     <button type="action" name="act_tabcore" class="tab-button tab-button-core">Core</button>
     <button type="action" name="act_tabinventory" class="tab-button tab-button-inventory">Inventory</button>
-    <button type="action" name="act_tabnotes" class="tab-button tab-button-notes">Passives & Notes</button>
+    <button type="action" name="act_tabpassives" class="tab-button tab-button-passives">Passives</button>
+    <button type="action" name="act_tabnotes" class="tab-button tab-button-notes">Notes</button>
   </div>
 
   <div class="tab-content tab-content-core">
     <section class="charac f-col nowrap">
-      <h3>Character</h3>
-      <div class="f-row char-row">
-        <input name="attr_character_name" type="text" placeholder="Name">
-        <span class="the-word">the</span>
-        <input name="attr_class_name" type="text" placeholder="Class">
-        <label class="level-label">Lvl <input name="attr_lvl" type="text" class="level-input"></label>
+      <div class="f-col char-col">
+        <label><span class="char-lbl"></span><input name="attr_character_name" type="text"
+            placeholder="Character Name"></label>
+        <label><span class="char-lbl">the</span><input name="attr_class_name" type="text" placeholder="Class"></label>
+        <label><span class="char-lbl">Level</span><input name="attr_lvl" type="text" class="level-input"
+            placeholder="0"></label>
       </div>
     </section>
-  
+
     <section class="spliced f-col">
+      <!-- Strength example: uses (base + 3) dice -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">S</span>trength</span>
         <input type="number" name="attr_str" value="0">
-        <button type="roll" name="roll_str" value="/roll [[@{str}+3]]d6"> </button>
+        <button type="roll" name="roll_str"
+          value="&{template:default} {{name=Strength Roll}} {{Results=[[ (@{str} + 3)d6 ]]}}"></button>
       </div>
+
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">P</span>erception</span>
         <input type="number" name="attr_per" value="0">
-        <button type="roll" name="roll_per" value="/roll [[@{per}+3]]d6"> </button>
+        <button type="roll" name="roll_per"
+          value="&{template:default} {{name=Perception Roll}} {{Results=[[ (@{per} + 3)d6 ]]}}"></button>
       </div>
+
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">L</span>uck</span>
         <input type="number" name="attr_luk" value="0">
-        <button type="roll" name="roll_luk" value="/roll [[@{luk}+3]]d6"> </button>
+        <button type="roll" name="roll_luk"
+          value="&{template:default} {{name=Luck Roll}} {{Results=[[ (@{luk} + 3)d6 ]]}}"></button>
       </div>
+
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">I</span>ntelligence</span>
         <input type="number" name="attr_int" value="0">
-        <button type="roll" name="roll_int" value="/roll [[@{int}+3]]d6"> </button>
+        <button type="roll" name="roll_int"
+          value="&{template:default} {{name=Intelligence Roll}} {{Results=[[ (@{int} + 3)d6 ]]}}"></button>
       </div>
+
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">C</span>ourage</span>
         <input type="number" name="attr_crg" value="0">
-        <button type="roll" name="roll_crg" value="/roll [[@{crg}+3]]d6"> </button>
+        <button type="roll" name="roll_crg"
+          value="&{template:default} {{name=Courage Roll}} {{Results=[[ (@{crg} + 3)d6 ]]}}"></button>
       </div>
+
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">E</span>ndurance</span>
         <input type="number" name="attr_end" value="0">
-        <button type="roll" name="roll_end" value="/roll [[@{end}+3]]d6"> </button>
+        <button type="roll" name="roll_end"
+          value="&{template:default} {{name=Endurance Roll}} {{Results=[[ (@{end} + 3)d6 ]]}}"></button>
       </div>
+
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">D</span>exterity</span>
         <input type="number" name="attr_dex" value="0">
-        <button type="roll" name="roll_dex" value="/roll [[@{dex}+3]]d6"> </button>
+        <button type="roll" name="roll_dex"
+          value="&{template:default} {{name=Dexterity Roll}} {{Results=[[ (@{dex} + 3)d6 ]]}}"></button>
       </div>
     </section>
-  
+
     <section class="player f-col nowrap">
-      <h3>Genomes</h3>
-      <div class="f-row genomes-row">
-        <label>Primary <input name="attr_gena" type="text"></label>
-        <label>Secondary <input name="attr_genb" type="text"></label>
-        <label>Secondary <input name="attr_geng" type="text" value="n/a"></label>
+      <div class="f-col genomes-col">
+        <label>Primary Genome <input name="attr_gena" type="text"></label>
+        <label>Secondary Genome <input name="attr_genb" type="text"></label>
+        <label>Secondary Genome <input name="attr_geng" type="text" value="n/a"></label>
       </div>
     </section>
-  
+
     <section class="heal f-row">
       <div>
         <h3>0</h3>
-          <b>Dying</b> <br>
-          3 turns<br>
-          'til death
+        <b>Dying</b> <br>
+        3 turns<br>
+        'til death
       </div>
       <div>
         <h3>1</h3>
-          <b>Unconscious</b> <br>
-          until healed<br>
-          or recharged
+        <b>Unconscious</b> <br>
+        until healed<br>
+        or recharged
       </div>
       <div>
         <h3>2</h3>
-          <b>Injured</b> <br>
-          disadvantage<br>
-          on all rolls
+        <b>Injured</b> <br>
+        disadvantage<br>
+        on all rolls
       </div>
       <div>
         <h3>3</h3>
-          <b>Hobbled</b> <br>
-          move: short<br>
-          <s>sprint</s> <s>leap</s>
+        <b>Hobbled</b> <br>
+        move: short<br>
+        <s>sprint</s> <s>leap</s>
       </div>
       <div>
         <h3>4</h3>
-          <b>Hurt</b> <br>
-          disadvantage<br>
-          on all checks
+        <b>Hurt</b> <br>
+        disadvantage<br>
+        on all checks
       </div>
     </section>
-  
+
     <section class="stats f-col">
-      <h3>Stats</h3>
-      <div class="f-row wrap stats-row">
-        <div class="stat-item"><label>Health: <input type="number" name="attr_hp" value="7"> / <input type="number" name="attr_hp_max" value="7"></label></div>
-        <div class="stat-item"><label>Luck: <input type="number" name="attr_lp" value="0"> / <input type="number" name="attr_lp_max" value="0"></label></div>
-        <div class="stat-item"><label>Stamina: <input type="number" name="attr_sp" value="5"> / <input type="number" name="attr_sp_max" value="5"></label></div>
-        <div class="stat-item"><label>Fatigue: <input type="number" name="attr_ftg" value="0"></label></div>
-        <div class="stat-item"><label>Eff SP: <input type="number" name="attr_eff_sp_max" value="0" readonly></label></div>
-        <div class="stat-item"><label>Currency: <input type="text" name="attr_currency" value="0"></label></div>
+      <div class="f-col stats-col">
+        <div class="stat-item"><label>Health: <span><input type="number" name="attr_hp" value="7"> / <input
+                type="number" name="attr_hp_max" value="7"></span></label></div>
+        <div class="stat-item"><label>Luck: <span><input type="number" name="attr_lp" value="0"> / <input type="number"
+                name="attr_lp_max" value="0"></span></label></div>
+        <div class="stat-item"><label>Stamina: <span><input type="number" name="attr_sp" value="5"> / <input
+                type="number" name="attr_sp_max" value="5"></span></label></div>
+        <div class="stat-item"><label>Effective SP max: <span><input type="number" name="attr_eff_sp_max" value="0"
+                readonly></span></label></div>
+        <div class="stat-item"><label>Fatigue: <span><input type="number" name="attr_ftg" value="0"></span></label>
+        </div>
+
       </div>
     </section>
-    
+
     <section class="def f-col">
-      <h3>Defense</h3>
       <div class="f-col def-col">
-        <label>Physical <input type="number" name="attr_pdef" value="2"></label>
-        <label>Energy <input type="number" name="attr_edef" value="2"></label>
+        <label>Physical Defense <input type="number" name="attr_pdef" value="2"></label>
+        <label>Energy Defense <input type="number" name="attr_edef" value="2"></label>
       </div>
     </section>
-    
+
     <section class="act_pool f-col nowrap">
-      <input name="attr_act_pool" type="text" style="width: 100%; padding: 5px; box-sizing: border-box;" placeholder="Action Pool">
+      <textarea name="attr_act_pool"
+        style="width: 100%; flex-grow: 1; resize: none; padding: 5px; box-sizing: border-box;"
+        placeholder="Action Pool..."></textarea>
     </section>
-    
+
     <section class="cond f-col nowrap">
-      <input name="attr_cond" type="text" style="width: 100%; padding: 5px; box-sizing: border-box;" placeholder="Conditions">
+      <textarea name="attr_cond" style="width: 100%; flex-grow: 1; resize: none; padding: 5px; box-sizing: border-box;"
+        placeholder="Active conditions..."></textarea>
     </section>
 
     <section class="weap f-col">
       <div class="weapon_title f-row">
-          <div class="weap_name_title">
-              <label class=> Weapon </label>
-          </div>
-          <div class="weap_attr_title">
-              <label class=> Attr </label>
-          </div>
-          <div class="weap_type_title">
-              <label class=> Type </label>
-          </div>
-          <div class="weap_d_type_title">
-              <label class=> Damage </label>
-          </div>
-          <div class="weap_dice_title">
-              <label class=> Dice </label>
-          </div>
-          <div class="weap_effect_title">
-              <label class=> Effect </label>
-          </div>
+        <div class="weap_name_title"><label> Weapon </label></div>
+        <div class="weap_attr_title"><label> Attr </label></div>
+        <div class="weap_type_title"><label> Type </label></div>
+        <div class="weap_d_type_title"><label> Damage </label></div>
+        <div class="weap_dice_title"><label> Dice </label></div>
+        <div class="weap_effect_title"><label> Effect </label></div>
       </div>
 
-  
-      <div class=" main_1 f-row">
-          <input type="text" name="attr_main_1_name" class="weap_name" value="Dagger">
-          <select name="attr_main_1_attr" class="weap_attr">
-              <option value="none"></option>
-              <option value="str" selected="selected">Str</option>
-              <option value="int">Int</option>
-          </select>
-          <select name="attr_main_1_type " class="weap_type">
-              <option value="none"></option>
-              <option value="Lgt" selected="selected">Lgt</option>
-              <option value="Med">Med</option>
-              <option value="Hvy">Hvy</option>
-              <option value="Mty">Mty</option>
-              <option value="Imp">Imp</option>
-  
-          </select>		
-          <select name="attr_main_1_d_type" class="weap_d_type">
-              <option value="none"></option>
-              <option value="Phys" selected="selected">Phys</option>
-              <option value="Eng">Eng</option>
-          </select>
-          <input type="text" name="attr_main_1_dice_num" class="weap_dice_num" value="1">
-          <select name="attr_main_1_dice_size" class="weap_dice_size">
-              <option value="none"></option>
-              <option value="d4" selected="selected">d4</option>
-              <option value="d6">d6</option>
-              <option value="d8">d8</option>
-              <option value="d10">d10</option>
-              <option value="d12">d12</option>
-              <option value="d20">d20</option>
-          </select>
-          <input type="text" name="attr_main_1_effect" class="weap_effect">
-          <button type="roll" value="/roll [[@{main_1_dice_num}]]@{main_1_dice_size}"> </button>
+      <div class="main_1 f-row">
+        <input type="text" name="attr_main_1_name" class="weap_name" value="Dagger">
+        <select name="attr_main_1_attr" class="weap_attr">
+          <option value="none"></option>
+          <option value="str">Str</option>
+          <option value="int">Int</option>
+        </select>
+        <select name="attr_main_1_type" class="weap_type">
+          <option value="none"></option>
+          <option value="Lgt">Lgt</option>
+          <option value="Med">Med</option>
+          <option value="Hvy">Hvy</option>
+          <option value="Mty">Mty</option>
+          <option value="Imp">Imp</option>
+        </select>
+        <select name="attr_main_1_d_type" class="weap_d_type">
+          <option value="none"></option>
+          <option value="Phys">Phys</option>
+          <option value="Eng">Eng</option>
+        </select>
+        <input type="number" name="attr_main_1_dice_num" class="weap_dice_num" value="1">
+        <select name="attr_main_1_dice_size" class="weap_dice_size">
+          <option value="d4">d4</option>
+          <option value="d6">d6</option>
+          <option value="d8">d8</option>
+          <option value="d10">d10</option>
+          <option value="d12">d12</option>
+          <option value="d20">d20</option>
+        </select>
+        <input type="text" name="attr_main_1_effect" class="weap_effect">
+        <button type="roll" name="roll_main_1"
+          value="&{template:default} {{name=@{main_1_name}}} {{Roll=[[@{main_1_dice_num}@{main_1_dice_size}]]}}"></button>
       </div>
-      <div class=" off_1 f-row">
-          <input type="text" name="attr_off_1_name" class="weap_name" value="">
-          <select name="attr_off_1_attr" class="weap_attr">
-              <option value="none" selected="selected"></option>
-              <option value="str">Str</option>
-              <option value="int">Int</option>
-          </select>
-          <select name="attr_off_1_type " class="weap_type">
-              <option value="none" selected="selected"></option>
-              <option value="Lgt">Lgt</option>
-              <option value="Med">Med</option>
-              <option value="Hvy">Hvy</option>
-              <option value="Mty">Mty</option>
-              <option value="Imp">Imp</option>
-          </select>		
-          <select name="attr_off_1_d_type" class="weap_d_type">
-              <option value="none" selected="selected"></option>
-              <option value="Phys">Phys</option>
-              <option value="Eng">Eng</option>
-          </select>
-          <input type="text" name="attr_off_1_dice_num" class="weap_dice_num">
-          <select name="attr_off_1_dice_size" class="weap_dice_size">
-              <option value="none" selected="selected"></option>
-              <option value="d4">d4</option>
-              <option value="d6">d6</option>
-              <option value="d8">d8</option>
-              <option value="d10">d10</option>
-              <option value="d12">d12</option>
-              <option value="d20">d20</option>
-          </select>
-          <input type="text" name="attr_off_1_effect" class="weap_effect">
-          <button type="roll" value="/roll [[@{off_1_dice_num}]]@{off_1_dice_size}"> </button>
+
+      <div class="off_1 f-row">
+        <input type="text" name="attr_off_1_name" class="weap_name">
+        <select name="attr_off_1_attr" class="weap_attr">
+          <option value="none" selected></option>
+          <option value="str">Str</option>
+          <option value="int">Int</option>
+        </select>
+        <select name="attr_off_1_type" class="weap_type">
+          <option value="none" selected></option>
+          <option value="Lgt">Lgt</option>
+          <option value="Med">Med</option>
+          <option value="Hvy">Hvy</option>
+          <option value="Mty">Mty</option>
+          <option value="Imp">Imp</option>
+        </select>
+        <select name="attr_off_1_d_type" class="weap_d_type">
+          <option value="none" selected></option>
+          <option value="Phys">Phys</option>
+          <option value="Eng">Eng</option>
+        </select>
+        <input type="number" name="attr_off_1_dice_num" class="weap_dice_num">
+        <select name="attr_off_1_dice_size" class="weap_dice_size">
+          <option value="none" selected></option>
+          <option value="d4">d4</option>
+          <option value="d6">d6</option>
+          <option value="d8">d8</option>
+          <option value="d10">d10</option>
+          <option value="d12">d12</option>
+          <option value="d20">d20</option>
+        </select>
+        <input type="text" name="attr_off_1_effect" class="weap_effect">
+        <button type="roll" name="roll_off_1"
+          value="&{template:default} {{name=@{off_1_name}}} {{Roll=[[@{off_1_dice_num}@{off_1_dice_size}]]}}"></button>
       </div>
-      <div class=" main_2 f-row">
-          <input type="text" name="attr_main_2_name" value="" class="weap_name">
-          <select name="attr_main_2_attr" class="weap_attr">
-              <option value="none" selected="selected"></option>
-              <option value="str">Str</option>
-              <option value="int">Int</option>
-          </select>
-          <select name="attr_main_2_type " class="weap_type">
-              <option value="none" selected="selected"></option>
-              <option value="Lgt">Lgt</option>
-              <option value="Med">Med</option>
-              <option value="Hvy">Hvy</option>
-              <option value="Mty">Mty</option>
-              <option value="Imp">Imp</option>
-          </select>		
-          <select name="attr_main_2_d_type" class="weap_d_type">
-              <option value="none" selected="selected"></option>
-              <option value="Phys">Phys</option>
-              <option value="Eng">Eng</option>
-          </select>
-          <input type="text" name="attr_main_2_dice_num" class="weap_dice_num">
-          <select name="attr_main_2_dice_size" class="weap_dice_size">
-              <option value="none" selected="selected"></option>
-              <option value="d4">d4</option>
-              <option value="d6">d6</option>
-              <option value="d8">d8</option>
-              <option value="d10">d10</option>
-              <option value="d12">d12</option>
-              <option value="d20">d20</option>
-          </select>
-          <input type="text" name="attr_main_2_effect" class="weap_effect">
-          <button type="roll" value="/roll [[@{main_2_dice_num}]]@{main_2_dice_size}"> </button>
+
+      <div class="main_2 f-row">
+        <input type="text" name="attr_main_2_name" class="weap_name">
+        <select name="attr_main_2_attr" class="weap_attr">
+          <option value="none" selected></option>
+          <option value="str">Str</option>
+          <option value="int">Int</option>
+        </select>
+        <select name="attr_main_2_type" class="weap_type">
+          <option value="none" selected></option>
+          <option value="Lgt">Lgt</option>
+          <option value="Med">Med</option>
+          <option value="Hvy">Hvy</option>
+          <option value="Mty">Mty</option>
+          <option value="Imp">Imp</option>
+        </select>
+        <select name="attr_main_2_d_type" class="weap_d_type">
+          <option value="none" selected></option>
+          <option value="Phys">Phys</option>
+          <option value="Eng">Eng</option>
+        </select>
+        <input type="number" name="attr_main_2_dice_num" class="weap_dice_num">
+        <select name="attr_main_2_dice_size" class="weap_dice_size">
+          <option value="none" selected></option>
+          <option value="d4">d4</option>
+          <option value="d6">d6</option>
+          <option value="d8">d8</option>
+          <option value="d10">d10</option>
+          <option value="d12">d12</option>
+          <option value="d20">d20</option>
+        </select>
+        <input type="text" name="attr_main_2_effect" class="weap_effect">
+        <button type="roll" name="roll_main_2"
+          value="&{template:default} {{name=@{main_2_name}}} {{Roll=[[@{main_2_dice_num}@{main_2_dice_size}]]}}"></button>
       </div>
-      <div class=" off_2 f-row">
-          <input type="text" name="attr_off_2_name" value="" class="weap_name">
-          <select name="attr_off_2_attr" class="weap_attr">
-              <option value="none" selected="selected"></option>
-              <option value="Str">Str</option>
-              <option value="Int">Int</option>
-          </select>
-          <select name="attr_off_2_type " class="weap_type">
-              <option value="none" selected="selected"></option>
-              <option value="Lgt">Lgt</option>
-              <option value="Med">Med</option>
-              <option value="Hvy">Hvy</option>
-              <option value="Mty">Mty</option>
-              <option value="Imp">Imp</option>
-          </select>		
-          <select name="attr_off_2_d_type" class="weap_d_type">
-              <option value="none" selected="selected"></option>
-              <option value="Phys">Phys</option>
-              <option value="Eng">Eng</option>
-          </select>
-          <input type="text" name="attr_off_2_dice_num" class="weap_dice_num">
-          <select name="attr_off_2_dice_size" class="weap_dice_size">
-              <option value="none" selected="selected"></option>
-              <option value="d4">d4</option>
-              <option value="d6">d6</option>
-              <option value="d8">d8</option>
-              <option value="d10">d10</option>
-              <option value="d12">d12</option>
-              <option value="d20">d20</option>
-          </select>
-          <input type="text" name="attr_off_2_effect" class="weap_effect">
-          <button type="roll" value="/roll [[@{off_2_dice_num}]]@{off_2_dice_size}"> </button>
+
+      <div class="off_2 f-row">
+        <input type="text" name="attr_off_2_name" class="weap_name">
+        <select name="attr_off_2_attr" class="weap_attr">
+          <option value="none" selected></option>
+          <option value="str">Str</option>
+          <option value="int">Int</option>
+        </select>
+        <select name="attr_off_2_type" class="weap_type">
+          <option value="none" selected></option>
+          <option value="Lgt">Lgt</option>
+          <option value="Med">Med</option>
+          <option value="Hvy">Hvy</option>
+          <option value="Mty">Mty</option>
+          <option value="Imp">Imp</option>
+        </select>
+        <select name="attr_off_2_d_type" class="weap_d_type">
+          <option value="none" selected></option>
+          <option value="Phys">Phys</option>
+          <option value="Eng">Eng</option>
+        </select>
+        <input type="number" name="attr_off_2_dice_num" class="weap_dice_num">
+        <select name="attr_off_2_dice_size" class="weap_dice_size">
+          <option value="none" selected></option>
+          <option value="d4">d4</option>
+          <option value="d6">d6</option>
+          <option value="d8">d8</option>
+          <option value="d10">d10</option>
+          <option value="d12">d12</option>
+          <option value="d20">d20</option>
+        </select>
+        <input type="text" name="attr_off_2_effect" class="weap_effect">
+        <button type="roll" name="roll_off_2"
+          value="&{template:default} {{name=@{off_2_name}}} {{Roll=[[@{off_2_dice_num}@{off_2_dice_size}]]}}"></button>
       </div>
     </section>
 
     <section class="abilities f-col">
-      <div class="ability_title f-row">
-          <div class="ability_name_title">
-              <label> Ability </label>
-          </div>
-          <div class="ability_cost_title">
-              <label> Cost </label>
-          </div>
-          <div class="ability_type_title">
-              <label> Type </label>
-          </div>
-          <div class="ability_target_title">
-              <label> Target </label>
-          </div>
-          <div class="ability_range_title">
-              <label> Range </label>
-          </div>
-          <div class="ability_AOE_title">
-              <label> AOE </label>
-          </div>
-          <div class="ability_duration_title">
-              <label> Duration </label>
-          </div>
-          <div class="ability_effect_title">
-              <label> Effect </label>
-          </div>
+      <div class="f-row headers">
+        <span class="ability_name_title">Abilities</span>
+        <span class="ability_cost_title">Cost</span>
+        <span class="ability_type_title">Type</span>
+        <span class="ability_target_title">Target</span>
+        <span class="ability_range_title">Range</span>
+        <span class="ability_AOE_title">AOE</span>
+        <span class="ability_duration_title">Duration</span>
+        <span class="ability_effect_title">Effect</span>
       </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_1_name" value="" class="ability_name" placeholder="Electric Arc">
-          <input type="text" name="attr_ability_1_cost"  class="ability_cost" placeholder="7">
-          <input type="text" name="attr_ability_1_type"  class="ability_type" placeholder="Action">
-          <input type="text" name="attr_ability_1_target"  class="ability_target" placeholder="Indiv">
-          <input type="text" name="attr_ability_1_range"  class="ability_range" placeholder="Med">
-          <input type="text" name="attr_ability_1_AOE"  class="ability_AOE" placeholder="Chain1">
-          <input type="text" name="attr_ability_1_duration"  class="ability_duration" placeholder="Instant">
-          <input type="text" name="attr_ability_1_effect"  class="ability_effect" placeholder="/r 3d8 electric damage">
-          <button type="roll" value="@{ability_1_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_2_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_2_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_2_type"  class="ability_type">
-          <input type="text" name="attr_ability_2_target"  class="ability_target">
-          <input type="text" name="attr_ability_2_range"  class="ability_range">
-          <input type="text" name="attr_ability_2_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_2_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_2_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_2_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_3_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_3_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_3_type"  class="ability_type">
-          <input type="text" name="attr_ability_3_target"  class="ability_target">
-          <input type="text" name="attr_ability_3_range"  class="ability_range">
-          <input type="text" name="attr_ability_3_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_3_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_3_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_3_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_4_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_4_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_4_type"  class="ability_type">
-          <input type="text" name="attr_ability_4_target"  class="ability_target">
-          <input type="text" name="attr_ability_4_range"  class="ability_range">
-          <input type="text" name="attr_ability_4_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_4_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_4_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_4_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_5_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_5_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_5_type"  class="ability_type">
-          <input type="text" name="attr_ability_5_target"  class="ability_target">
-          <input type="text" name="attr_ability_5_range"  class="ability_range">
-          <input type="text" name="attr_ability_5_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_5_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_5_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_5_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_6_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_6_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_6_type"  class="ability_type">
-          <input type="text" name="attr_ability_6_target"  class="ability_target">
-          <input type="text" name="attr_ability_6_range"  class="ability_range">
-          <input type="text" name="attr_ability_6_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_6_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_6_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_6_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_7_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_7_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_7_type"  class="ability_type">
-          <input type="text" name="attr_ability_7_target"  class="ability_target">
-          <input type="text" name="attr_ability_7_range"  class="ability_range">
-          <input type="text" name="attr_ability_7_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_7_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_7_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_7_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_8_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_8_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_8_type"  class="ability_type">
-          <input type="text" name="attr_ability_8_target"  class="ability_target">
-          <input type="text" name="attr_ability_8_range"  class="ability_range">
-          <input type="text" name="attr_ability_8_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_8_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_8_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_8_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_9_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_9_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_9_type"  class="ability_type">
-          <input type="text" name="attr_ability_9_target"  class="ability_target">
-          <input type="text" name="attr_ability_9_range"  class="ability_range">
-          <input type="text" name="attr_ability_9_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_9_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_9_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_9_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_10_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_10_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_10_type"  class="ability_type">
-          <input type="text" name="attr_ability_10_target"  class="ability_target">
-          <input type="text" name="attr_ability_10_range"  class="ability_range">
-          <input type="text" name="attr_ability_10_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_10_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_10_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_10_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_11_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_11_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_11_type"  class="ability_type">
-          <input type="text" name="attr_ability_11_target"  class="ability_target">
-          <input type="text" name="attr_ability_11_range"  class="ability_range">
-          <input type="text" name="attr_ability_11_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_11_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_11_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_11_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_12_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_12_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_12_type"  class="ability_type">
-          <input type="text" name="attr_ability_12_target"  class="ability_target">
-          <input type="text" name="attr_ability_12_range"  class="ability_range">
-          <input type="text" name="attr_ability_12_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_12_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_12_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_12_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_13_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_13_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_13_type"  class="ability_type">
-          <input type="text" name="attr_ability_13_target"  class="ability_target">
-          <input type="text" name="attr_ability_13_range"  class="ability_range">
-          <input type="text" name="attr_ability_13_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_13_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_13_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_13_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_14_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_14_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_14_type"  class="ability_type">
-          <input type="text" name="attr_ability_14_target"  class="ability_target">
-          <input type="text" name="attr_ability_14_range"  class="ability_range">
-          <input type="text" name="attr_ability_14_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_14_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_14_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_14_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_15_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_15_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_15_type"  class="ability_type">
-          <input type="text" name="attr_ability_15_target"  class="ability_target">
-          <input type="text" name="attr_ability_15_range"  class="ability_range">
-          <input type="text" name="attr_ability_15_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_15_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_15_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_15_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_16_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_16_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_16_type"  class="ability_type">
-          <input type="text" name="attr_ability_16_target"  class="ability_target">
-          <input type="text" name="attr_ability_16_range"  class="ability_range">
-          <input type="text" name="attr_ability_16_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_16_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_16_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_16_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_17_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_17_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_17_type"  class="ability_type">
-          <input type="text" name="attr_ability_17_target"  class="ability_target">
-          <input type="text" name="attr_ability_17_range"  class="ability_range">
-          <input type="text" name="attr_ability_17_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_17_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_17_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_17_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_18_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_18_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_18_type"  class="ability_type">
-          <input type="text" name="attr_ability_18_target"  class="ability_target">
-          <input type="text" name="attr_ability_18_range"  class="ability_range">
-          <input type="text" name="attr_ability_18_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_18_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_18_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_18_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_19_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_19_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_19_type"  class="ability_type">
-          <input type="text" name="attr_ability_19_target"  class="ability_target">
-          <input type="text" name="attr_ability_19_range"  class="ability_range">
-          <input type="text" name="attr_ability_19_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_19_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_19_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_19_effect}"> </button>
-      </div>
-      <div class=" ability f-row">
-          <input type="text" name="attr_ability_20_name" value="" class="ability_name">
-          <input type="text" name="attr_ability_20_cost"  class="ability_cost">
-          <input type="text" name="attr_ability_20_type"  class="ability_type">
-          <input type="text" name="attr_ability_20_target"  class="ability_target">
-          <input type="text" name="attr_ability_20_range"  class="ability_range">
-          <input type="text" name="attr_ability_20_AOE"  class="ability_AOE">
-          <input type="text" name="attr_ability_20_duration"  class="ability_duration">
-          <input type="text" name="attr_ability_20_effect"  class="ability_effect">
-          <button type="roll" value="@{ability_20_effect}"> </button>
-      </div>
+
+      <fieldset class="repeating_abilities">
+        <div class="f-row ability-row"
+          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
+          <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
+          <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
+          <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
+          <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
+          <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
+          <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
+          <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
+          <input type="text" name="attr_ability_effect" class="ability_effect"
+            placeholder="Deals 2d6 fire damage to all targets in area.">
+        </div>
+      </fieldset>
     </section>
-  
+
     <section class="expertise f-col">
-      <div class="f-row">
-          <div class="exp_area">
-              <label> Expertise </label>
-          </div>
-          <div class="exp_level">
-              <label> Level </label>
-          </div>
+      <div class="f-row" style="margin-bottom: 4px;">
+        <span style="font-weight: bold; font-size: 13px;">Expertise</span>
       </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_1" class="exp_area" placeholder="Disguise">
-          <input type="text" name="attr_explvl_1" class="exp_level" placeholder="Journeyman">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_2" class="exp_area">
-          <input type="text" name="attr_explvl_2" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_3" class="exp_area">
-          <input type="text" name="attr_explvl_3" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_4" class="exp_area">
-          <input type="text" name="attr_explvl_4" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_5" class="exp_area">
-          <input type="text" name="attr_explvl_5" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_6" class="exp_area">
-          <input type="text" name="attr_explvl_6" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_7" class="exp_area">
-          <input type="text" name="attr_explvl_7" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_8" class="exp_area">
-          <input type="text" name="attr_explvl_8" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_9" class="exp_area">
-          <input type="text" name="attr_explvl_9" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_10" class="exp_area">
-          <input type="text" name="attr_explvl_10" class="exp_level">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_exp_11" class="exp_area">
-          <input type="text" name="attr_explvl_11" class="exp_level">
-      </div>
+
+      <fieldset class="repeating_expertise">
+        <div class="f-row expertise-row"
+          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
+          <input type="text" name="attr_exp_name" class="exp_name" placeholder="Lockpicking">
+          <select name="attr_exp_level" class="exp_level">
+            <option value="beginner" selected>Beginner</option>
+            <option value="skilled">Skilled</option>
+            <option value="master">Master</option>
+            <option value="grandmaster">Grandmaster</option>
+          </select>
+        </div>
+      </fieldset>
     </section>
   </div>
 
   <div class="tab-content tab-content-inventory">
+    <section class="currency f-row nowrap"
+      style="background-color: white; padding: 5px 15px; margin-bottom: 5px; box-sizing: border-box;">
+      <label style="display:flex; align-items:center; gap:10px; margin:0; width:100%;">
+        <b>Currency:</b>
+        <input type="text" name="attr_currency" value="0" style="flex:1; box-sizing: border-box;">
+      </label>
+    </section>
+
     <section class="inventory f-col">
-      <div class="f-row">
-          <div class="inv_qty">
-              <label> Qty </label>
-          </div>
-          <div class="inv_item">
-              <label> Item </label>
-          </div>
-          <div class="inv_notes">
-              <label> Notes </label>
-          </div>
+      <div class="f-row headers" style="margin-bottom: 5px;">
+        <span class="inv_qty_title">Qty</span>
+        <span class="inv_item_title">Item</span>
+        <span class="inv_notes_title">Notes</span>
       </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_1_qty" class="inv_qty" value="1">
-          <input type="text" name="attr_inv_1" class="inv_item" value="Dagger">
-          <input type="text" name="attr_inv_1_notes" class="inv_notes" value="1d4-3d6 phys light">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_2_qty" class="inv_qty">
-          <input type="text" name="attr_inv_2" class="inv_item">
-          <input type="text" name="attr_inv_2_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_3_qty" class="inv_qty">
-          <input type="text" name="attr_inv_3" class="inv_item">
-          <input type="text" name="attr_inv_3_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_4_qty" class="inv_qty">
-          <input type="text" name="attr_inv_4" class="inv_item">
-          <input type="text" name="attr_inv_4_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_5_qty" class="inv_qty">
-          <input type="text" name="attr_inv_5" class="inv_item">
-          <input type="text" name="attr_inv_5_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_6_qty" class="inv_qty">
-          <input type="text" name="attr_inv_6" class="inv_item">
-          <input type="text" name="attr_inv_6_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_7_qty" class="inv_qty">
-          <input type="text" name="attr_inv_7" class="inv_item">
-          <input type="text" name="attr_inv_7_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_8_qty" class="inv_qty">
-          <input type="text" name="attr_inv_8" class="inv_item">
-          <input type="text" name="attr_inv_8_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_9_qty" class="inv_qty">
-          <input type="text" name="attr_inv_9" class="inv_item">
-          <input type="text" name="attr_inv_9_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_10_qty" class="inv_qty">
-          <input type="text" name="attr_inv_10" class="inv_item">
-          <input type="text" name="attr_inv_10_notes" class="inv_notes">
-      </div>
-      <div class="f-row">
-          <input type="text" name="attr_inv_11_qty" class="inv_qty">
-          <input type="text" name="attr_inv_11" class="inv_item">
-          <input type="text" name="attr_inv_11_notes" class="inv_notes">
-      </div>
+
+      <fieldset class="repeating_inventory">
+        <div class="f-row inv-row"
+          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
+          <input type="text" name="attr_inv_qty" class="inv_qty" placeholder="1">
+          <input type="text" name="attr_inv_item" class="inv_item" placeholder="Item Name">
+          <input type="text" name="attr_inv_notes" class="inv_notes" placeholder="Description or Stats">
+        </div>
+      </fieldset>
+    </section>
+  </div>
+
+  <div class="tab-content tab-content-passives">
+    <section class="passives f-col">
+      <fieldset class="repeating_passives">
+        <div class="f-row passive-row" style="margin-bottom: 5px; width: 100%;">
+          <textarea name="attr_passive_text" class="passive-text" placeholder="Passive ability description..."
+            style="width: 100%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
+        </div>
+      </fieldset>
     </section>
   </div>
 
   <div class="tab-content tab-content-notes">
-    <section class="passive f-row">
-      <textarea name="attr_passive_text">Passives</textarea>
-      <textarea name="attr_notes_text">Notes</textarea>
+    <section class="notes f-col">
+      <textarea name="attr_notes_text"
+        style="width: 100%; height: 600px; resize: vertical; box-sizing: border-box; padding: 10px; font-family: 'Lexend', sans-serif;"
+        placeholder="Session notes, character backstory, campaign details..."></textarea>
     </section>
   </div>
 </main>
-  
-  <script type="text/worker">
+
+<script type="text/worker">
+    // 1. FATIGUE AND MAX SP TRACKER
     on("change:sp_max change:ftg", function() {
       getAttrs(["sp_max", "ftg"], function(values) {
         const sp_max = parseInt(values.sp_max, 10) || 0;
         const ftg = parseInt(values.ftg, 10) || 0;
         const eff_sp_max = Math.max(sp_max - ftg, 0);
-  
-        setAttrs({
-          eff_sp_max: eff_sp_max
+        setAttrs({ eff_sp_max: eff_sp_max });
+      });
+    });
+
+    // 2. NAVIGATIONAL TAB TOGGLES
+    on("clicked:tabcore clicked:tabinventory clicked:tabpassives clicked:tabnotes", function(info) {
+      const tab = info.triggerName.replace("clicked:tab", "");
+      setAttrs({ sheetTab: tab });
+    });
+
+    // 3. HANDLER FOR S.P.L.I.C.E.D. AND WEAPONS
+    // We create a unified function to keep the code clean and fast
+    const performRoll = (label, dicePool) => {
+        // We include the 3D dice roll in the formula, then invoke the custom template
+        const rollExpression = `&{template:splicedroll} {{name=${label}}} {{dice_string=[[0]]}} {{successes=[[0]]}}`;
+        
+        startRoll(`[[ ${dicePool}d6 ]] ${rollExpression}`, function(results) {
+            const rollId = results.rollId;
+            const diceArray = results.results.roll1.dice;
+            
+            let successCount = 0;
+            let diceDisplay = [];
+
+            diceArray.forEach(function(die) {
+                if (die === 3 || die === 6) {
+                    successCount += 1;
+                    diceDisplay.push(`**${die}**`);
+                } else {
+                    diceDisplay.push(die.toString());
+                }
+            });
+
+            finishRoll(rollId, {
+                dice_string: diceDisplay.join(" "),
+                successes: successCount
+            });
         });
-      });
+    };
+
+    // Listeners for Attributes
+    on("clicked:roll_str clicked:roll_per clicked:roll_luk clicked:roll_int clicked:roll_crg clicked:roll_end clicked:roll_dex", function(info) {
+        const stat = info.triggerName.replace("clicked:roll_", "");
+        getAttrs([stat], (v) => {
+            const pool = (parseInt(v[stat], 10) || 0) + 3;
+            performRoll(stat.toUpperCase() + " Roll", pool);
+        });
     });
 
-    on("clicked:tabcore", function() {
-      setAttrs({
-        sheetTab: "core"
-      });
+    // Listeners for Weapons
+    on("clicked:roll_main_1 clicked:roll_off_1 clicked:roll_main_2 clicked:roll_off_2", function(info) {
+        const slot = info.triggerName.replace("clicked:roll_", "");
+        getAttrs([`${slot.replace('roll_', '')}_name`, `${slot.replace('roll_', '')}_dice_num`], (v) => {
+            const name = v[`${slot.replace('roll_', '')}_name`] || "Attack";
+            const pool = parseInt(v[`${slot.replace('roll_', '')}_dice_num`], 10) || 1;
+            performRoll(name, pool);
+        });
     });
-
-    on("clicked:tabinventory", function() {
-      setAttrs({
-        sheetTab: "inventory"
-      });
-    });
-
-    on("clicked:tabnotes", function() {
-      setAttrs({
-        sheetTab: "notes"
-      });
-    });
-  </script>
-  
+</script>
