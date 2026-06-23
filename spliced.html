@@ -335,15 +335,6 @@
   </div>
 
   <div class="tab-content tab-content-core">
-    <section class="charac f-col nowrap">
-      <div class="f-col char-col">
-        <label><span class="char-lbl"></span><input name="attr_character_name" type="text"
-            placeholder="Character Name"></label>
-        <label><span class="char-lbl">the</span><input name="attr_class_name" type="text" placeholder="Class"></label>
-        <label><span class="char-lbl">Level</span><input name="attr_lvl" type="text" class="level-input"
-            placeholder="0"></label>
-      </div>
-    </section>
 
     <section class="spliced f-col">
       <div class="spliced-header">
@@ -427,22 +418,35 @@
       </div>
     </section>
 
-    <section class="player f-col nowrap">
-      <div class="f-col genomes-col">
-        <label class="f-col">
-          <span>Primary Genome</span>
-          <input name="attr_gena" type="text">
-        </label>
+    <!-- Genome Box (Vertically Stacked & Aligned) -->
+    <section class="genome f-col">
+      <div class="genome-row">
+        <span class="genome-lbl">dominant</span>
+        <input type="text" name="attr_genome_dominant" value="" placeholder="dominant genome">
+      </div>
+      <div class="genome-row">
+        <span class="genome-lbl">recessive</span>
+        <input type="text" name="attr_genome_recessive_1" value="" placeholder="recessive genome">
+      </div>
+      <div class="genome-row">
+        <span class="genome-lbl">recessive</span>
+        <input type="text" name="attr_genome_recessive_2" value="" value="n/a">
+      </div>
+    </section>
 
-        <label class="f-col">
-          <span>Secondary Genome</span>
-          <input name="attr_genb" type="text">
-        </label>
+    <section class="charac f-col">
+      <div class="charac-row">
+        <input type="text" name="attr_character_name" placeholder="Character Name" class="charac-name-input">
+      </div>
 
-        <label class="f-col">
-          <span>Secondary Genome</span>
-          <input name="attr_geng" type="text" value="n/a">
-        </label>
+      <div class="charac-row flex-align">
+        <span class="charac-lbl">the</span>
+        <input type="text" name="attr_character_class" placeholder="Class">
+      </div>
+
+      <div class="charac-row flex-align">
+        <span class="charac-lbl">Level</span>
+        <input type="number" name="attr_char_level" value="1" class="charac-lvl-input">
       </div>
     </section>
 
@@ -487,7 +491,7 @@
                 name="attr_lp_max" value="0"></span></label></div>
         <div class="stat-item"><label>Stamina: <span><input type="number" name="attr_sp" value="5"> / <input
                 type="number" name="attr_sp_max" value="5"></span></label></div>
-        <div class="stat-item"><label>Effective SP max: <span><input type="number" name="attr_eff_sp_max" value="0"
+        <div class="stat-item"><label>Effective SP max: <span><input type="number" name="attr_eff_sp_max" value="5"
                 readonly></span></label></div>
         <div class="stat-item"><label>Fatigue: <span><input type="number" name="attr_ftg" value="0"></span></label>
         </div>
@@ -502,10 +506,52 @@
       </div>
     </section>
 
-    <section class="act_pool f-col nowrap">
-      <textarea name="attr_act_pool"
-        style="width: 100%; flex-grow: 1; resize: none; padding: 5px; box-sizing: border-box;"
-        placeholder="Action Pool..."></textarea>
+    <section class="act_pool">
+      <div class="action-pool-container">
+        <div class="action-grid">
+          <div class="action-cell">
+            <span class="action-lbl">general</span>
+            <input type="checkbox" name="attr_act_general">
+          </div>
+
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl1" placeholder="...">
+            <input type="checkbox" name="attr_act_custom1">
+          </div>
+
+          <div class="action-cell">
+            <span class="action-lbl">move</span>
+            <input type="checkbox" name="attr_act_move">
+          </div>
+
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl2" placeholder="...">
+            <input type="checkbox" name="attr_act_custom2">
+          </div>
+
+          <div class="action-cell">
+            <span class="action-lbl">reaction</span>
+            <input type="checkbox" name="attr_act_reaction">
+          </div>
+
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl3" placeholder="...">
+            <input type="checkbox" name="attr_act_custom3">
+          </div>
+
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl4" placeholder="...">
+            <input type="checkbox" name="attr_act_custom4">
+          </div>
+
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl5" placeholder="...">
+            <input type="checkbox" name="attr_act_custom5">
+          </div>
+        </div>
+
+        <button type="action" name="act_clear_actions" class="action-clear-btn" title="Clear All Actions">↻</button>
+      </div>
     </section>
 
     <section class="cond f-col nowrap">
@@ -815,6 +861,20 @@
           update[stat] = base + mod;
           setAttrs(update);
         });
+      });
+    });
+    
+    // AUTOMATICALLY UNCHECK ALL ACTION POOL ENTRIES
+    on("clicked:clear_actions", function() {
+      setAttrs({
+        "act_general": 0,
+        "act_move": 0,
+        "act_reaction": 0,
+        "act_custom1": 0,
+        "act_custom2": 0,
+        "act_custom3": 0,
+        "act_custom4": 0,
+        "act_custom5": 0
       });
     });
 

@@ -15,9 +15,9 @@ main {
   grid-template-columns: 270px 180px 150px 200px;
   grid-template-rows: 110px 140px 100px 150px min-content min-content;
   grid-template-areas:
-    "spliced    player      player      charac"
+    "spliced    genome      genome      charac"
     "spliced    stats       heal        heal"
-    "act_pool   cond        cond        def"
+    "cond       act_pool    act_pool    def"
     "weap       weap        weap        weap"
     "abilities  abilities   abilities   abilities"
     "expertise  expertise   expertise   expertise";
@@ -162,13 +162,6 @@ section {
 
 /* .charsheet input{ */
 
-/* /* .charsheet input[type="text"], input[type="number"]{ */
-*/
-/* margin: 2px 4px; */
-/* /* font-size: 10px; */
-*/
-/* } */
-
 .the-word {
   font-style: italic;
   font-size: 12px;
@@ -177,64 +170,69 @@ section {
   flex-shrink: 0;
 }
 
+/* Character Block */
 .charac {
   grid-area: charac;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   background-color: white;
-  padding: 5px 15px;
+  padding: 6px 8px;
   box-sizing: border-box;
-}
-
-
-.char-col {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 4px 0;
+  /* Spreads the 3 elements down the 110px height */
 }
 
-.char-col label {
+.charac-row {
+  width: 100%;
+}
+
+/* Horizontal alignment for rows with labels */
+.charac-row.flex-align {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 13px;
-  margin: 0;
-  width: 100%;
+  gap: 6px;
 }
 
-.char-col .char-lbl {
-  display: inline-block;
-  width: 45px;
-  min-width: 45px;
-  text-align: left;
+/* Full width styling for character name */
+.charac-name-input {
+  width: 100% !important;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2px 4px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
-.char-col input {
+.charac-lbl {
+  font-size: 11px;
+  text-transform: lowercase;
+  color: #444;
+  font-weight: bold;
+  white-space: nowrap;
+  width: 35px;
+  /* Ensures inputs line up vertically */
+}
+
+.charac-row input[type="text"]:not(.charac-name-input) {
   flex: 1;
   min-width: 0;
-  width: 100%;
+  font-size: 11px;
+  padding: 2px;
   box-sizing: border-box;
-  padding: 2px 5px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
-.level-label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  margin: 0;
-  white-space: nowrap;
-}
-
-.level-input {
-  width: 40px !important;
+.charac-lvl-input {
+  width: 45px !important;
   text-align: center;
+  font-size: 11px;
+  padding: 2px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 /* SPLICED Box Layout Adjustments */
@@ -319,43 +317,53 @@ section {
   box-sizing: border-box;
 }
 
-.player {
-  grid-area: player;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+/* Genome Container */
+.genome {
+  grid-area: genome;
   background-color: white;
-  padding: 5px 15px;
+  padding: 8px 10px;
   box-sizing: border-box;
-}
-
-.genomes-col {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 4px 0;
+  /* Spreads the 3 objects evenly down the 110px grid area */
 }
 
-.genomes-col label {
+/* Row alignment structure */
+.genome-row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  margin: 0;
+  gap: 8px;
   width: 100%;
 }
 
-.genomes-col input {
-  flex: 1;
-  margin-left: 10px;
-  box-sizing: border-box;
-  padding: 2px 5px;
+/* Width expanded to 72px to cleanly fit 'recessive' and align all text inputs */
+.genome-lbl {
+  font-size: 11px;
+  text-transform: lowercase;
+  color: #444;
+  font-weight: bold;
+  white-space: nowrap;
+  width: 72px;
+  flex-shrink: 0;
+  /* Prevents the text from squishing or wrapping */
 }
 
+/* Text boxes fill all remaining horizontal space */
+.genome-row input[type="text"] {
+  width: 100% !important;
+  /* Forces overwrite of Roll20's default input widths */
+  flex: 1;
+  min-width: 0;
+  font-size: 11px;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* Stats Container */
 .stats {
   grid-area: stats;
   background-color: seashell;
@@ -448,11 +456,100 @@ section {
   margin: 0;
 }
 
+/* Action Pool Outer Section */
 .act_pool {
   grid-area: act_pool;
   background-color: white;
-  padding: 5px;
+  padding: 2px 4px;
   box-sizing: border-box;
+}
+
+/* Horizontal alignment setup for grid + reset button */
+.action-pool-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 6px;
+  /* 6px space before the clear button */
+}
+
+/* 4 Rows, 2 Columns Sub-Grid Setup calculated for a 332px wide box */
+.action-grid {
+  display: grid;
+  grid-template-columns: 148px 148px;
+  /* Adjusted to mathematically fit the 332px area */
+  grid-template-rows: repeat(4, 24px);
+  grid-gap: 1px 6px;
+  flex-grow: 1;
+}
+
+/* Flex layout inside each individual cell */
+.action-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Text labels for general, move, reaction */
+.action-lbl {
+  font-size: 12px;
+  text-transform: lowercase;
+  color: #222;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+/* Custom textboxes inside the grid slots */
+.action-cell input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  height: 20px;
+  font-size: 11px;
+  padding: 1px 3px;
+  margin: 0 4px 0 0 !important;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* Standardized Checkbox sizing */
+.action-cell input[type="checkbox"] {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Loop-Arrow Reset Button Styling */
+.action-clear-btn {
+  width: 24px;
+  height: 90px;
+  padding: 0 !important;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 90px;
+  color: #555;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-clear-btn:hover {
+  background-color: #e5e5e5;
+  color: #d11;
+  border-color: #aaa;
 }
 
 .cond {
