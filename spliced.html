@@ -188,6 +188,25 @@
       </div>
     </section>
 
+    <section class="player f-col nowrap">
+      <div class="f-col genomes-col">
+        <label class="f-col">
+          <span>Primary Genome</span>
+          <input name="attr_gena" type="text">
+        </label>
+
+        <label class="f-col">
+          <span>Secondary Genome</span>
+          <input name="attr_genb" type="text">
+        </label>
+
+        <label class="f-col">
+          <span>Secondary Genome</span>
+          <input name="attr_geng" type="text" value="n/a">
+        </label>
+      </div>
+    </section>
+
     <section class="heal f-row">
       <div>
         <h3>0</h3>
@@ -295,8 +314,7 @@
           <option value="d20">d20</option>
         </select>
         <input type="text" name="attr_main_1_effect" class="weap_effect">
-        <button type="roll" name="roll_main_1"
-          value="&{template:default} {{name=@{main_1_name}}} {{Roll=[[@{main_1_dice_num}@{main_1_dice_size}]]}}"></button>
+        <button type="action" name="act_roll_main_1">Roll</button>
       </div>
 
       <div class="off_1 f-row">
@@ -330,8 +348,7 @@
           <option value="d20">d20</option>
         </select>
         <input type="text" name="attr_off_1_effect" class="weap_effect">
-        <button type="roll" name="roll_off_1"
-          value="&{template:default} {{name=@{off_1_name}}} {{Roll=[[@{off_1_dice_num}@{off_1_dice_size}]]}}"></button>
+        <button type="action" name="act_roll_off_1">Roll</button>
       </div>
 
       <div class="main_2 f-row">
@@ -365,8 +382,7 @@
           <option value="d20">d20</option>
         </select>
         <input type="text" name="attr_main_2_effect" class="weap_effect">
-        <button type="roll" name="roll_main_2"
-          value="&{template:default} {{name=@{main_2_name}}} {{Roll=[[@{main_2_dice_num}@{main_2_dice_size}]]}}"></button>
+        <button type="action" name="act_roll_main_2">Roll</button>
       </div>
 
       <div class="off_2 f-row">
@@ -400,8 +416,7 @@
           <option value="d20">d20</option>
         </select>
         <input type="text" name="attr_off_2_effect" class="weap_effect">
-        <button type="roll" name="roll_off_2"
-          value="&{template:default} {{name=@{off_2_name}}} {{Roll=[[@{off_2_dice_num}@{off_2_dice_size}]]}}"></button>
+        <button type="action" name="act_roll_off_2">Roll</button>
       </div>
     </section>
 
