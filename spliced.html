@@ -118,7 +118,158 @@
     </div>
 
     <div style="font-weight: bold; margin-top: 5px; font-size: 13px;">
-      Successes: <span style="color: #d11; font-size: 15px;">{{computed::successes}}</span>
+      Successes: <span style="color: #191; font-size: 15px;">{{computed::successes}}</span>
+    </div>
+  </div>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-weaponroll">
+  <div class="sheet-template-container"
+    style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
+    <div style="font-weight: bold; font-size: 14px; border-bottom: 1px solid #aaa; margin-bottom: 5px;">
+      {{name}}
+    </div>
+
+    <div style="margin-bottom: 4px;">
+      <span style="color: #666; margin-right: 5px;">Dice:</span>
+
+      {{#rollGreater() computed::d1 0}}
+      {{#rollTotal() computed::d1 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d1 1}}
+      {{#rollTotal() computed::d1 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d1 2}}
+      {{#rollTotal() computed::d1 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d1 3}}
+      {{#rollTotal() computed::d1 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d1 4}}
+      {{#rollTotal() computed::d1 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d1 5}}
+      {{#rollTotal() computed::d1 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d1 6}}
+      {{#rollGreater() computed::d1 6}}<span class="sheet-die-fail">{{computed::d1}}</span>{{/rollGreater() computed::d1
+      6}}
+      {{/rollGreater() computed::d1 0}}
+
+      {{#rollGreater() computed::d2 0}}
+      {{#rollTotal() computed::d2 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d2 1}}
+      {{#rollTotal() computed::d2 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d2 2}}
+      {{#rollTotal() computed::d2 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d2 3}}
+      {{#rollTotal() computed::d2 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d2 4}}
+      {{#rollTotal() computed::d2 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d2 5}}
+      {{#rollTotal() computed::d2 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d2 6}}
+      {{#rollGreater() computed::d2 6}}<span class="sheet-die-fail">{{computed::d2}}</span>{{/rollGreater() computed::d2
+      6}}
+      {{/rollGreater() computed::d2 0}}
+
+      {{#rollGreater() computed::d3 0}}
+      {{#rollTotal() computed::d3 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d3 1}}
+      {{#rollTotal() computed::d3 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d3 2}}
+      {{#rollTotal() computed::d3 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d3 3}}
+      {{#rollTotal() computed::d3 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d3 4}}
+      {{#rollTotal() computed::d3 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d3 5}}
+      {{#rollTotal() computed::d3 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d3 6}}
+      {{#rollGreater() computed::d3 6}}<span class="sheet-die-fail">{{computed::d3}}</span>{{/rollGreater() computed::d3
+      6}}
+      {{/rollGreater() computed::d3 0}}
+
+      {{#rollGreater() computed::d4 0}}
+      {{#rollTotal() computed::d4 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d4 1}}
+      {{#rollTotal() computed::d4 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d4 2}}
+      {{#rollTotal() computed::d4 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d4 3}}
+      {{#rollTotal() computed::d4 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d4 4}}
+      {{#rollTotal() computed::d4 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d4 5}}
+      {{#rollTotal() computed::d4 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d4 6}}
+      {{#rollGreater() computed::d4 6}}<span class="sheet-die-fail">{{computed::d4}}</span>{{/rollGreater() computed::d4
+      6}}
+      {{/rollGreater() computed::d4 0}}
+
+      {{#rollGreater() computed::d5 0}}
+      {{#rollTotal() computed::d5 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d5 1}}
+      {{#rollTotal() computed::d5 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d5 2}}
+      {{#rollTotal() computed::d5 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d5 3}}
+      {{#rollTotal() computed::d5 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d5 4}}
+      {{#rollTotal() computed::d5 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d5 5}}
+      {{#rollTotal() computed::d5 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d5 6}}
+      {{#rollGreater() computed::d5 6}}<span class="sheet-die-fail">{{computed::d5}}</span>{{/rollGreater() computed::d5
+      6}}
+      {{/rollGreater() computed::d5 0}}
+
+      {{#rollGreater() computed::d6 0}}
+      {{#rollTotal() computed::d6 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d6 1}}
+      {{#rollTotal() computed::d6 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d6 2}}
+      {{#rollTotal() computed::d6 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d6 3}}
+      {{#rollTotal() computed::d6 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d6 4}}
+      {{#rollTotal() computed::d6 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d6 5}}
+      {{#rollTotal() computed::d6 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d6 6}}
+      {{#rollGreater() computed::d6 6}}<span class="sheet-die-fail">{{computed::d6}}</span>{{/rollGreater() computed::d6
+      6}}
+      {{/rollGreater() computed::d6 0}}
+
+      {{#rollGreater() computed::d7 0}}
+      {{#rollTotal() computed::d7 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d7 1}}
+      {{#rollTotal() computed::d7 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d7 2}}
+      {{#rollTotal() computed::d7 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d7 3}}
+      {{#rollTotal() computed::d7 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d7 4}}
+      {{#rollTotal() computed::d7 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d7 5}}
+      {{#rollTotal() computed::d7 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d7 6}}
+      {{#rollGreater() computed::d7 6}}<span class="sheet-die-fail">{{computed::d7}}</span>{{/rollGreater() computed::d7
+      6}}
+      {{/rollGreater() computed::d7 0}}
+
+      {{#rollGreater() computed::d8 0}}
+      {{#rollTotal() computed::d8 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d8 1}}
+      {{#rollTotal() computed::d8 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d8 2}}
+      {{#rollTotal() computed::d8 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d8 3}}
+      {{#rollTotal() computed::d8 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d8 4}}
+      {{#rollTotal() computed::d8 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d8 5}}
+      {{#rollTotal() computed::d8 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d8 6}}
+      {{#rollGreater() computed::d8 6}}<span class="sheet-die-fail">{{computed::d8}}</span>{{/rollGreater() computed::d8
+      6}}
+      {{/rollGreater() computed::d8 0}}
+
+      {{#rollGreater() computed::d9 0}}
+      {{#rollTotal() computed::d9 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d9 1}}
+      {{#rollTotal() computed::d9 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d9 2}}
+      {{#rollTotal() computed::d9 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d9 3}}
+      {{#rollTotal() computed::d9 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d9 4}}
+      {{#rollTotal() computed::d9 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d9 5}}
+      {{#rollTotal() computed::d9 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d9 6}}
+      {{#rollGreater() computed::d9 6}}<span class="sheet-die-fail">{{computed::d9}}</span>{{/rollGreater() computed::d9
+      6}}
+      {{/rollGreater() computed::d9 0}}
+
+      {{#rollGreater() computed::d10 0}}
+      {{#rollTotal() computed::d10 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d10 1}}
+      {{#rollTotal() computed::d10 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d10 2}}
+      {{#rollTotal() computed::d10 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d10 3}}
+      {{#rollTotal() computed::d10 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d10 4}}
+      {{#rollTotal() computed::d10 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d10 5}}
+      {{#rollTotal() computed::d10 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d10 6}}
+      {{#rollGreater() computed::d10 6}}<span class="sheet-die-fail">{{computed::d10}}</span>{{/rollGreater()
+      computed::d10 6}}
+      {{/rollGreater() computed::d10 0}}
+
+      {{#rollGreater() computed::d11 0}}
+      {{#rollTotal() computed::d11 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d11 1}}
+      {{#rollTotal() computed::d11 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d11 2}}
+      {{#rollTotal() computed::d11 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d11 3}}
+      {{#rollTotal() computed::d11 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d11 4}}
+      {{#rollTotal() computed::d11 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d11 5}}
+      {{#rollTotal() computed::d11 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d11 6}}
+      {{#rollGreater() computed::d11 6}}<span class="sheet-die-fail">{{computed::d11}}</span>{{/rollGreater()
+      computed::d11 6}}
+      {{/rollGreater() computed::d11 0}}
+
+      {{#rollGreater() computed::d12 0}}
+      {{#rollTotal() computed::d12 1}}<span class="sheet-die-fumble">1</span>{{/rollTotal() computed::d12 1}}
+      {{#rollTotal() computed::d12 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d12 2}}
+      {{#rollTotal() computed::d12 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d12 3}}
+      {{#rollTotal() computed::d12 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d12 4}}
+      {{#rollTotal() computed::d12 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d12 5}}
+      {{#rollTotal() computed::d12 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d12 6}}
+      {{#rollGreater() computed::d12 6}}<span class="sheet-die-fail">{{computed::d12}}</span>{{/rollGreater()
+      computed::d12 6}}
+      {{/rollGreater() computed::d12 0}}
+    </div>
+
+    <div style="font-weight: bold; margin-top: 5px; font-size: 13px;">
+      Successes: <span style="color: #191; font-size: 15px;">{{computed::successes}}</span>
+      <br />
+      Fumbles: <span style="color: #d11; font-size: 15px;">{{computed::fumbles}}</span>
     </div>
   </div>
 </rolltemplate>
@@ -534,7 +685,6 @@
 
     // 3. HANDLER FOR S.P.L.I.C.E.D.
     const performRoll = (label, dicePool) => {
-        // We explicitly pre-define 12 slots as inline rolls so Roll20 allows us to compute them
         const rollString = `&{template:splicedroll} {{name=${label}}} {{roll_data=[[${dicePool}d6]]}} {{successes=[[0]]}} ` +
             `{{d1=[[0]]}} {{d2=[[0]]}} {{d3=[[0]]}} {{d4=[[0]]}} {{d5=[[0]]}} {{d6=[[0]]}} ` +
             `{{d7=[[0]]}} {{d8=[[0]]}} {{d9=[[0]]}} {{d10=[[0]]}} {{d11=[[0]]}} {{d12=[[0]]}}`;
@@ -542,43 +692,69 @@
         startRoll(rollString, function(results) {
             const rollId = results.rollId;
             const diceArray = results.results.roll_data.dice;
-    
-            // Sort descending (High to Low)
             diceArray.sort((a, b) => b - a);
             
             let successCount = 0;
-            
-            // Initialize all 12 slots to 0
             let computedResults = {
                 successes: 0,
                 d1: 0, d2: 0, d3: 0, d4: 0, d5: 0, d6: 0,
                 d7: 0, d8: 0, d9: 0, d10: 0, d11: 0, d12: 0
             };
             
-            // Populate the actual rolled dice into our slots
             diceArray.forEach((die, index) => {
-                if (index < 12) { // Prevents breaking if a pool somehow goes over 12
-                    if (die === 3 || die === 6) {
-                        successCount += 1;
-                    }
+                if (index < 12) {
+                    if (die === 3 || die === 6) { successCount += 1; }
                     computedResults[`d${index + 1}`] = die;
                 }
             });
     
             computedResults['successes'] = successCount;
+            finishRoll(rollId, computedResults);
+        });
+    };
+
+    // 4. HANDLER FOR WEAPONS
+    const performWeaponRoll = (label, diceNum, diceSize) => {
+        // Uses the dynamic dice size (e.g., d8, d20) and includes fumble tracking
+        const rollString = `&{template:weaponroll} {{name=${label}}} {{roll_data=[[${diceNum}${diceSize}]]}} {{successes=[[0]]}} {{fumbles=[[0]]}} ` +
+            `{{d1=[[0]]}} {{d2=[[0]]}} {{d3=[[0]]}} {{d4=[[0]]}} {{d5=[[0]]}} {{d6=[[0]]}} ` +
+            `{{d7=[[0]]}} {{d8=[[0]]}} {{d9=[[0]]}} {{d10=[[0]]}} {{d11=[[0]]}} {{d12=[[0]]}}`;
+        
+        startRoll(rollString, function(results) {
+            const rollId = results.rollId;
+            const diceArray = results.results.roll_data.dice;
+            
+            // Sort descending (High to Low)
+            diceArray.sort((a, b) => b - a);
+            
+            let successCount = 0;
+            let fumbleCount = 0;
+            
+            let computedResults = {
+                successes: 0, fumbles: 0,
+                d1: 0, d2: 0, d3: 0, d4: 0, d5: 0, d6: 0,
+                d7: 0, d8: 0, d9: 0, d10: 0, d11: 0, d12: 0
+            };
+            
+            diceArray.forEach((die, index) => {
+                if (index < 12) {
+                    if (die === 3 || die === 6) { successCount += 1; }
+                    if (die === 1) { fumbleCount += 1; }
+                    computedResults[`d${index + 1}`] = die;
+                }
+            });
     
-            // Send the finished mathematical values back to the template
+            computedResults['successes'] = successCount;
+            computedResults['fumbles'] = fumbleCount;
             finishRoll(rollId, computedResults);
         });
     };
 
     // Listeners for S.P.L.I.C.E.D. Attributes
-    // Note: Action buttons named "act_roll_str" trigger the event "clicked:roll_str"
     on("clicked:roll_str clicked:roll_per clicked:roll_luk clicked:roll_int clicked:roll_crg clicked:roll_end clicked:roll_dex", function(info) {
         const stat = info.triggerName.replace("clicked:roll_", "");
         getAttrs([stat], (v) => {
             const pool = (parseInt(v[stat], 10) || 0) + 3;
-            // Capitalize the first letter for the title
             const label = stat.charAt(0).toUpperCase() + stat.slice(1) + " Roll";
             performRoll(label, pool);
         });
@@ -587,10 +763,14 @@
     // Listeners for Weapons
     on("clicked:roll_main_1 clicked:roll_off_1 clicked:roll_main_2 clicked:roll_off_2", function(info) {
         const slot = info.triggerName.replace("clicked:roll_", "");
-        getAttrs([`${slot.replace('roll_', '')}_name`, `${slot.replace('roll_', '')}_dice_num`], (v) => {
-            const name = v[`${slot.replace('roll_', '')}_name`] || "Attack";
-            const pool = parseInt(v[`${slot.replace('roll_', '')}_dice_num`], 10) || 1;
-            performRoll(name, pool);
+        
+        // Ensure we fetch the dice_size value alongside name and number
+        getAttrs([`${slot}_name`, `${slot}_dice_num`, `${slot}_dice_size`], (v) => {
+            const name = v[`${slot}_name`] || "Weapon Attack";
+            const diceNum = parseInt(v[`${slot}_dice_num`], 10) || 1;
+            const diceSize = v[`${slot}_dice_size`] || "d6"; // Fallback to d6 if undefined
+            
+            performWeaponRoll(name, diceNum, diceSize);
         });
     });
 </script>

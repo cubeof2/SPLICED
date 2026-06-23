@@ -640,7 +640,7 @@ section {
   padding: 5px;
 }
 
-/*------------- Roll Template Styling -------------*/
+/*------------- Spliced Roll Template Styling -------------*/
 
 /* Normal die result (Failures: 1, 2, 4, 5) */
 .sheet-rolltemplate-splicedroll .sheet-die-fail {
@@ -661,4 +661,58 @@ section {
   border-radius: 3px;
   background-color: #f9f9f9;
   display: inline-block;
+}
+
+/*------------- Weapon Roll Template Styling -------------*/
+
+/* Normal die result (Failures) */
+.sheet-rolltemplate-splicedroll .sheet-die-fail,
+.sheet-rolltemplate-weaponroll .sheet-die-fail {
+  color: #333333;
+  font-size: 13px;
+  margin-right: 6px;
+  font-weight: normal;
+}
+
+/* Success die result (Bold, Bordered 3s and 6s) */
+.sheet-rolltemplate-splicedroll .sheet-die-success,
+.sheet-rolltemplate-weaponroll .sheet-die-success {
+  color: #333333;
+  font-weight: bold;
+  font-size: 13px;
+  border: 1px solid #999999;
+  padding: 0px 4px;
+  margin-right: 6px;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+  display: inline-block;
+}
+
+/* Fumble die result (Red, Bordered 1s) */
+.sheet-rolltemplate-weaponroll .sheet-die-fumble {
+  color: #cc0000;
+  font-weight: bold;
+  font-size: 13px;
+  border: 1px solid #cc0000;
+  padding: 0px 4px;
+  margin-right: 6px;
+  border-radius: 3px;
+  background-color: #ffe6e6;
+  display: inline-block;
+}
+
+/* Strip default Roll20 yellow background and bolding from raw inline rolls */
+.sheet-rolltemplate-splicedroll .inlinerollresult,
+.sheet-rolltemplate-weaponroll .inlinerollresult,
+.sheet-rolltemplate-splicedroll .inlinerollresult.fullcrit,
+.sheet-rolltemplate-weaponroll .inlinerollresult.fullcrit,
+.sheet-rolltemplate-splicedroll .inlinerollresult.fullfail,
+.sheet-rolltemplate-weaponroll .inlinerollresult.fullfail,
+.sheet-rolltemplate-splicedroll .inlinerollresult.importantroll,
+.sheet-rolltemplate-weaponroll .inlinerollresult.importantroll {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-weight: inherit !important;
+  cursor: auto !important;
 }
