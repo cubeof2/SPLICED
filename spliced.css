@@ -701,6 +701,19 @@ section {
   display: inline-block;
 }
 
+/* Crit die result (Blue, Bordered Maximum Values) */
+.sheet-rolltemplate-weaponroll .sheet-die-crit {
+  color: #0055cc;
+  font-weight: bold;
+  font-size: 13px;
+  border: 1px solid #0055cc;
+  padding: 0px 4px;
+  margin-right: 6px;
+  border-radius: 3px;
+  background-color: #e6f2ff;
+  display: inline-block;
+}
+
 /* Strip default Roll20 yellow background and bolding from raw inline rolls */
 .sheet-rolltemplate-splicedroll .inlinerollresult,
 .sheet-rolltemplate-weaponroll .inlinerollresult,
