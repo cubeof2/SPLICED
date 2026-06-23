@@ -1,18 +1,124 @@
 <rolltemplate class="sheet-rolltemplate-splicedroll">
   <div class="sheet-template-container"
     style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
-    <!-- Title Header -->
     <div style="font-weight: bold; font-size: 14px; border-bottom: 1px solid #aaa; margin-bottom: 5px;">
       {{name}}
     </div>
-    <!-- Raw Dice List Layout -->
+
     <div style="margin-bottom: 4px;">
-      <span style="color: #666;">Dice Results:</span> <span
-        style="font-size: 13px; letter-spacing: 2px;">{{dice_string}}</span>
+      <span style="color: #666; margin-right: 5px;">Dice:</span>
+
+      {{#rollGreater() computed::d1 0}}
+      {{#rollTotal() computed::d1 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d1 6}}
+      {{#rollTotal() computed::d1 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d1 3}}
+      {{#rollTotal() computed::d1 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d1 5}}
+      {{#rollTotal() computed::d1 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d1 4}}
+      {{#rollTotal() computed::d1 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d1 2}}
+      {{#rollTotal() computed::d1 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d1 1}}
+      {{/rollGreater() computed::d1 0}}
+
+      {{#rollGreater() computed::d2 0}}
+      {{#rollTotal() computed::d2 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d2 6}}
+      {{#rollTotal() computed::d2 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d2 3}}
+      {{#rollTotal() computed::d2 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d2 5}}
+      {{#rollTotal() computed::d2 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d2 4}}
+      {{#rollTotal() computed::d2 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d2 2}}
+      {{#rollTotal() computed::d2 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d2 1}}
+      {{/rollGreater() computed::d2 0}}
+
+      {{#rollGreater() computed::d3 0}}
+      {{#rollTotal() computed::d3 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d3 6}}
+      {{#rollTotal() computed::d3 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d3 3}}
+      {{#rollTotal() computed::d3 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d3 5}}
+      {{#rollTotal() computed::d3 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d3 4}}
+      {{#rollTotal() computed::d3 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d3 2}}
+      {{#rollTotal() computed::d3 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d3 1}}
+      {{/rollGreater() computed::d3 0}}
+
+      {{#rollGreater() computed::d4 0}}
+      {{#rollTotal() computed::d4 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d4 6}}
+      {{#rollTotal() computed::d4 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d4 3}}
+      {{#rollTotal() computed::d4 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d4 5}}
+      {{#rollTotal() computed::d4 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d4 4}}
+      {{#rollTotal() computed::d4 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d4 2}}
+      {{#rollTotal() computed::d4 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d4 1}}
+      {{/rollGreater() computed::d4 0}}
+
+      {{#rollGreater() computed::d5 0}}
+      {{#rollTotal() computed::d5 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d5 6}}
+      {{#rollTotal() computed::d5 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d5 3}}
+      {{#rollTotal() computed::d5 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d5 5}}
+      {{#rollTotal() computed::d5 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d5 4}}
+      {{#rollTotal() computed::d5 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d5 2}}
+      {{#rollTotal() computed::d5 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d5 1}}
+      {{/rollGreater() computed::d5 0}}
+
+      {{#rollGreater() computed::d6 0}}
+      {{#rollTotal() computed::d6 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d6 6}}
+      {{#rollTotal() computed::d6 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d6 3}}
+      {{#rollTotal() computed::d6 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d6 5}}
+      {{#rollTotal() computed::d6 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d6 4}}
+      {{#rollTotal() computed::d6 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d6 2}}
+      {{#rollTotal() computed::d6 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d6 1}}
+      {{/rollGreater() computed::d6 0}}
+
+      {{#rollGreater() computed::d7 0}}
+      {{#rollTotal() computed::d7 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d7 6}}
+      {{#rollTotal() computed::d7 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d7 3}}
+      {{#rollTotal() computed::d7 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d7 5}}
+      {{#rollTotal() computed::d7 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d7 4}}
+      {{#rollTotal() computed::d7 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d7 2}}
+      {{#rollTotal() computed::d7 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d7 1}}
+      {{/rollGreater() computed::d7 0}}
+
+      {{#rollGreater() computed::d8 0}}
+      {{#rollTotal() computed::d8 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d8 6}}
+      {{#rollTotal() computed::d8 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d8 3}}
+      {{#rollTotal() computed::d8 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d8 5}}
+      {{#rollTotal() computed::d8 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d8 4}}
+      {{#rollTotal() computed::d8 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d8 2}}
+      {{#rollTotal() computed::d8 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d8 1}}
+      {{/rollGreater() computed::d8 0}}
+
+      {{#rollGreater() computed::d9 0}}
+      {{#rollTotal() computed::d9 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d9 6}}
+      {{#rollTotal() computed::d9 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d9 3}}
+      {{#rollTotal() computed::d9 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d9 5}}
+      {{#rollTotal() computed::d9 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d9 4}}
+      {{#rollTotal() computed::d9 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d9 2}}
+      {{#rollTotal() computed::d9 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d9 1}}
+      {{/rollGreater() computed::d9 0}}
+
+      {{#rollGreater() computed::d10 0}}
+      {{#rollTotal() computed::d10 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d10 6}}
+      {{#rollTotal() computed::d10 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d10 3}}
+      {{#rollTotal() computed::d10 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d10 5}}
+      {{#rollTotal() computed::d10 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d10 4}}
+      {{#rollTotal() computed::d10 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d10 2}}
+      {{#rollTotal() computed::d10 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d10 1}}
+      {{/rollGreater() computed::d10 0}}
+
+      {{#rollGreater() computed::d11 0}}
+      {{#rollTotal() computed::d11 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d11 6}}
+      {{#rollTotal() computed::d11 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d11 3}}
+      {{#rollTotal() computed::d11 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d11 5}}
+      {{#rollTotal() computed::d11 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d11 4}}
+      {{#rollTotal() computed::d11 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d11 2}}
+      {{#rollTotal() computed::d11 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d11 1}}
+      {{/rollGreater() computed::d11 0}}
+
+      {{#rollGreater() computed::d12 0}}
+      {{#rollTotal() computed::d12 6}}<span class="sheet-die-success">6</span>{{/rollTotal() computed::d12 6}}
+      {{#rollTotal() computed::d12 3}}<span class="sheet-die-success">3</span>{{/rollTotal() computed::d12 3}}
+      {{#rollTotal() computed::d12 5}}<span class="sheet-die-fail">5</span>{{/rollTotal() computed::d12 5}}
+      {{#rollTotal() computed::d12 4}}<span class="sheet-die-fail">4</span>{{/rollTotal() computed::d12 4}}
+      {{#rollTotal() computed::d12 2}}<span class="sheet-die-fail">2</span>{{/rollTotal() computed::d12 2}}
+      {{#rollTotal() computed::d12 1}}<span class="sheet-die-fail">1</span>{{/rollTotal() computed::d12 1}}
+      {{/rollGreater() computed::d12 0}}
     </div>
-    <!-- Total Success Tally -->
+
     <div style="font-weight: bold; margin-top: 5px; font-size: 13px;">
-      Successes: <span style="color: #d11; font-size: 15px;">{{successes}}</span>
+      Successes: <span style="color: #d11; font-size: 15px;">{{computed::successes}}</span>
     </div>
   </div>
 </rolltemplate>
@@ -39,62 +145,46 @@
     </section>
 
     <section class="spliced f-col">
-      <!-- Strength example: uses (base + 3) dice -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">S</span>trength</span>
         <input type="number" name="attr_str" value="0">
-        <button type="roll" name="roll_str"
-          value="&{template:default} {{name=Strength Roll}} {{Results=[[ (@{str} + 3)d6 ]]}}"></button>
+        <button type="action" name="act_roll_str">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">P</span>erception</span>
         <input type="number" name="attr_per" value="0">
-        <button type="roll" name="roll_per"
-          value="&{template:default} {{name=Perception Roll}} {{Results=[[ (@{per} + 3)d6 ]]}}"></button>
+        <button type="action" name="act_roll_per">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">L</span>uck</span>
         <input type="number" name="attr_luk" value="0">
-        <button type="roll" name="roll_luk"
-          value="&{template:default} {{name=Luck Roll}} {{Results=[[ (@{luk} + 3)d6 ]]}}"></button>
+        <button type="action" name="act_roll_luk">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">I</span>ntelligence</span>
         <input type="number" name="attr_int" value="0">
-        <button type="roll" name="roll_int"
-          value="&{template:default} {{name=Intelligence Roll}} {{Results=[[ (@{int} + 3)d6 ]]}}"></button>
+        <button type="action" name="act_roll_int">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">C</span>ourage</span>
         <input type="number" name="attr_crg" value="0">
-        <button type="roll" name="roll_crg"
-          value="&{template:default} {{name=Courage Roll}} {{Results=[[ (@{crg} + 3)d6 ]]}}"></button>
+        <button type="action" name="act_roll_crg">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">E</span>ndurance</span>
         <input type="number" name="attr_end" value="0">
-        <button type="roll" name="roll_end"
-          value="&{template:default} {{name=Endurance Roll}} {{Results=[[ (@{end} + 3)d6 ]]}}"></button>
+        <button type="action" name="act_roll_end">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">D</span>exterity</span>
         <input type="number" name="attr_dex" value="0">
-        <button type="roll" name="roll_dex"
-          value="&{template:default} {{name=Dexterity Roll}} {{Results=[[ (@{dex} + 3)d6 ]]}}"></button>
-      </div>
-    </section>
-
-    <section class="player f-col nowrap">
-      <div class="f-col genomes-col">
-        <label>Primary Genome <input name="attr_gena" type="text"></label>
-        <label>Secondary Genome <input name="attr_genb" type="text"></label>
-        <label>Secondary Genome <input name="attr_geng" type="text" value="n/a"></label>
+        <button type="action" name="act_roll_dex">Roll</button>
       </div>
     </section>
 
@@ -427,41 +517,55 @@
       setAttrs({ sheetTab: tab });
     });
 
-    // 3. HANDLER FOR S.P.L.I.C.E.D. AND WEAPONS
-    // We create a unified function to keep the code clean and fast
+    // 3. HANDLER FOR S.P.L.I.C.E.D.
     const performRoll = (label, dicePool) => {
-        // We include the 3D dice roll in the formula, then invoke the custom template
-        const rollExpression = `&{template:splicedroll} {{name=${label}}} {{dice_string=[[0]]}} {{successes=[[0]]}}`;
+        // We explicitly pre-define 12 slots as inline rolls so Roll20 allows us to compute them
+        const rollString = `&{template:splicedroll} {{name=${label}}} {{roll_data=[[${dicePool}d6]]}} {{successes=[[0]]}} ` +
+            `{{d1=[[0]]}} {{d2=[[0]]}} {{d3=[[0]]}} {{d4=[[0]]}} {{d5=[[0]]}} {{d6=[[0]]}} ` +
+            `{{d7=[[0]]}} {{d8=[[0]]}} {{d9=[[0]]}} {{d10=[[0]]}} {{d11=[[0]]}} {{d12=[[0]]}}`;
         
-        startRoll(`[[ ${dicePool}d6 ]] ${rollExpression}`, function(results) {
+        startRoll(rollString, function(results) {
             const rollId = results.rollId;
-            const diceArray = results.results.roll1.dice;
+            const diceArray = results.results.roll_data.dice;
+    
+            // Sort descending (High to Low)
+            diceArray.sort((a, b) => b - a);
             
             let successCount = 0;
-            let diceDisplay = [];
-
-            diceArray.forEach(function(die) {
-                if (die === 3 || die === 6) {
-                    successCount += 1;
-                    diceDisplay.push(`**${die}**`);
-                } else {
-                    diceDisplay.push(die.toString());
+            
+            // Initialize all 12 slots to 0
+            let computedResults = {
+                successes: 0,
+                d1: 0, d2: 0, d3: 0, d4: 0, d5: 0, d6: 0,
+                d7: 0, d8: 0, d9: 0, d10: 0, d11: 0, d12: 0
+            };
+            
+            // Populate the actual rolled dice into our slots
+            diceArray.forEach((die, index) => {
+                if (index < 12) { // Prevents breaking if a pool somehow goes over 12
+                    if (die === 3 || die === 6) {
+                        successCount += 1;
+                    }
+                    computedResults[`d${index + 1}`] = die;
                 }
             });
-
-            finishRoll(rollId, {
-                dice_string: diceDisplay.join(" "),
-                successes: successCount
-            });
+    
+            computedResults['successes'] = successCount;
+    
+            // Send the finished mathematical values back to the template
+            finishRoll(rollId, computedResults);
         });
     };
 
-    // Listeners for Attributes
+    // Listeners for S.P.L.I.C.E.D. Attributes
+    // Note: Action buttons named "act_roll_str" trigger the event "clicked:roll_str"
     on("clicked:roll_str clicked:roll_per clicked:roll_luk clicked:roll_int clicked:roll_crg clicked:roll_end clicked:roll_dex", function(info) {
         const stat = info.triggerName.replace("clicked:roll_", "");
         getAttrs([stat], (v) => {
             const pool = (parseInt(v[stat], 10) || 0) + 3;
-            performRoll(stat.toUpperCase() + " Roll", pool);
+            // Capitalize the first letter for the title
+            const label = stat.charAt(0).toUpperCase() + stat.slice(1) + " Roll";
+            performRoll(label, pool);
         });
     });
 
