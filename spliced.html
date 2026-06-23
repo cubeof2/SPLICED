@@ -346,45 +346,83 @@
     </section>
 
     <section class="spliced f-col">
+      <div class="spliced-header">
+        <span class="spliced-word"></span>
+        <span class="spliced-hdr-lbl">base</span>
+        <span class="spliced-sign"></span>
+        <span class="spliced-hdr-lbl">mod</span>
+        <span class="spliced-sign"></span>
+        <span class="spliced-hdr-lbl">total</span>
+        <span class="spliced-btn-space"></span>
+      </div>
+
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">S</span>trength</span>
-        <input type="number" name="attr_str" value="0">
+        <input type="number" name="attr_str_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_str_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_str" value="0" readonly>
         <button type="action" name="act_roll_str">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">P</span>erception</span>
-        <input type="number" name="attr_per" value="0">
+        <input type="number" name="attr_per_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_per_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_per" value="0" readonly>
         <button type="action" name="act_roll_per">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">L</span>uck</span>
-        <input type="number" name="attr_luk" value="0">
+        <input type="number" name="attr_luk_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_luk_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_luk" value="0" readonly>
         <button type="action" name="act_roll_luk">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">I</span>ntelligence</span>
-        <input type="number" name="attr_int" value="0">
+        <input type="number" name="attr_int_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_int_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_int" value="0" readonly>
         <button type="action" name="act_roll_int">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">C</span>ourage</span>
-        <input type="number" name="attr_crg" value="0">
+        <input type="number" name="attr_crg_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_crg_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_crg" value="0" readonly>
         <button type="action" name="act_roll_crg">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">E</span>ndurance</span>
-        <input type="number" name="attr_end" value="0">
+        <input type="number" name="attr_end_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_end_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_end" value="0" readonly>
         <button type="action" name="act_roll_end">Roll</button>
       </div>
 
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">D</span>exterity</span>
-        <input type="number" name="attr_dex" value="0">
+        <input type="number" name="attr_dex_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_dex_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_dex" value="0" readonly>
         <button type="action" name="act_roll_dex">Roll</button>
       </div>
     </section>
@@ -424,8 +462,8 @@
       <div>
         <h3>2</h3>
         <b>Injured</b> <br>
-        disadvantage<br>
-        on all rolls
+        disadv on<br>
+        all rolls
       </div>
       <div>
         <h3>3</h3>
@@ -436,8 +474,8 @@
       <div>
         <h3>4</h3>
         <b>Hurt</b> <br>
-        disadvantage<br>
-        on all checks
+        disadv on<br>
+        all checks
       </div>
     </section>
 
@@ -727,13 +765,13 @@
       });
     });
 
-    // 2. NAVIGATIONAL TAB TOGGLES
+    // NAVIGATIONAL TAB TOGGLES
     on("clicked:tabcore clicked:tabinventory clicked:tabpassives clicked:tabnotes", function(info) {
       const tab = info.triggerName.replace("clicked:tab", "");
       setAttrs({ sheetTab: tab });
     });
 
-    // 3. HANDLER FOR S.P.L.I.C.E.D. ROLLS (Hardcoded d6 Pool Logic)
+    // HANDLER FOR S.P.L.I.C.E.D. ROLLS (Hardcoded d6 Pool Logic)
     const performRoll = (label, dicePool) => {
         const rollString = `&{template:splicedroll} {{name=${label}}} {{roll_data=[[${dicePool}d6]]}} {{successes=[[0]]}} ` +
             `{{d1=[[0]]}} {{d2=[[0]]}} {{d3=[[0]]}} {{d4=[[0]]}} {{d5=[[0]]}} {{d6=[[0]]}} ` +
@@ -765,8 +803,22 @@
             finishRoll(results.rollId, computedResults);
         });
     };
+    
+    // AUTOMATIC S.P.L.I.C.E.D. TOTAL CALCULATOR
+    const splicedStats = ["str", "per", "luk", "int", "crg", "end", "dex"];
+    splicedStats.forEach(stat => {
+      on(`change:${stat}_base change:${stat}_mod`, function() {
+        getAttrs([`${stat}_base`, `${stat}_mod`], function(values) {
+          const base = parseInt(values[`${stat}_base`], 10) || 0;
+          const mod = parseInt(values[`${stat}_mod`], 10) || 0;
+          const update = {};
+          update[stat] = base + mod;
+          setAttrs(update);
+        });
+      });
+    });
 
-    // 4. HANDLER FOR WEAPON ROLLS (Dynamic Die Size & Stat Calculations)
+    // HANDLER FOR WEAPON ROLLS (Dynamic Die Size & Stat Calculations)
     const performWeaponRoll = (label, dicePool, diceSize) => {
         // Find the maximum value of the die type (e.g., "d10" -> 10) to determine crits
         const maxVal = parseInt(diceSize.replace("d", ""), 10) || 6;
