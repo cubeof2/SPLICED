@@ -1036,7 +1036,7 @@
               </select>
             </div>
             <input type="text" name="attr_vehweap_effect" style="width: 21%;" placeholder="e.g. Max roll on MVR 4+">
-            <button type="action" name="act_roll_vehweap" style="width: 5%; font-size: 9px; padding: 0;">Roll</button>
+            <button type="action" name="act_rollweap" style="width: 5%; font-size: 9px; padding: 0;">Roll</button>
           </div>
         </fieldset>
       </section>
@@ -1230,11 +1230,12 @@
     });
 
     // V3. ROLL VEHICLE WEAPONS FROM REPEATING SECTION
-    on("clicked:repeating_vehweap:roll_vehweap", function(info) {
-        // Roll20 provides the row ID via sourceAttribute — more reliable than parsing triggerName.
-        // sourceAttribute is the full repeating key e.g. "repeating_vehweap_-ROWID_roll_vehweap"
-        const src = info.sourceAttribute; // e.g. "repeating_vehweap_-ABC123_roll_vehweap"
-        const rowId = src.replace("repeating_vehweap_", "").replace("_roll_vehweap", "");
+    on("clicked:repeating_vehweap:rollweap", function(info) {
+        // Roll20 action button clicks do not populate sourceAttribute (which is for change events).
+        // Instead, info.triggerName provides the full clicked attribute path, preserving case-sensitive row ID.
+        // e.g. "clicked:repeating_vehweap_-ABC123_rollweap"
+        const trigger = info.triggerName || "";
+        const rowId = trigger.replace("clicked:repeating_vehweap_", "").replace("_rollweap", "");
         const prefix = `repeating_vehweap_${rowId}_`;
 
         getAttrs([`${prefix}vehweap_name`, `${prefix}vehweap_dicenum`, `${prefix}vehweap_dicesize`], function(v) {
