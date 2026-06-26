@@ -113,12 +113,22 @@ main {
 }
 
 /* Hide all tab contents by default (Selector list on one line for parser compatibility) */
-.tab-content-core, .tab-content-inventory, .tab-content-npc, .tab-content-vehicle, .tab-content-passives, .tab-content-notes {
+.tab-content-core,
+.tab-content-inventory,
+.tab-content-npc,
+.tab-content-vehicle,
+.tab-content-passives,
+.tab-content-notes {
   display: none !important;
 }
 
 /* Tab button active state (Selector list on one line for parser compatibility) */
-.tabstoggle[value="core"]~.tab-buttons .tab-button-core, .tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory, .tabstoggle[value="passives"]~.tab-buttons .tab-button-passives, .tabstoggle[value="_npc"]~.tab-buttons .tab-button-npc, .tabstoggle[value="_vehicle"]~.tab-buttons .tab-button-vehicle, .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
+.tabstoggle[value="core"]~.tab-buttons .tab-button-core,
+.tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory,
+.tabstoggle[value="passives"]~.tab-buttons .tab-button-passives,
+.tabstoggle[value="_npc"]~.tab-buttons .tab-button-npc,
+.tabstoggle[value="_vehicle"]~.tab-buttons .tab-button-vehicle,
+.tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
   color: coral;
   border-bottom: 3px solid coral;
   font-weight: bold;
@@ -490,7 +500,8 @@ section {
   flex-direction: column;
 }
 
-.def input, .def textarea {
+.def input,
+.def textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 3px;
@@ -799,17 +810,20 @@ section {
   padding: 5px;
 }
 
-.inv_qty_title, .inv_qty {
+.inv_qty_title,
+.inv_qty {
   width: 10%;
   box-sizing: border-box;
 }
 
-.inv_item_title, .inv_item {
+.inv_item_title,
+.inv_item {
   width: 30%;
   box-sizing: border-box;
 }
 
-.inv_notes_title, .inv_notes {
+.inv_notes_title,
+.inv_notes {
   width: 60%;
   box-sizing: border-box;
 }
@@ -837,7 +851,8 @@ section {
    -------------------------------------------------------------------------- */
 
 /* Fail die style */
-.sheet-rolltemplate-splicedroll .sheet-die-fail, .sheet-rolltemplate-weaponroll .sheet-die-fail {
+.sheet-rolltemplate-splicedroll .sheet-die-fail,
+.sheet-rolltemplate-weaponroll .sheet-die-fail {
   color: #333333;
   font-size: 13px;
   margin-right: 6px;
@@ -845,7 +860,8 @@ section {
 }
 
 /* Success die style */
-.sheet-rolltemplate-splicedroll .sheet-die-success, .sheet-rolltemplate-weaponroll .sheet-die-success {
+.sheet-rolltemplate-splicedroll .sheet-die-success,
+.sheet-rolltemplate-weaponroll .sheet-die-success {
   color: #333333;
   font-weight: bold;
   font-size: 13px;
@@ -884,7 +900,14 @@ section {
 }
 
 /* Inline roll result stripping */
-.sheet-rolltemplate-splicedroll .inlinerollresult, .sheet-rolltemplate-weaponroll .inlinerollresult, .sheet-rolltemplate-splicedroll .inlinerollresult.fullcrit, .sheet-rolltemplate-weaponroll .inlinerollresult.fullcrit, .sheet-rolltemplate-splicedroll .inlinerollresult.fullfail, .sheet-rolltemplate-weaponroll .inlinerollresult.fullfail, .sheet-rolltemplate-splicedroll .inlinerollresult.importantroll, .sheet-rolltemplate-weaponroll .inlinerollresult.importantroll {
+.sheet-rolltemplate-splicedroll .inlinerollresult,
+.sheet-rolltemplate-weaponroll .inlinerollresult,
+.sheet-rolltemplate-splicedroll .inlinerollresult.fullcrit,
+.sheet-rolltemplate-weaponroll .inlinerollresult.fullcrit,
+.sheet-rolltemplate-splicedroll .inlinerollresult.fullfail,
+.sheet-rolltemplate-weaponroll .inlinerollresult.fullfail,
+.sheet-rolltemplate-splicedroll .inlinerollresult.importantroll,
+.sheet-rolltemplate-weaponroll .inlinerollresult.importantroll {
   background-color: transparent !important;
   border: none !important;
   padding: 0 !important;
