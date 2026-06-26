@@ -1,13 +1,45 @@
-/*----------------- Main Layout ------------------*/
+/* ==========================================================================
+   SPLICED Character Sheet CSS Stylesheet
+   ========================================================================== */
 
-/* A CSS Grid example using "grid-template-areas"
-  https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
-*/
+/* --------------------------------------------------------------------------
+   1. Imports & Typography
+   -------------------------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css?family=Lexend&display=swap");
+
+.charsheet * {
+  font-family: "Lexend";
+}
+
+.charsheet h3 {
+  text-align: center;
+}
+
+.charsheet label {
+  margin: 3px;
+  padding: 3px 0 0 0;
+}
+
+.charsheet select {
+  margin: 0px;
+  padding: 3px 0 0 0;
+}
+
+.the-word {
+  font-style: italic;
+  font-size: 12px;
+  color: #888;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Layout & Tab Containers
+   -------------------------------------------------------------------------- */
 main {
   width: 800px;
 }
 
-/* Tab Containers */
 .tab-content-core {
   display: none;
   width: 800px;
@@ -33,7 +65,9 @@ main {
   width: 800px;
 }
 
-/* Tab Buttons and Switch Styling */
+/* --------------------------------------------------------------------------
+   3. Tab Buttons & Navigation
+   -------------------------------------------------------------------------- */
 .tab-buttons {
   display: flex;
   flex-direction: row;
@@ -64,22 +98,13 @@ main {
   color: #000;
 }
 
-/* Hide all tab contents by default */
-.tab-content-core,
-.tab-content-inventory,
-.tab-content-npc,
-.tab-content-vehicle,
-.tab-content-passives,
-.tab-content-notes {
+/* Hide all tab contents by default (Selector list on one line for parser compatibility) */
+.tab-content-core, .tab-content-inventory, .tab-content-npc, .tab-content-vehicle, .tab-content-passives, .tab-content-notes {
   display: none !important;
 }
 
-/* Tab button active state */
-.tabstoggle[value="core"]~.tab-buttons .tab-button-core,
-.tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory,
-.tabstoggle[value="passives"]~.tab-buttons .tab-button-passives,
-.tabstoggle[value="npc"]~.tab-buttons .tab-button-npc,
-.tabstoggle[value="vehicle"]~.tab-buttons .tab-button-vehicle .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
+/* Tab button active state (Selector list on one line for parser compatibility) */
+.tabstoggle[value="core"]~.tab-buttons .tab-button-core, .tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory, .tabstoggle[value="passives"]~.tab-buttons .tab-button-passives, .tabstoggle[value="npc"]~.tab-buttons .tab-button-npc, .tabstoggle[value="vehicle"]~.tab-buttons .tab-button-vehicle, .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
   color: coral;
   border-bottom: 3px solid coral;
   font-weight: bold;
@@ -111,14 +136,14 @@ main {
   display: block !important;
 }
 
-/*----------------- GENERAL CSS ------------------*/
-
+/* --------------------------------------------------------------------------
+   4. General Utilities
+   -------------------------------------------------------------------------- */
 section {
   padding: 5px;
   border-style: solid;
 }
 
-/* CSS Flexbox styling, used for adjusting how content inside section behaves */
 .f-col {
   display: flex;
   flex-direction: column;
@@ -145,43 +170,9 @@ section {
   justify-content: center;
 }
 
-
-/*----------------- Text & Input styling -----------------*/
-
-@import url("https://fonts.googleapis.com/css?family=Lexend&display=swap");
-
-
-/* these are for overwriting default CSS that comes from Roll20 */
-
-.charsheet * {
-  font-family: "Lexend";
-}
-
-.charsheet h3 {
-  text-align: center;
-}
-
-.charsheet label {
-  margin: 3px;
-  padding: 3px 0 0 0;
-}
-
-.charsheet select {
-  margin: 0px;
-  padding: 3px 0 0 0;
-}
-
-/* .charsheet input{ */
-
-.the-word {
-  font-style: italic;
-  font-size: 12px;
-  color: #888;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* Character Block */
+/* --------------------------------------------------------------------------
+   5. Character Profile Block
+   -------------------------------------------------------------------------- */
 .charac {
   grid-area: charac;
   background-color: white;
@@ -190,14 +181,12 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Spreads the 3 elements down the 110px height */
 }
 
 .charac-row {
   width: 100%;
 }
 
-/* Horizontal alignment for rows with labels */
 .charac-row.flex-align {
   display: flex;
   flex-direction: row;
@@ -205,7 +194,6 @@ section {
   gap: 6px;
 }
 
-/* Full width styling for character name */
 .charac-name-input {
   width: 100% !important;
   font-size: 14px;
@@ -223,7 +211,6 @@ section {
   font-weight: bold;
   white-space: nowrap;
   width: 35px;
-  /* Ensures inputs line up vertically */
 }
 
 .charac-row input[type="text"]:not(.charac-name-input) {
@@ -246,7 +233,9 @@ section {
   border-radius: 2px;
 }
 
-/* SPLICED Box Layout Adjustments */
+/* --------------------------------------------------------------------------
+   6. S.P.L.I.C.E.D. Core Attributes Box
+   -------------------------------------------------------------------------- */
 .spliced {
   grid-area: spliced;
   display: flex;
@@ -328,7 +317,9 @@ section {
   box-sizing: border-box;
 }
 
-/* Genome Container */
+/* --------------------------------------------------------------------------
+   7. Genome Box
+   -------------------------------------------------------------------------- */
 .genome {
   grid-area: genome;
   background-color: white;
@@ -337,10 +328,8 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Spreads the 3 objects evenly down the 110px grid area */
 }
 
-/* Row alignment structure */
 .genome-row {
   display: flex;
   flex-direction: row;
@@ -349,7 +338,6 @@ section {
   width: 100%;
 }
 
-/* Width expanded to 72px to cleanly fit 'recessive' and align all text inputs */
 .genome-lbl {
   font-size: 11px;
   text-transform: lowercase;
@@ -358,13 +346,10 @@ section {
   white-space: nowrap;
   width: 72px;
   flex-shrink: 0;
-  /* Prevents the text from squishing or wrapping */
 }
 
-/* Text boxes fill all remaining horizontal space */
 .genome-row input[type="text"] {
   width: 100% !important;
-  /* Forces overwrite of Roll20's default input widths */
   flex: 1;
   min-width: 0;
   font-size: 11px;
@@ -374,7 +359,9 @@ section {
   border-radius: 2px;
 }
 
-/* Stats Container */
+/* --------------------------------------------------------------------------
+   8. Stats & Vital Pools
+   -------------------------------------------------------------------------- */
 .stats {
   grid-area: stats;
   background-color: seashell;
@@ -431,6 +418,9 @@ section {
   box-sizing: border-box;
 }
 
+/* --------------------------------------------------------------------------
+   9. Defenses
+   -------------------------------------------------------------------------- */
 .def {
   grid-area: def;
   background-color: seashell;
@@ -440,8 +430,7 @@ section {
   flex-direction: column;
 }
 
-.def input,
-.def textarea {
+.def input, .def textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 3px;
@@ -467,7 +456,9 @@ section {
   margin: 0;
 }
 
-/* Action Pool Outer Section */
+/* --------------------------------------------------------------------------
+   10. Action Pool Grid
+   -------------------------------------------------------------------------- */
 .act_pool {
   grid-area: act_pool;
   background-color: white;
@@ -475,7 +466,6 @@ section {
   box-sizing: border-box;
 }
 
-/* Horizontal alignment setup for grid + reset button */
 .action-pool-container {
   display: flex;
   flex-direction: row;
@@ -483,20 +473,16 @@ section {
   width: 100%;
   height: 100%;
   gap: 6px;
-  /* 6px space before the clear button */
 }
 
-/* 4 Rows, 2 Columns Sub-Grid Setup calculated for a 332px wide box */
 .action-grid {
   display: grid;
   grid-template-columns: 148px 148px;
-  /* Adjusted to mathematically fit the 332px area */
   grid-template-rows: repeat(4, 24px);
   grid-gap: 1px 6px;
   flex-grow: 1;
 }
 
-/* Flex layout inside each individual cell */
 .action-cell {
   display: flex;
   flex-direction: row;
@@ -504,7 +490,6 @@ section {
   justify-content: space-between;
 }
 
-/* Text labels for general, move, reaction */
 .action-lbl {
   font-size: 12px;
   text-transform: lowercase;
@@ -516,7 +501,6 @@ section {
   flex: 1;
 }
 
-/* Custom textboxes inside the grid slots */
 .action-cell input[type="text"] {
   flex: 1;
   min-width: 0;
@@ -529,7 +513,6 @@ section {
   border-radius: 2px;
 }
 
-/* Standardized Checkbox sizing */
 .action-cell input[type="checkbox"] {
   width: 16px !important;
   height: 16px !important;
@@ -538,7 +521,6 @@ section {
   flex-shrink: 0;
 }
 
-/* Loop-Arrow Reset Button Styling */
 .action-clear-btn {
   width: 24px;
   height: 90px;
@@ -563,6 +545,9 @@ section {
   border-color: #aaa;
 }
 
+/* --------------------------------------------------------------------------
+   11. Conditions & Weapons Layout
+   -------------------------------------------------------------------------- */
 .cond {
   grid-area: cond;
   background-color: white;
@@ -627,8 +612,9 @@ section {
   width: 30%;
 }
 
-/*------------- Abilities Table -------------*/
-
+/* --------------------------------------------------------------------------
+   12. Abilities Table
+   -------------------------------------------------------------------------- */
 .abilities {
   grid-area: abilities;
   background-color: coral;
@@ -694,7 +680,9 @@ section {
   width: 40%;
 }
 
-/*------------- Repeating Section Style Adjustments -------------*/
+/* --------------------------------------------------------------------------
+   13. Repeating Section Defaults
+   -------------------------------------------------------------------------- */
 .repcontainer {
   display: flex;
   flex-direction: column;
@@ -718,8 +706,9 @@ section {
   cursor: pointer;
 }
 
-/*------------- Expertise Table -------------*/
-
+/* --------------------------------------------------------------------------
+   14. Expertise Section
+   -------------------------------------------------------------------------- */
 .expertise {
   grid-area: expertise;
   background-color: white;
@@ -741,57 +730,62 @@ section {
   height: 24px;
 }
 
-/*------------- Inventory Section -------------*/
+/* --------------------------------------------------------------------------
+   15. Inventory Section
+   -------------------------------------------------------------------------- */
 .inventory {
   background-color: white;
   box-sizing: border-box;
   padding: 5px;
 }
 
-.inv_qty_title,
-.inv_qty {
+.inv_qty_title, .inv_qty {
   width: 10%;
   box-sizing: border-box;
 }
 
-.inv_item_title,
-.inv_item {
+.inv_item_title, .inv_item {
   width: 30%;
   box-sizing: border-box;
 }
 
-.inv_notes_title,
-.inv_notes {
+.inv_notes_title, .inv_notes {
   width: 60%;
   box-sizing: border-box;
 }
 
-/*------------- Passives Section -------------*/
+/* --------------------------------------------------------------------------
+   16. Passives Section
+   -------------------------------------------------------------------------- */
 .passives {
   background-color: white;
   box-sizing: border-box;
   padding: 5px;
 }
 
-/*------------- Notes Section -------------*/
+/* --------------------------------------------------------------------------
+   17. Notes Section
+   -------------------------------------------------------------------------- */
 .notes {
   background-color: white;
   box-sizing: border-box;
   padding: 5px;
 }
 
-/*------------- Spliced Roll Template Styling -------------*/
+/* --------------------------------------------------------------------------
+   18. Roll Templates (Splicedroll & Weaponroll)
+   -------------------------------------------------------------------------- */
 
-/* Normal die result (Failures: 1, 2, 4, 5) */
-.sheet-rolltemplate-splicedroll .sheet-die-fail {
+/* Fail die style */
+.sheet-rolltemplate-splicedroll .sheet-die-fail, .sheet-rolltemplate-weaponroll .sheet-die-fail {
   color: #333333;
   font-size: 13px;
   margin-right: 6px;
   font-weight: normal;
 }
 
-/* Success die result (Bold, Bordered 3s and 6s) */
-.sheet-rolltemplate-splicedroll .sheet-die-success {
+/* Success die style */
+.sheet-rolltemplate-splicedroll .sheet-die-success, .sheet-rolltemplate-weaponroll .sheet-die-success {
   color: #333333;
   font-weight: bold;
   font-size: 13px;
@@ -803,32 +797,7 @@ section {
   display: inline-block;
 }
 
-/*------------- Weapon Roll Template Styling -------------*/
-
-/* Normal die result (Failures) */
-.sheet-rolltemplate-splicedroll .sheet-die-fail,
-.sheet-rolltemplate-weaponroll .sheet-die-fail {
-  color: #333333;
-  font-size: 13px;
-  margin-right: 6px;
-  font-weight: normal;
-}
-
-/* Success die result (Bold, Bordered 3s and 6s) */
-.sheet-rolltemplate-splicedroll .sheet-die-success,
-.sheet-rolltemplate-weaponroll .sheet-die-success {
-  color: #333333;
-  font-weight: bold;
-  font-size: 13px;
-  border: 1px solid #999999;
-  padding: 0px 4px;
-  margin-right: 6px;
-  border-radius: 3px;
-  background-color: #f9f9f9;
-  display: inline-block;
-}
-
-/* Fumble die result (Red, Bordered 1s) */
+/* Weapon fumble die style */
 .sheet-rolltemplate-weaponroll .sheet-die-fumble {
   color: #cc0000;
   font-weight: bold;
@@ -841,7 +810,7 @@ section {
   display: inline-block;
 }
 
-/* Crit die result (Blue, Bordered Maximum Values) */
+/* Weapon crit die style */
 .sheet-rolltemplate-weaponroll .sheet-die-crit {
   color: #0055cc;
   font-weight: bold;
@@ -854,15 +823,8 @@ section {
   display: inline-block;
 }
 
-/* Strip default Roll20 yellow background and bolding from raw inline rolls */
-.sheet-rolltemplate-splicedroll .inlinerollresult,
-.sheet-rolltemplate-weaponroll .inlinerollresult,
-.sheet-rolltemplate-splicedroll .inlinerollresult.fullcrit,
-.sheet-rolltemplate-weaponroll .inlinerollresult.fullcrit,
-.sheet-rolltemplate-splicedroll .inlinerollresult.fullfail,
-.sheet-rolltemplate-weaponroll .inlinerollresult.fullfail,
-.sheet-rolltemplate-splicedroll .inlinerollresult.importantroll,
-.sheet-rolltemplate-weaponroll .inlinerollresult.importantroll {
+/* Inline roll result stripping */
+.sheet-rolltemplate-splicedroll .inlinerollresult, .sheet-rolltemplate-weaponroll .inlinerollresult, .sheet-rolltemplate-splicedroll .inlinerollresult.fullcrit, .sheet-rolltemplate-weaponroll .inlinerollresult.fullcrit, .sheet-rolltemplate-splicedroll .inlinerollresult.fullfail, .sheet-rolltemplate-weaponroll .inlinerollresult.fullfail, .sheet-rolltemplate-splicedroll .inlinerollresult.importantroll, .sheet-rolltemplate-weaponroll .inlinerollresult.importantroll {
   background-color: transparent !important;
   border: none !important;
   padding: 0 !important;

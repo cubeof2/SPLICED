@@ -1,6 +1,11 @@
+<!-- ==========================================================================
+   SPLICED Character Sheet HTML
+   ========================================================================== -->
 <main>
+  <!-- Hidden input tracking the active tab (managed by Sheet Workers) -->
   <input type="hidden" class="tabstoggle" name="attr_sheetTab" value="core" />
 
+  <!-- Navigation Tab Buttons -->
   <div class="tab-buttons f-row">
     <button type="action" name="act_tabcore" class="tab-button tab-button-core">Core</button>
     <button type="action" name="act_tabinventory" class="tab-button tab-button-inventory">Inventory</button>
@@ -10,8 +15,12 @@
     <button type="action" name="act_tabnotes" class="tab-button tab-button-notes">Notes</button>
   </div>
 
+  <!-- ==========================================================================
+       1. Core Tab Panel
+       ========================================================================== -->
   <div class="tab-content tab-content-core">
 
+    <!-- 1.1 S.P.L.I.C.E.D. Core Attributes -->
     <section class="spliced f-col">
       <div class="spliced-header">
         <span class="spliced-word"></span>
@@ -23,6 +32,7 @@
         <span class="spliced-btn-space"></span>
       </div>
 
+      <!-- Strength -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">S</span>trength</span>
         <input type="number" name="attr_str_base" value="0">
@@ -33,6 +43,7 @@
         <button type="action" name="act_roll_str">Roll</button>
       </div>
 
+      <!-- Perception -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">P</span>erception</span>
         <input type="number" name="attr_per_base" value="0">
@@ -43,6 +54,7 @@
         <button type="action" name="act_roll_per">Roll</button>
       </div>
 
+      <!-- Luck -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">L</span>uck</span>
         <input type="number" name="attr_luk_base" value="0">
@@ -53,6 +65,7 @@
         <button type="action" name="act_roll_luk">Roll</button>
       </div>
 
+      <!-- Intelligence -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">I</span>ntelligence</span>
         <input type="number" name="attr_int_base" value="0">
@@ -63,6 +76,7 @@
         <button type="action" name="act_roll_int">Roll</button>
       </div>
 
+      <!-- Courage -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">C</span>ourage</span>
         <input type="number" name="attr_crg_base" value="0">
@@ -73,6 +87,7 @@
         <button type="action" name="act_roll_crg">Roll</button>
       </div>
 
+      <!-- Endurance -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">E</span>ndurance</span>
         <input type="number" name="attr_end_base" value="0">
@@ -83,6 +98,7 @@
         <button type="action" name="act_roll_end">Roll</button>
       </div>
 
+      <!-- Dexterity -->
       <div class="spliced-item">
         <span class="spliced-word"><span class="spliced-letter">D</span>exterity</span>
         <input type="number" name="attr_dex_base" value="0">
@@ -94,7 +110,7 @@
       </div>
     </section>
 
-    <!-- Genome Box (Vertically Stacked & Aligned) -->
+    <!-- 1.2 Genome Box -->
     <section class="genome f-col">
       <div class="genome-row">
         <span class="genome-lbl">dominant</span>
@@ -110,22 +126,22 @@
       </div>
     </section>
 
+    <!-- 1.3 Character Profile Block -->
     <section class="charac f-col">
       <div class="charac-row">
         <input type="text" name="attr_character_name" placeholder="Character Name" class="charac-name-input">
       </div>
-
       <div class="charac-row flex-align">
         <span class="charac-lbl">the</span>
         <input type="text" name="attr_character_class" placeholder="Class">
       </div>
-
       <div class="charac-row flex-align">
         <span class="charac-lbl">Level</span>
         <input type="number" name="attr_char_level" value="1" class="charac-lvl-input">
       </div>
     </section>
 
+    <!-- 1.4 Wound / Health Track Reference -->
     <section class="heal f-row">
       <div>
         <h3>0</h3>
@@ -159,22 +175,28 @@
       </div>
     </section>
 
+    <!-- 1.5 Stats & Pools -->
     <section class="stats f-col">
       <div class="f-col stats-col">
-        <div class="stat-item"><label>Health: <span><input type="number" name="attr_hp" value="7"> / <input
-                type="number" name="attr_hp_max" value="7"></span></label></div>
-        <div class="stat-item"><label>Luck: <span><input type="number" name="attr_lp" value="0"> / <input type="number"
-                name="attr_lp_max" value="0"></span></label></div>
-        <div class="stat-item"><label>Stamina: <span><input type="number" name="attr_sp" value="5"> / <input
-                type="number" name="attr_sp_max" value="5"></span></label></div>
-        <div class="stat-item"><label>Effective SP max: <span><input type="number" name="attr_eff_sp_max" value="5"
-                readonly></span></label></div>
-        <div class="stat-item"><label>Fatigue: <span><input type="number" name="attr_ftg" value="0"></span></label>
+        <div class="stat-item">
+          <label>Health: <span><input type="number" name="attr_hp" value="7"> / <input type="number" name="attr_hp_max" value="7"></span></label>
         </div>
-
+        <div class="stat-item">
+          <label>Luck: <span><input type="number" name="attr_lp" value="0"> / <input type="number" name="attr_lp_max" value="0"></span></label>
+        </div>
+        <div class="stat-item">
+          <label>Stamina: <span><input type="number" name="attr_sp" value="5"> / <input type="number" name="attr_sp_max" value="5"></span></label>
+        </div>
+        <div class="stat-item">
+          <label>Effective SP max: <span><input type="number" name="attr_eff_sp_max" value="5" readonly></span></label>
+        </div>
+        <div class="stat-item">
+          <label>Fatigue: <span><input type="number" name="attr_ftg" value="0"></span></label>
+        </div>
       </div>
     </section>
 
+    <!-- 1.6 Defenses -->
     <section class="def f-col">
       <div class="f-col def-col">
         <label>Physical Defense <input type="number" name="attr_pdef" value="2"></label>
@@ -182,6 +204,7 @@
       </div>
     </section>
 
+    <!-- 1.7 Action Pool Tracker -->
     <section class="act_pool">
       <div class="action-pool-container">
         <div class="action-grid">
@@ -189,52 +212,45 @@
             <span class="action-lbl">general</span>
             <input type="checkbox" name="attr_act_general">
           </div>
-
           <div class="action-cell">
             <input type="text" name="attr_act_custom_lbl1" placeholder="...">
             <input type="checkbox" name="attr_act_custom1">
           </div>
-
           <div class="action-cell">
             <span class="action-lbl">move</span>
             <input type="checkbox" name="attr_act_move">
           </div>
-
           <div class="action-cell">
             <input type="text" name="attr_act_custom_lbl2" placeholder="...">
             <input type="checkbox" name="attr_act_custom2">
           </div>
-
           <div class="action-cell">
             <span class="action-lbl">reaction</span>
             <input type="checkbox" name="attr_act_reaction">
           </div>
-
           <div class="action-cell">
             <input type="text" name="attr_act_custom_lbl3" placeholder="...">
             <input type="checkbox" name="attr_act_custom3">
           </div>
-
           <div class="action-cell">
             <input type="text" name="attr_act_custom_lbl4" placeholder="...">
             <input type="checkbox" name="attr_act_custom4">
           </div>
-
           <div class="action-cell">
             <input type="text" name="attr_act_custom_lbl5" placeholder="...">
             <input type="checkbox" name="attr_act_custom5">
           </div>
         </div>
-
         <button type="action" name="act_clear_actions" class="action-clear-btn" title="Clear All Actions">↻</button>
       </div>
     </section>
 
+    <!-- 1.8 Active Conditions -->
     <section class="cond f-col nowrap">
-      <textarea name="attr_cond" style="width: 100%; flex-grow: 1; resize: none; padding: 5px; box-sizing: border-box;"
-        placeholder="Active conditions..."></textarea>
+      <textarea name="attr_cond" style="width: 100%; flex-grow: 1; resize: none; padding: 5px; box-sizing: border-box;" placeholder="Active conditions..."></textarea>
     </section>
 
+    <!-- 1.9 Weapons Table -->
     <section class="weap f-col">
       <div class="weapon_title f-row">
         <div class="weap_name_title"><label> Weapon </label></div>
@@ -245,6 +261,7 @@
         <div class="weap_effect_title"><label> Effect </label></div>
       </div>
 
+      <!-- Main Hand 1 -->
       <div class="main_1 f-row">
         <input type="text" name="attr_main_1_name" class="weap_name" value="Dagger">
         <select name="attr_main_1_attr" class="weap_attr">
@@ -278,6 +295,7 @@
         <button type="action" name="act_roll_main_1">Roll</button>
       </div>
 
+      <!-- Off Hand 1 -->
       <div class="off_1 f-row">
         <input type="text" name="attr_off_1_name" class="weap_name">
         <select name="attr_off_1_attr" class="weap_attr">
@@ -312,6 +330,7 @@
         <button type="action" name="act_roll_off_1">Roll</button>
       </div>
 
+      <!-- Main Hand 2 -->
       <div class="main_2 f-row">
         <input type="text" name="attr_main_2_name" class="weap_name">
         <select name="attr_main_2_attr" class="weap_attr">
@@ -346,6 +365,7 @@
         <button type="action" name="act_roll_main_2">Roll</button>
       </div>
 
+      <!-- Off Hand 2 -->
       <div class="off_2 f-row">
         <input type="text" name="attr_off_2_name" class="weap_name">
         <select name="attr_off_2_attr" class="weap_attr">
@@ -381,6 +401,7 @@
       </div>
     </section>
 
+    <!-- 1.10 Repeating Abilities -->
     <section class="abilities f-col">
       <div class="f-row headers">
         <span class="ability_name_title">Abilities</span>
@@ -394,8 +415,7 @@
       </div>
 
       <fieldset class="repeating_abilities">
-        <div class="f-row ability-row"
-          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
+        <div class="f-row ability-row" style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
           <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
           <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
           <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
@@ -403,20 +423,19 @@
           <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
           <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
           <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
-          <input type="text" name="attr_ability_effect" class="ability_effect"
-            placeholder="Deals 2d6 fire damage to all targets in area.">
+          <input type="text" name="attr_ability_effect" class="ability_effect" placeholder="Deals 2d6 fire damage to all targets in area.">
         </div>
       </fieldset>
     </section>
 
+    <!-- 1.11 Repeating Expertise -->
     <section class="expertise f-col">
       <div class="f-row" style="margin-bottom: 4px;">
         <span style="font-weight: bold; font-size: 13px;">Expertise</span>
       </div>
 
       <fieldset class="repeating_expertise">
-        <div class="f-row expertise-row"
-          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
+        <div class="f-row expertise-row" style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
           <input type="text" name="attr_exp_name" class="exp_name" placeholder="Lockpicking">
           <select name="attr_exp_level" class="exp_level">
             <option value="beginner" selected>Beginner</option>
@@ -429,15 +448,19 @@
     </section>
   </div>
 
+  <!-- ==========================================================================
+       2. Inventory Tab Panel
+       ========================================================================== -->
   <div class="tab-content tab-content-inventory">
-    <section class="currency f-row nowrap"
-      style="background-color: white; padding: 5px 15px; margin-bottom: 5px; box-sizing: border-box;">
+    <!-- Currency -->
+    <section class="currency f-row nowrap" style="background-color: white; padding: 5px 15px; margin-bottom: 5px; box-sizing: border-box;">
       <label style="display:flex; align-items:center; gap:10px; margin:0; width:100%;">
         <b>Currency:</b>
         <input type="text" name="attr_currency" value="0" style="flex:1; box-sizing: border-box;">
       </label>
     </section>
 
+    <!-- Items -->
     <section class="inventory f-col">
       <div class="f-row headers" style="margin-bottom: 5px;">
         <span class="inv_qty_title">Qty</span>
@@ -446,8 +469,7 @@
       </div>
 
       <fieldset class="repeating_inventory">
-        <div class="f-row inv-row"
-          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
+        <div class="f-row inv-row" style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
           <input type="text" name="attr_inv_qty" class="inv_qty" placeholder="1">
           <input type="text" name="attr_inv_item" class="inv_item" placeholder="Item Name">
           <input type="text" name="attr_inv_notes" class="inv_notes" placeholder="Description or Stats">
@@ -456,34 +478,46 @@
     </section>
   </div>
 
+  <!-- ==========================================================================
+       3. Passives Tab Panel
+       ========================================================================== -->
   <div class="tab-content tab-content-passives">
     <section class="passives f-col">
       <fieldset class="repeating_passives">
         <div class="f-row passive-row" style="margin-bottom: 5px; width: 100%;">
-          <textarea name="attr_passive_text" class="passive-text" placeholder="Passive ability description..."
-            style="width: 100%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
+          <textarea name="attr_passive_text" class="passive-text" placeholder="Passive ability description..." style="width: 100%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
         </div>
       </fieldset>
     </section>
   </div>
 
+  <!-- ==========================================================================
+       4. NPC Tab Panel (Matches original class exactly)
+       ========================================================================== -->
   <div class="tab-content-npc">
     <h3>NPC Details</h3>
   </div>
 
+  <!-- ==========================================================================
+       5. Vehicle Tab Panel (Matches original class exactly)
+       ========================================================================== -->
   <div class="tab-content-vehicle">
     <h3>Vehicle Details</h3>
   </div>
 
+  <!-- ==========================================================================
+       6. Notes Tab Panel
+       ========================================================================== -->
   <div class="tab-content tab-content-notes">
     <section class="notes f-col">
-      <textarea name="attr_notes_text"
-        style="width: 100%; height: 600px; resize: vertical; box-sizing: border-box; padding: 10px; font-family: 'Lexend', sans-serif;"
-        placeholder="Session notes, character backstory, campaign details..."></textarea>
+      <textarea name="attr_notes_text" style="width: 100%; height: 600px; resize: vertical; box-sizing: border-box; padding: 10px; font-family: 'Lexend', sans-serif;" placeholder="Session notes, character backstory, campaign details..."></textarea>
     </section>
   </div>
 </main>
 
+<!-- ==========================================================================
+     7. Sheet Workers (JavaScript Sheet Logic)
+     ========================================================================== -->
 <script type="text/worker">
     // 1. FATIGUE AND MAX SP TRACKER
     on("change:sp_max change:ftg", function() {
@@ -610,151 +644,35 @@
     });
 </script>
 
+<!-- ==========================================================================
+     8. Roll Templates
+     ========================================================================== -->
+
+<!-- 8.1 Splicedroll Template -->
 <rolltemplate class="sheet-rolltemplate-splicedroll">
-  <div class="sheet-template-container"
-    style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
+  <div class="sheet-template-container" style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
     <div style="font-weight: bold; border-bottom: 1px solid #aaa; margin-bottom: 5px;">{{name}}</div>
     <div style="margin: 5px 0;">
-      {{#rollGreater() computed::d1 0}}{{#rollTotal() computed::d1_crit 1}}<span
-        class="sheet-die-crit">{{computed::d1}}</span> {{/rollTotal() computed::d1_crit 1}}{{#rollTotal()
-      computed::d1_success 1}}<span class="sheet-die-success">{{computed::d1}}</span> {{/rollTotal()
-      computed::d1_success 1}}{{#rollTotal() computed::d1_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d1}}</span> {{/rollTotal() computed::d1_fumble 1}}{{#rollTotal()
-      computed::d1_fail 1}}<span class="sheet-die-fail">{{computed::d1}}</span> {{/rollTotal() computed::d1_fail
-      1}}{{/rollGreater() computed::d1 0}}
-      {{#rollGreater() computed::d2 0}}{{#rollTotal() computed::d2_crit 1}}<span
-        class="sheet-die-crit">{{computed::d2}}</span> {{/rollTotal() computed::d2_crit 1}}{{#rollTotal()
-      computed::d2_success 1}}<span class="sheet-die-success">{{computed::d2}}</span> {{/rollTotal()
-      computed::d2_success 1}}{{#rollTotal() computed::d2_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d2}}</span> {{/rollTotal() computed::d2_fumble 1}}{{#rollTotal()
-      computed::d2_fail 1}}<span class="sheet-die-fail">{{computed::d2}}</span> {{/rollTotal() computed::d2_fail
-      1}}{{/rollGreater() computed::d2 0}}
-      {{#rollGreater() computed::d3 0}}{{#rollTotal() computed::d3_crit 1}}<span
-        class="sheet-die-crit">{{computed::d3}}</span> {{/rollTotal() computed::d3_crit 1}}{{#rollTotal()
-      computed::d3_success 1}}<span class="sheet-die-success">{{computed::d3}}</span> {{/rollTotal()
-      computed::d3_success 1}}{{#rollTotal() computed::d3_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d3}}</span> {{/rollTotal() computed::d3_fumble 1}}{{#rollTotal()
-      computed::d3_fail 1}}<span class="sheet-die-fail">{{computed::d3}}</span> {{/rollTotal() computed::d3_fail
-      1}}{{/rollGreater() computed::d3 0}}
-      {{#rollGreater() computed::d4 0}}{{#rollTotal() computed::d4_crit 1}}<span
-        class="sheet-die-crit">{{computed::d4}}</span> {{/rollTotal() computed::d4_crit 1}}{{#rollTotal()
-      computed::d4_success 1}}<span class="sheet-die-success">{{computed::d4}}</span> {{/rollTotal()
-      computed::d4_success 1}}{{#rollTotal() computed::d4_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d4}}</span> {{/rollTotal() computed::d4_fumble 1}}{{#rollTotal()
-      computed::d4_fail 1}}<span class="sheet-die-fail">{{computed::d4}}</span> {{/rollTotal() computed::d4_fail
-      1}}{{/rollGreater() computed::d4 0}}
-      {{#rollGreater() computed::d5 0}}{{#rollTotal() computed::d5_crit 1}}<span
-        class="sheet-die-crit">{{computed::d5}}</span> {{/rollTotal() computed::d5_crit 1}}{{#rollTotal()
-      computed::d5_success 1}}<span class="sheet-die-success">{{computed::d5}}</span> {{/rollTotal()
-      computed::d5_success 1}}{{#rollTotal() computed::d5_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d5}}</span> {{/rollTotal() computed::d5_fumble 1}}{{#rollTotal()
-      computed::d5_fail 1}}<span class="sheet-die-fail">{{computed::d5}}</span> {{/rollTotal() computed::d5_fail
-      1}}{{/rollGreater() computed::d5 0}}
-      {{#rollGreater() computed::d6 0}}{{#rollTotal() computed::d6_crit 1}}<span
-        class="sheet-die-crit">{{computed::d6}}</span> {{/rollTotal() computed::d6_crit 1}}{{#rollTotal()
-      computed::d6_success 1}}<span class="sheet-die-success">{{computed::d6}}</span> {{/rollTotal()
-      computed::d6_success 1}}{{#rollTotal() computed::d6_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d6}}</span> {{/rollTotal() computed::d6_fumble 1}}{{#rollTotal()
-      computed::d6_fail 1}}<span class="sheet-die-fail">{{computed::d6}}</span> {{/rollTotal() computed::d6_fail
-      1}}{{/rollGreater() computed::d6 0}}
-      {{#rollGreater() computed::d7 0}}{{#rollTotal() computed::d7_crit 1}}<span
-        class="sheet-die-crit">{{computed::d7}}</span> {{/rollTotal() computed::d7_crit 1}}{{#rollTotal()
-      computed::d7_success 1}}<span class="sheet-die-success">{{computed::d7}}</span> {{/rollTotal()
-      computed::d7_success 1}}{{#rollTotal() computed::d7_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d7}}</span> {{/rollTotal() computed::d7_fumble 1}}{{#rollTotal()
-      computed::d7_fail 1}}<span class="sheet-die-fail">{{computed::d7}}</span> {{/rollTotal() computed::d7_fail
-      1}}{{/rollGreater() computed::d7 0}}
-      {{#rollGreater() computed::d8 0}}{{#rollTotal() computed::d8_crit 1}}<span
-        class="sheet-die-crit">{{computed::d8}}</span> {{/rollTotal() computed::d8_crit 1}}{{#rollTotal()
-      computed::d8_success 1}}<span class="sheet-die-success">{{computed::d8}}</span> {{/rollTotal()
-      computed::d8_success 1}}{{#rollTotal() computed::d8_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d8}}</span> {{/rollTotal() computed::d8_fumble 1}}{{#rollTotal()
-      computed::d8_fail 1}}<span class="sheet-die-fail">{{computed::d8}}</span> {{/rollTotal() computed::d8_fail
-      1}}{{/rollGreater() computed::d8 0}}
-      {{#rollGreater() computed::d9 0}}{{#rollTotal() computed::d9_crit 1}}<span
-        class="sheet-die-crit">{{computed::d9}}</span> {{/rollTotal() computed::d9_crit 1}}{{#rollTotal()
-      computed::d9_success 1}}<span class="sheet-die-success">{{computed::d9}}</span> {{/rollTotal()
-      computed::d9_success 1}}{{#rollTotal() computed::d9_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d9}}</span> {{/rollTotal() computed::d9_fumble 1}}{{#rollTotal()
-      computed::d9_fail 1}}<span class="sheet-die-fail">{{computed::d9}}</span> {{/rollTotal() computed::d9_fail
-      1}}{{/rollGreater() computed::d9 0}}
-      {{#rollGreater() computed::d10 0}}{{#rollTotal() computed::d10_crit 1}}<span
-        class="sheet-die-crit">{{computed::d10}}</span> {{/rollTotal() computed::d10_crit 1}}{{#rollTotal()
-      computed::d10_success 1}}<span class="sheet-die-success">{{computed::d10}}</span> {{/rollTotal()
-      computed::d10_success 1}}{{#rollTotal() computed::d10_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d10}}</span> {{/rollTotal() computed::d10_fumble 1}}{{#rollTotal()
-      computed::d10_fail 1}}<span class="sheet-die-fail">{{computed::d10}}</span> {{/rollTotal() computed::d10_fail
-      1}}{{/rollGreater() computed::d10 0}}
-      {{#rollGreater() computed::d11 0}}{{#rollTotal() computed::d11_crit 1}}<span
-        class="sheet-die-crit">{{computed::d11}}</span> {{/rollTotal() computed::d11_crit 1}}{{#rollTotal()
-      computed::d11_success 1}}<span class="sheet-die-success">{{computed::d11}}</span> {{/rollTotal()
-      computed::d11_success 1}}{{#rollTotal() computed::d11_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d11}}</span> {{/rollTotal() computed::d11_fumble 1}}{{#rollTotal()
-      computed::d11_fail 1}}<span class="sheet-die-fail">{{computed::d11}}</span> {{/rollTotal() computed::d11_fail
-      1}}{{/rollGreater() computed::d11 0}}
-      {{#rollGreater() computed::d12 0}}{{#rollTotal() computed::d12_crit 1}}<span
-        class="sheet-die-crit">{{computed::d12}}</span> {{/rollTotal() computed::d12_crit 1}}{{#rollTotal()
-      computed::d12_success 1}}<span class="sheet-die-success">{{computed::d12}}</span> {{/rollTotal()
-      computed::d12_success 1}}{{#rollTotal() computed::d12_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d12}}</span> {{/rollTotal() computed::d12_fumble 1}}{{#rollTotal()
-      computed::d12_fail 1}}<span class="sheet-die-fail">{{computed::d12}}</span> {{/rollTotal() computed::d12_fail
-      1}}{{/rollGreater() computed::d12 0}}
-      {{#rollGreater() computed::d13 0}}{{#rollTotal() computed::d13_crit 1}}<span
-        class="sheet-die-crit">{{computed::d13}}</span> {{/rollTotal() computed::d13_crit 1}}{{#rollTotal()
-      computed::d13_success 1}}<span class="sheet-die-success">{{computed::d13}}</span> {{/rollTotal()
-      computed::d13_success 1}}{{#rollTotal() computed::d13_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d13}}</span> {{/rollTotal() computed::d13_fumble 1}}{{#rollTotal()
-      computed::d13_fail 1}}<span class="sheet-die-fail">{{computed::d13}}</span> {{/rollTotal() computed::d13_fail
-      1}}{{/rollGreater() computed::d13 0}}
-      {{#rollGreater() computed::d14 0}}{{#rollTotal() computed::d14_crit 1}}<span
-        class="sheet-die-crit">{{computed::d14}}</span> {{/rollTotal() computed::d14_crit 1}}{{#rollTotal()
-      computed::d14_success 1}}<span class="sheet-die-success">{{computed::d14}}</span> {{/rollTotal()
-      computed::d14_success 1}}{{#rollTotal() computed::d14_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d14}}</span> {{/rollTotal() computed::d14_fumble 1}}{{#rollTotal()
-      computed::d14_fail 1}}<span class="sheet-die-fail">{{computed::d14}}</span> {{/rollTotal() computed::d14_fail
-      1}}{{/rollGreater() computed::d14 0}}
-      {{#rollGreater() computed::d15 0}}{{#rollTotal() computed::d15_crit 1}}<span
-        class="sheet-die-crit">{{computed::d15}}</span> {{/rollTotal() computed::d15_crit 1}}{{#rollTotal()
-      computed::d15_success 1}}<span class="sheet-die-success">{{computed::d15}}</span> {{/rollTotal()
-      computed::d15_success 1}}{{#rollTotal() computed::d15_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d15}}</span> {{/rollTotal() computed::d15_fumble 1}}{{#rollTotal()
-      computed::d15_fail 1}}<span class="sheet-die-fail">{{computed::d15}}</span> {{/rollTotal() computed::d15_fail
-      1}}{{/rollGreater() computed::d15 0}}
-      {{#rollGreater() computed::d16 0}}{{#rollTotal() computed::d16_crit 1}}<span
-        class="sheet-die-crit">{{computed::d16}}</span> {{/rollTotal() computed::d16_crit 1}}{{#rollTotal()
-      computed::d16_success 1}}<span class="sheet-die-success">{{computed::d16}}</span> {{/rollTotal()
-      computed::d16_success 1}}{{#rollTotal() computed::d16_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d16}}</span> {{/rollTotal() computed::d16_fumble 1}}{{#rollTotal()
-      computed::d16_fail 1}}<span class="sheet-die-fail">{{computed::d16}}</span> {{/rollTotal() computed::d16_fail
-      1}}{{/rollGreater() computed::d16 0}}
-      {{#rollGreater() computed::d17 0}}{{#rollTotal() computed::d17_crit 1}}<span
-        class="sheet-die-crit">{{computed::d17}}</span> {{/rollTotal() computed::d17_crit 1}}{{#rollTotal()
-      computed::d17_success 1}}<span class="sheet-die-success">{{computed::d17}}</span> {{/rollTotal()
-      computed::d17_success 1}}{{#rollTotal() computed::d17_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d17}}</span> {{/rollTotal() computed::d17_fumble 1}}{{#rollTotal()
-      computed::d17_fail 1}}<span class="sheet-die-fail">{{computed::d17}}</span> {{/rollTotal() computed::d17_fail
-      1}}{{/rollGreater() computed::d17 0}}
-      {{#rollGreater() computed::d18 0}}{{#rollTotal() computed::d18_crit 1}}<span
-        class="sheet-die-crit">{{computed::d18}}</span> {{/rollTotal() computed::d18_crit 1}}{{#rollTotal()
-      computed::d18_success 1}}<span class="sheet-die-success">{{computed::d18}}</span> {{/rollTotal()
-      computed::d18_success 1}}{{#rollTotal() computed::d18_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d18}}</span> {{/rollTotal() computed::d18_fumble 1}}{{#rollTotal()
-      computed::d18_fail 1}}<span class="sheet-die-fail">{{computed::d18}}</span> {{/rollTotal() computed::d18_fail
-      1}}{{/rollGreater() computed::d18 0}}
-      {{#rollGreater() computed::d19 0}}{{#rollTotal() computed::d19_crit 1}}<span
-        class="sheet-die-crit">{{computed::d19}}</span> {{/rollTotal() computed::d19_crit 1}}{{#rollTotal()
-      computed::d19_success 1}}<span class="sheet-die-success">{{computed::d19}}</span> {{/rollTotal()
-      computed::d19_success 1}}{{#rollTotal() computed::d19_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d19}}</span> {{/rollTotal() computed::d19_fumble 1}}{{#rollTotal()
-      computed::d19_fail 1}}<span class="sheet-die-fail">{{computed::d19}}</span> {{/rollTotal() computed::d19_fail
-      1}}{{/rollGreater() computed::d19 0}}
-      {{#rollGreater() computed::d20 0}}{{#rollTotal() computed::d20_crit 1}}<span
-        class="sheet-die-crit">{{computed::d20}}</span> {{/rollTotal() computed::d20_crit 1}}{{#rollTotal()
-      computed::d20_success 1}}<span class="sheet-die-success">{{computed::d20}}</span> {{/rollTotal()
-      computed::d20_success 1}}{{#rollTotal() computed::d20_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d20}}</span> {{/rollTotal() computed::d20_fumble 1}}{{#rollTotal()
-      computed::d20_fail 1}}<span class="sheet-die-fail">{{computed::d20}}</span> {{/rollTotal() computed::d20_fail
-      1}}{{/rollGreater() computed::d20 0}}
+      {{#rollGreater() computed::d1 0}}{{#rollTotal() computed::d1_crit 1}}<span class="sheet-die-crit">{{computed::d1}}</span> {{/rollTotal() computed::d1_crit 1}}{{#rollTotal() computed::d1_success 1}}<span class="sheet-die-success">{{computed::d1}}</span> {{/rollTotal() computed::d1_success 1}}{{#rollTotal() computed::d1_fumble 1}}<span class="sheet-die-fumble">{{computed::d1}}</span> {{/rollTotal() computed::d1_fumble 1}}{{#rollTotal() computed::d1_fail 1}}<span class="sheet-die-fail">{{computed::d1}}</span> {{/rollTotal() computed::d1_fail 1}}{{/rollGreater() computed::d1 0}}
+      {{#rollGreater() computed::d2 0}}{{#rollTotal() computed::d2_crit 1}}<span class="sheet-die-crit">{{computed::d2}}</span> {{/rollTotal() computed::d2_crit 1}}{{#rollTotal() computed::d2_success 1}}<span class="sheet-die-success">{{computed::d2}}</span> {{/rollTotal() computed::d2_success 1}}{{#rollTotal() computed::d2_fumble 1}}<span class="sheet-die-fumble">{{computed::d2}}</span> {{/rollTotal() computed::d2_fumble 1}}{{#rollTotal() computed::d2_fail 1}}<span class="sheet-die-fail">{{computed::d2}}</span> {{/rollTotal() computed::d2_fail 1}}{{/rollGreater() computed::d2 0}}
+      {{#rollGreater() computed::d3 0}}{{#rollTotal() computed::d3_crit 1}}<span class="sheet-die-crit">{{computed::d3}}</span> {{/rollTotal() computed::d3_crit 1}}{{#rollTotal() computed::d3_success 1}}<span class="sheet-die-success">{{computed::d3}}</span> {{/rollTotal() computed::d3_success 1}}{{#rollTotal() computed::d3_fumble 1}}<span class="sheet-die-fumble">{{computed::d3}}</span> {{/rollTotal() computed::d3_fumble 1}}{{#rollTotal() computed::d3_fail 1}}<span class="sheet-die-fail">{{computed::d3}}</span> {{/rollTotal() computed::d3_fail 1}}{{/rollGreater() computed::d3 0}}
+      {{#rollGreater() computed::d4 0}}{{#rollTotal() computed::d4_crit 1}}<span class="sheet-die-crit">{{computed::d4}}</span> {{/rollTotal() computed::d4_crit 1}}{{#rollTotal() computed::d4_success 1}}<span class="sheet-die-success">{{computed::d4}}</span> {{/rollTotal() computed::d4_success 1}}{{#rollTotal() computed::d4_fumble 1}}<span class="sheet-die-fumble">{{computed::d4}}</span> {{/rollTotal() computed::d4_fumble 1}}{{#rollTotal() computed::d4_fail 1}}<span class="sheet-die-fail">{{computed::d4}}</span> {{/rollTotal() computed::d4_fail 1}}{{/rollGreater() computed::d4 0}}
+      {{#rollGreater() computed::d5 0}}{{#rollTotal() computed::d5_crit 1}}<span class="sheet-die-crit">{{computed::d5}}</span> {{/rollTotal() computed::d5_crit 1}}{{#rollTotal() computed::d5_success 1}}<span class="sheet-die-success">{{computed::d5}}</span> {{/rollTotal() computed::d5_success 1}}{{#rollTotal() computed::d5_fumble 1}}<span class="sheet-die-fumble">{{computed::d5}}</span> {{/rollTotal() computed::d5_fumble 1}}{{#rollTotal() computed::d5_fail 1}}<span class="sheet-die-fail">{{computed::d5}}</span> {{/rollTotal() computed::d5_fail 1}}{{/rollGreater() computed::d5 0}}
+      {{#rollGreater() computed::d6 0}}{{#rollTotal() computed::d6_crit 1}}<span class="sheet-die-crit">{{computed::d6}}</span> {{/rollTotal() computed::d6_crit 1}}{{#rollTotal() computed::d6_success 1}}<span class="sheet-die-success">{{computed::d6}}</span> {{/rollTotal() computed::d6_success 1}}{{#rollTotal() computed::d6_fumble 1}}<span class="sheet-die-fumble">{{computed::d6}}</span> {{/rollTotal() computed::d6_fumble 1}}{{#rollTotal() computed::d6_fail 1}}<span class="sheet-die-fail">{{computed::d6}}</span> {{/rollTotal() computed::d6_fail 1}}{{/rollGreater() computed::d6 0}}
+      {{#rollGreater() computed::d7 0}}{{#rollTotal() computed::d7_crit 1}}<span class="sheet-die-crit">{{computed::d7}}</span> {{/rollTotal() computed::d7_crit 1}}{{#rollTotal() computed::d7_success 1}}<span class="sheet-die-success">{{computed::d7}}</span> {{/rollTotal() computed::d7_success 1}}{{#rollTotal() computed::d7_fumble 1}}<span class="sheet-die-fumble">{{computed::d7}}</span> {{/rollTotal() computed::d7_fumble 1}}{{#rollTotal() computed::d7_fail 1}}<span class="sheet-die-fail">{{computed::d7}}</span> {{/rollTotal() computed::d7_fail 1}}{{/rollGreater() computed::d7 0}}
+      {{#rollGreater() computed::d8 0}}{{#rollTotal() computed::d8_crit 1}}<span class="sheet-die-crit">{{computed::d8}}</span> {{/rollTotal() computed::d8_crit 1}}{{#rollTotal() computed::d8_success 1}}<span class="sheet-die-success">{{computed::d8}}</span> {{/rollTotal() computed::d8_success 1}}{{#rollTotal() computed::d8_fumble 1}}<span class="sheet-die-fumble">{{computed::d8}}</span> {{/rollTotal() computed::d8_fumble 1}}{{#rollTotal() computed::d8_fail 1}}<span class="sheet-die-fail">{{computed::d8}}</span> {{/rollTotal() computed::d8_fail 1}}{{/rollGreater() computed::d8 0}}
+      {{#rollGreater() computed::d9 0}}{{#rollTotal() computed::d9_crit 1}}<span class="sheet-die-crit">{{computed::d9}}</span> {{/rollTotal() computed::d9_crit 1}}{{#rollTotal() computed::d9_success 1}}<span class="sheet-die-success">{{computed::d9}}</span> {{/rollTotal() computed::d9_success 1}}{{#rollTotal() computed::d9_fumble 1}}<span class="sheet-die-fumble">{{computed::d9}}</span> {{/rollTotal() computed::d9_fumble 1}}{{#rollTotal() computed::d9_fail 1}}<span class="sheet-die-fail">{{computed::d9}}</span> {{/rollTotal() computed::d9_fail 1}}{{/rollGreater() computed::d9 0}}
+      {{#rollGreater() computed::d10 0}}{{#rollTotal() computed::d10_crit 1}}<span class="sheet-die-crit">{{computed::d10}}</span> {{/rollTotal() computed::d10_crit 1}}{{#rollTotal() computed::d10_success 1}}<span class="sheet-die-success">{{computed::d10}}</span> {{/rollTotal() computed::d10_success 1}}{{#rollTotal() computed::d10_fumble 1}}<span class="sheet-die-fumble">{{computed::d10}}</span> {{/rollTotal() computed::d10_fumble 1}}{{#rollTotal() computed::d10_fail 1}}<span class="sheet-die-fail">{{computed::d10}}</span> {{/rollTotal() computed::d10_fail 1}}{{/rollGreater() computed::d10 0}}
+      {{#rollGreater() computed::d11 0}}{{#rollTotal() computed::d11_crit 1}}<span class="sheet-die-crit">{{computed::d11}}</span> {{/rollTotal() computed::d11_crit 1}}{{#rollTotal() computed::d11_success 1}}<span class="sheet-die-success">{{computed::d11}}</span> {{/rollTotal() computed::d11_success 1}}{{#rollTotal() computed::d11_fumble 1}}<span class="sheet-die-fumble">{{computed::d11}}</span> {{/rollTotal() computed::d11_fumble 1}}{{#rollTotal() computed::d11_fail 1}}<span class="sheet-die-fail">{{computed::d11}}</span> {{/rollTotal() computed::d11_fail 1}}{{/rollGreater() computed::d11 0}}
+      {{#rollGreater() computed::d12 0}}{{#rollTotal() computed::d12_crit 1}}<span class="sheet-die-crit">{{computed::d12}}</span> {{/rollTotal() computed::d12_crit 1}}{{#rollTotal() computed::d12_success 1}}<span class="sheet-die-success">{{computed::d12}}</span> {{/rollTotal() computed::d12_success 1}}{{#rollTotal() computed::d12_fumble 1}}<span class="sheet-die-fumble">{{computed::d12}}</span> {{/rollTotal() computed::d12_fumble 1}}{{#rollTotal() computed::d12_fail 1}}<span class="sheet-die-fail">{{computed::d12}}</span> {{/rollTotal() computed::d12_fail 1}}{{/rollGreater() computed::d12 0}}
+      {{#rollGreater() computed::d13 0}}{{#rollTotal() computed::d13_crit 1}}<span class="sheet-die-crit">{{computed::d13}}</span> {{/rollTotal() computed::d13_crit 1}}{{#rollTotal() computed::d13_success 1}}<span class="sheet-die-success">{{computed::d13}}</span> {{/rollTotal() computed::d13_success 1}}{{#rollTotal() computed::d13_fumble 1}}<span class="sheet-die-fumble">{{computed::d13}}</span> {{/rollTotal() computed::d13_fumble 1}}{{#rollTotal() computed::d13_fail 1}}<span class="sheet-die-fail">{{computed::d13}}</span> {{/rollTotal() computed::d13_fail 1}}{{/rollGreater() computed::d13 0}}
+      {{#rollGreater() computed::d14 0}}{{#rollTotal() computed::d14_crit 1}}<span class="sheet-die-crit">{{computed::d14}}</span> {{/rollTotal() computed::d14_crit 1}}{{#rollTotal() computed::d14_success 1}}<span class="sheet-die-success">{{computed::d14}}</span> {{/rollTotal() computed::d14_success 1}}{{#rollTotal() computed::d14_fumble 1}}<span class="sheet-die-fumble">{{computed::d14}}</span> {{/rollTotal() computed::d14_fumble 1}}{{#rollTotal() computed::d14_fail 1}}<span class="sheet-die-fail">{{computed::d14}}</span> {{/rollTotal() computed::d14_fail 1}}{{/rollGreater() computed::d14 0}}
+      {{#rollGreater() computed::d15 0}}{{#rollTotal() computed::d15_crit 1}}<span class="sheet-die-crit">{{computed::d15}}</span> {{/rollTotal() computed::d15_crit 1}}{{#rollTotal() computed::d15_success 1}}<span class="sheet-die-success">{{computed::d15}}</span> {{/rollTotal() computed::d15_success 1}}{{#rollTotal() computed::d15_fumble 1}}<span class="sheet-die-fumble">{{computed::d15}}</span> {{/rollTotal() computed::d15_fumble 1}}{{#rollTotal() computed::d15_fail 1}}<span class="sheet-die-fail">{{computed::d15}}</span> {{/rollTotal() computed::d15_fail 1}}{{/rollGreater() computed::d15 0}}
+      {{#rollGreater() computed::d16 0}}{{#rollTotal() computed::d16_crit 1}}<span class="sheet-die-crit">{{computed::d16}}</span> {{/rollTotal() computed::d16_crit 1}}{{#rollTotal() computed::d16_success 1}}<span class="sheet-die-success">{{computed::d16}}</span> {{/rollTotal() computed::d16_success 1}}{{#rollTotal() computed::d16_fumble 1}}<span class="sheet-die-fumble">{{computed::d16}}</span> {{/rollTotal() computed::d16_fumble 1}}{{#rollTotal() computed::d16_fail 1}}<span class="sheet-die-fail">{{computed::d16}}</span> {{/rollTotal() computed::d16_fail 1}}{{/rollGreater() computed::d16 0}}
+      {{#rollGreater() computed::d17 0}}{{#rollTotal() computed::d17_crit 1}}<span class="sheet-die-crit">{{computed::d17}}</span> {{/rollTotal() computed::d17_crit 1}}{{#rollTotal() computed::d17_success 1}}<span class="sheet-die-success">{{computed::d17}}</span> {{/rollTotal() computed::d17_success 1}}{{#rollTotal() computed::d17_fumble 1}}<span class="sheet-die-fumble">{{computed::d17}}</span> {{/rollTotal() computed::d17_fumble 1}}{{#rollTotal() computed::d17_fail 1}}<span class="sheet-die-fail">{{computed::d17}}</span> {{/rollTotal() computed::d17_fail 1}}{{/rollGreater() computed::d17 0}}
+      {{#rollGreater() computed::d18 0}}{{#rollTotal() computed::d18_crit 1}}<span class="sheet-die-crit">{{computed::d18}}</span> {{/rollTotal() computed::d18_crit 1}}{{#rollTotal() computed::d18_success 1}}<span class="sheet-die-success">{{computed::d18}}</span> {{/rollTotal() computed::d18_success 1}}{{#rollTotal() computed::d18_fumble 1}}<span class="sheet-die-fumble">{{computed::d18}}</span> {{/rollTotal() computed::d18_fumble 1}}{{#rollTotal() computed::d18_fail 1}}<span class="sheet-die-fail">{{computed::d18}}</span> {{/rollTotal() computed::d18_fail 1}}{{/rollGreater() computed::d18 0}}
+      {{#rollGreater() computed::d19 0}}{{#rollTotal() computed::d19_crit 1}}<span class="sheet-die-crit">{{computed::d19}}</span> {{/rollTotal() computed::d19_crit 1}}{{#rollTotal() computed::d19_success 1}}<span class="sheet-die-success">{{computed::d19}}</span> {{/rollTotal() computed::d19_success 1}}{{#rollTotal() computed::d19_fumble 1}}<span class="sheet-die-fumble">{{computed::d19}}</span> {{/rollTotal() computed::d19_fumble 1}}{{#rollTotal() computed::d19_fail 1}}<span class="sheet-die-fail">{{computed::d19}}</span> {{/rollTotal() computed::d19_fail 1}}{{/rollGreater() computed::d19 0}}
+      {{#rollGreater() computed::d20 0}}{{#rollTotal() computed::d20_crit 1}}<span class="sheet-die-crit">{{computed::d20}}</span> {{/rollTotal() computed::d20_crit 1}}{{#rollTotal() computed::d20_success 1}}<span class="sheet-die-success">{{computed::d20}}</span> {{/rollTotal() computed::d20_success 1}}{{#rollTotal() computed::d20_fumble 1}}<span class="sheet-die-fumble">{{computed::d20}}</span> {{/rollTotal() computed::d20_fumble 1}}{{#rollTotal() computed::d20_fail 1}}<span class="sheet-die-fail">{{computed::d20}}</span> {{/rollTotal() computed::d20_fail 1}}{{/rollGreater() computed::d20 0}}
     </div>
     <div style="font-weight: bold; font-size: 13px;">
       Successes: <span style="color: #27ae60;">{{computed::successes}}</span>
@@ -762,151 +680,31 @@
   </div>
 </rolltemplate>
 
+<!-- 8.2 Weaponroll Template -->
 <rolltemplate class="sheet-rolltemplate-weaponroll">
-  <div class="sheet-template-container"
-    style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
+  <div class="sheet-template-container" style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
     <div style="font-weight: bold; border-bottom: 1px solid #aaa; margin-bottom: 5px;">{{name}}</div>
     <div style="margin: 5px 0;">
-      {{#rollGreater() computed::d1 0}}{{#rollTotal() computed::d1_crit 1}}<span
-        class="sheet-die-crit">{{computed::d1}}</span> {{/rollTotal() computed::d1_crit 1}}{{#rollTotal()
-      computed::d1_success 1}}<span class="sheet-die-success">{{computed::d1}}</span> {{/rollTotal()
-      computed::d1_success 1}}{{#rollTotal() computed::d1_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d1}}</span> {{/rollTotal() computed::d1_fumble 1}}{{#rollTotal()
-      computed::d1_fail 1}}<span class="sheet-die-fail">{{computed::d1}}</span> {{/rollTotal() computed::d1_fail
-      1}}{{/rollGreater() computed::d1 0}}
-      {{#rollGreater() computed::d2 0}}{{#rollTotal() computed::d2_crit 1}}<span
-        class="sheet-die-crit">{{computed::d2}}</span> {{/rollTotal() computed::d2_crit 1}}{{#rollTotal()
-      computed::d2_success 1}}<span class="sheet-die-success">{{computed::d2}}</span> {{/rollTotal()
-      computed::d2_success 1}}{{#rollTotal() computed::d2_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d2}}</span> {{/rollTotal() computed::d2_fumble 1}}{{#rollTotal()
-      computed::d2_fail 1}}<span class="sheet-die-fail">{{computed::d2}}</span> {{/rollTotal() computed::d2_fail
-      1}}{{/rollGreater() computed::d2 0}}
-      {{#rollGreater() computed::d3 0}}{{#rollTotal() computed::d3_crit 1}}<span
-        class="sheet-die-crit">{{computed::d3}}</span> {{/rollTotal() computed::d3_crit 1}}{{#rollTotal()
-      computed::d3_success 1}}<span class="sheet-die-success">{{computed::d3}}</span> {{/rollTotal()
-      computed::d3_success 1}}{{#rollTotal() computed::d3_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d3}}</span> {{/rollTotal() computed::d3_fumble 1}}{{#rollTotal()
-      computed::d3_fail 1}}<span class="sheet-die-fail">{{computed::d3}}</span> {{/rollTotal() computed::d3_fail
-      1}}{{/rollGreater() computed::d3 0}}
-      {{#rollGreater() computed::d4 0}}{{#rollTotal() computed::d4_crit 1}}<span
-        class="sheet-die-crit">{{computed::d4}}</span> {{/rollTotal() computed::d4_crit 1}}{{#rollTotal()
-      computed::d4_success 1}}<span class="sheet-die-success">{{computed::d4}}</span> {{/rollTotal()
-      computed::d4_success 1}}{{#rollTotal() computed::d4_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d4}}</span> {{/rollTotal() computed::d4_fumble 1}}{{#rollTotal()
-      computed::d4_fail 1}}<span class="sheet-die-fail">{{computed::d4}}</span> {{/rollTotal() computed::d4_fail
-      1}}{{/rollGreater() computed::d4 0}}
-      {{#rollGreater() computed::d5 0}}{{#rollTotal() computed::d5_crit 1}}<span
-        class="sheet-die-crit">{{computed::d5}}</span> {{/rollTotal() computed::d5_crit 1}}{{#rollTotal()
-      computed::d5_success 1}}<span class="sheet-die-success">{{computed::d5}}</span> {{/rollTotal()
-      computed::d5_success 1}}{{#rollTotal() computed::d5_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d5}}</span> {{/rollTotal() computed::d5_fumble 1}}{{#rollTotal()
-      computed::d5_fail 1}}<span class="sheet-die-fail">{{computed::d5}}</span> {{/rollTotal() computed::d5_fail
-      1}}{{/rollGreater() computed::d5 0}}
-      {{#rollGreater() computed::d6 0}}{{#rollTotal() computed::d6_crit 1}}<span
-        class="sheet-die-crit">{{computed::d6}}</span> {{/rollTotal() computed::d6_crit 1}}{{#rollTotal()
-      computed::d6_success 1}}<span class="sheet-die-success">{{computed::d6}}</span> {{/rollTotal()
-      computed::d6_success 1}}{{#rollTotal() computed::d6_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d6}}</span> {{/rollTotal() computed::d6_fumble 1}}{{#rollTotal()
-      computed::d6_fail 1}}<span class="sheet-die-fail">{{computed::d6}}</span> {{/rollTotal() computed::d6_fail
-      1}}{{/rollGreater() computed::d6 0}}
-      {{#rollGreater() computed::d7 0}}{{#rollTotal() computed::d7_crit 1}}<span
-        class="sheet-die-crit">{{computed::d7}}</span> {{/rollTotal() computed::d7_crit 1}}{{#rollTotal()
-      computed::d7_success 1}}<span class="sheet-die-success">{{computed::d7}}</span> {{/rollTotal()
-      computed::d7_success 1}}{{#rollTotal() computed::d7_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d7}}</span> {{/rollTotal() computed::d7_fumble 1}}{{#rollTotal()
-      computed::d7_fail 1}}<span class="sheet-die-fail">{{computed::d7}}</span> {{/rollTotal() computed::d7_fail
-      1}}{{/rollGreater() computed::d7 0}}
-      {{#rollGreater() computed::d8 0}}{{#rollTotal() computed::d8_crit 1}}<span
-        class="sheet-die-crit">{{computed::d8}}</span> {{/rollTotal() computed::d8_crit 1}}{{#rollTotal()
-      computed::d8_success 1}}<span class="sheet-die-success">{{computed::d8}}</span> {{/rollTotal()
-      computed::d8_success 1}}{{#rollTotal() computed::d8_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d8}}</span> {{/rollTotal() computed::d8_fumble 1}}{{#rollTotal()
-      computed::d8_fail 1}}<span class="sheet-die-fail">{{computed::d8}}</span> {{/rollTotal() computed::d8_fail
-      1}}{{/rollGreater() computed::d8 0}}
-      {{#rollGreater() computed::d9 0}}{{#rollTotal() computed::d9_crit 1}}<span
-        class="sheet-die-crit">{{computed::d9}}</span> {{/rollTotal() computed::d9_crit 1}}{{#rollTotal()
-      computed::d9_success 1}}<span class="sheet-die-success">{{computed::d9}}</span> {{/rollTotal()
-      computed::d9_success 1}}{{#rollTotal() computed::d9_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d9}}</span> {{/rollTotal() computed::d9_fumble 1}}{{#rollTotal()
-      computed::d9_fail 1}}<span class="sheet-die-fail">{{computed::d9}}</span> {{/rollTotal() computed::d9_fail
-      1}}{{/rollGreater() computed::d9 0}}
-      {{#rollGreater() computed::d10 0}}{{#rollTotal() computed::d10_crit 1}}<span
-        class="sheet-die-crit">{{computed::d10}}</span> {{/rollTotal() computed::d10_crit 1}}{{#rollTotal()
-      computed::d10_success 1}}<span class="sheet-die-success">{{computed::d10}}</span> {{/rollTotal()
-      computed::d10_success 1}}{{#rollTotal() computed::d10_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d10}}</span> {{/rollTotal() computed::d10_fumble 1}}{{#rollTotal()
-      computed::d10_fail 1}}<span class="sheet-die-fail">{{computed::d10}}</span> {{/rollTotal() computed::d10_fail
-      1}}{{/rollGreater() computed::d10 0}}
-      {{#rollGreater() computed::d11 0}}{{#rollTotal() computed::d11_crit 1}}<span
-        class="sheet-die-crit">{{computed::d11}}</span> {{/rollTotal() computed::d11_crit 1}}{{#rollTotal()
-      computed::d11_success 1}}<span class="sheet-die-success">{{computed::d11}}</span> {{/rollTotal()
-      computed::d11_success 1}}{{#rollTotal() computed::d11_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d11}}</span> {{/rollTotal() computed::d11_fumble 1}}{{#rollTotal()
-      computed::d11_fail 1}}<span class="sheet-die-fail">{{computed::d11}}</span> {{/rollTotal() computed::d11_fail
-      1}}{{/rollGreater() computed::d11 0}}
-      {{#rollGreater() computed::d12 0}}{{#rollTotal() computed::d12_crit 1}}<span
-        class="sheet-die-crit">{{computed::d12}}</span> {{/rollTotal() computed::d12_crit 1}}{{#rollTotal()
-      computed::d12_success 1}}<span class="sheet-die-success">{{computed::d12}}</span> {{/rollTotal()
-      computed::d12_success 1}}{{#rollTotal() computed::d12_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d12}}</span> {{/rollTotal() computed::d12_fumble 1}}{{#rollTotal()
-      computed::d12_fail 1}}<span class="sheet-die-fail">{{computed::d12}}</span> {{/rollTotal() computed::d12_fail
-      1}}{{/rollGreater() computed::d12 0}}
-      {{#rollGreater() computed::d13 0}}{{#rollTotal() computed::d13_crit 1}}<span
-        class="sheet-die-crit">{{computed::d13}}</span> {{/rollTotal() computed::d13_crit 1}}{{#rollTotal()
-      computed::d13_success 1}}<span class="sheet-die-success">{{computed::d13}}</span> {{/rollTotal()
-      computed::d13_success 1}}{{#rollTotal() computed::d13_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d13}}</span> {{/rollTotal() computed::d13_fumble 1}}{{#rollTotal()
-      computed::d13_fail 1}}<span class="sheet-die-fail">{{computed::d13}}</span> {{/rollTotal() computed::d13_fail
-      1}}{{/rollGreater() computed::d13 0}}
-      {{#rollGreater() computed::d14 0}}{{#rollTotal() computed::d14_crit 1}}<span
-        class="sheet-die-crit">{{computed::d14}}</span> {{/rollTotal() computed::d14_crit 1}}{{#rollTotal()
-      computed::d14_success 1}}<span class="sheet-die-success">{{computed::d14}}</span> {{/rollTotal()
-      computed::d14_success 1}}{{#rollTotal() computed::d14_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d14}}</span> {{/rollTotal() computed::d14_fumble 1}}{{#rollTotal()
-      computed::d14_fail 1}}<span class="sheet-die-fail">{{computed::d14}}</span> {{/rollTotal() computed::d14_fail
-      1}}{{/rollGreater() computed::d14 0}}
-      {{#rollGreater() computed::d15 0}}{{#rollTotal() computed::d15_crit 1}}<span
-        class="sheet-die-crit">{{computed::d15}}</span> {{/rollTotal() computed::d15_crit 1}}{{#rollTotal()
-      computed::d15_success 1}}<span class="sheet-die-success">{{computed::d15}}</span> {{/rollTotal()
-      computed::d15_success 1}}{{#rollTotal() computed::d15_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d15}}</span> {{/rollTotal() computed::d15_fumble 1}}{{#rollTotal()
-      computed::d15_fail 1}}<span class="sheet-die-fail">{{computed::d15}}</span> {{/rollTotal() computed::d15_fail
-      1}}{{/rollGreater() computed::d15 0}}
-      {{#rollGreater() computed::d16 0}}{{#rollTotal() computed::d16_crit 1}}<span
-        class="sheet-die-crit">{{computed::d16}}</span> {{/rollTotal() computed::d16_crit 1}}{{#rollTotal()
-      computed::d16_success 1}}<span class="sheet-die-success">{{computed::d16}}</span> {{/rollTotal()
-      computed::d16_success 1}}{{#rollTotal() computed::d16_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d16}}</span> {{/rollTotal() computed::d16_fumble 1}}{{#rollTotal()
-      computed::d16_fail 1}}<span class="sheet-die-fail">{{computed::d16}}</span> {{/rollTotal() computed::d16_fail
-      1}}{{/rollGreater() computed::d16 0}}
-      {{#rollGreater() computed::d17 0}}{{#rollTotal() computed::d17_crit 1}}<span
-        class="sheet-die-crit">{{computed::d17}}</span> {{/rollTotal() computed::d17_crit 1}}{{#rollTotal()
-      computed::d17_success 1}}<span class="sheet-die-success">{{computed::d17}}</span> {{/rollTotal()
-      computed::d17_success 1}}{{#rollTotal() computed::d17_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d17}}</span> {{/rollTotal() computed::d17_fumble 1}}{{#rollTotal()
-      computed::d17_fail 1}}<span class="sheet-die-fail">{{computed::d17}}</span> {{/rollTotal() computed::d17_fail
-      1}}{{/rollGreater() computed::d17 0}}
-      {{#rollGreater() computed::d18 0}}{{#rollTotal() computed::d18_crit 1}}<span
-        class="sheet-die-crit">{{computed::d18}}</span> {{/rollTotal() computed::d18_crit 1}}{{#rollTotal()
-      computed::d18_success 1}}<span class="sheet-die-success">{{computed::d18}}</span> {{/rollTotal()
-      computed::d18_success 1}}{{#rollTotal() computed::d18_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d18}}</span> {{/rollTotal() computed::d18_fumble 1}}{{#rollTotal()
-      computed::d18_fail 1}}<span class="sheet-die-fail">{{computed::d18}}</span> {{/rollTotal() computed::d18_fail
-      1}}{{/rollGreater() computed::d18 0}}
-      {{#rollGreater() computed::d19 0}}{{#rollTotal() computed::d19_crit 1}}<span
-        class="sheet-die-crit">{{computed::d19}}</span> {{/rollTotal() computed::d19_crit 1}}{{#rollTotal()
-      computed::d19_success 1}}<span class="sheet-die-success">{{computed::d19}}</span> {{/rollTotal()
-      computed::d19_success 1}}{{#rollTotal() computed::d19_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d19}}</span> {{/rollTotal() computed::d19_fumble 1}}{{#rollTotal()
-      computed::d19_fail 1}}<span class="sheet-die-fail">{{computed::d19}}</span> {{/rollTotal() computed::d19_fail
-      1}}{{/rollGreater() computed::d19 0}}
-      {{#rollGreater() computed::d20 0}}{{#rollTotal() computed::d20_crit 1}}<span
-        class="sheet-die-crit">{{computed::d20}}</span> {{/rollTotal() computed::d20_crit 1}}{{#rollTotal()
-      computed::d20_success 1}}<span class="sheet-die-success">{{computed::d20}}</span> {{/rollTotal()
-      computed::d20_success 1}}{{#rollTotal() computed::d20_fumble 1}}<span
-        class="sheet-die-fumble">{{computed::d20}}</span> {{/rollTotal() computed::d20_fumble 1}}{{#rollTotal()
-      computed::d20_fail 1}}<span class="sheet-die-fail">{{computed::d20}}</span> {{/rollTotal() computed::d20_fail
-      1}}{{/rollGreater() computed::d20 0}}
+      {{#rollGreater() computed::d1 0}}{{#rollTotal() computed::d1_crit 1}}<span class="sheet-die-crit">{{computed::d1}}</span> {{/rollTotal() computed::d1_crit 1}}{{#rollTotal() computed::d1_success 1}}<span class="sheet-die-success">{{computed::d1}}</span> {{/rollTotal() computed::d1_success 1}}{{#rollTotal() computed::d1_fumble 1}}<span class="sheet-die-fumble">{{computed::d1}}</span> {{/rollTotal() computed::d1_fumble 1}}{{#rollTotal() computed::d1_fail 1}}<span class="sheet-die-fail">{{computed::d1}}</span> {{/rollTotal() computed::d1_fail 1}}{{/rollGreater() computed::d1 0}}
+      {{#rollGreater() computed::d2 0}}{{#rollTotal() computed::d2_crit 1}}<span class="sheet-die-crit">{{computed::d2}}</span> {{/rollTotal() computed::d2_crit 1}}{{#rollTotal() computed::d2_success 1}}<span class="sheet-die-success">{{computed::d2}}</span> {{/rollTotal() computed::d2_success 1}}{{#rollTotal() computed::d2_fumble 1}}<span class="sheet-die-fumble">{{computed::d2}}</span> {{/rollTotal() computed::d2_fumble 1}}{{#rollTotal() computed::d2_fail 1}}<span class="sheet-die-fail">{{computed::d2}}</span> {{/rollTotal() computed::d2_fail 1}}{{/rollGreater() computed::d2 0}}
+      {{#rollGreater() computed::d3 0}}{{#rollTotal() computed::d3_crit 1}}<span class="sheet-die-crit">{{computed::d3}}</span> {{/rollTotal() computed::d3_crit 1}}{{#rollTotal() computed::d3_success 1}}<span class="sheet-die-success">{{computed::d3}}</span> {{/rollTotal() computed::d3_success 1}}{{#rollTotal() computed::d3_fumble 1}}<span class="sheet-die-fumble">{{computed::d3}}</span> {{/rollTotal() computed::d3_fumble 1}}{{#rollTotal() computed::d3_fail 1}}<span class="sheet-die-fail">{{computed::d3}}</span> {{/rollTotal() computed::d3_fail 1}}{{/rollGreater() computed::d3 0}}
+      {{#rollGreater() computed::d4 0}}{{#rollTotal() computed::d4_crit 1}}<span class="sheet-die-crit">{{computed::d4}}</span> {{/rollTotal() computed::d4_crit 1}}{{#rollTotal() computed::d4_success 1}}<span class="sheet-die-success">{{computed::d4}}</span> {{/rollTotal() computed::d4_success 1}}{{#rollTotal() computed::d4_fumble 1}}<span class="sheet-die-fumble">{{computed::d4}}</span> {{/rollTotal() computed::d4_fumble 1}}{{#rollTotal() computed::d4_fail 1}}<span class="sheet-die-fail">{{computed::d4}}</span> {{/rollTotal() computed::d4_fail 1}}{{/rollGreater() computed::d4 0}}
+      {{#rollGreater() computed::d5 0}}{{#rollTotal() computed::d5_crit 1}}<span class="sheet-die-crit">{{computed::d5}}</span> {{/rollTotal() computed::d5_crit 1}}{{#rollTotal() computed::d5_success 1}}<span class="sheet-die-success">{{computed::d5}}</span> {{/rollTotal() computed::d5_success 1}}{{#rollTotal() computed::d5_fumble 1}}<span class="sheet-die-fumble">{{computed::d5}}</span> {{/rollTotal() computed::d5_fumble 1}}{{#rollTotal() computed::d5_fail 1}}<span class="sheet-die-fail">{{computed::d5}}</span> {{/rollTotal() computed::d5_fail 1}}{{/rollGreater() computed::d5 0}}
+      {{#rollGreater() computed::d6 0}}{{#rollTotal() computed::d6_crit 1}}<span class="sheet-die-crit">{{computed::d6}}</span> {{/rollTotal() computed::d6_crit 1}}{{#rollTotal() computed::d6_success 1}}<span class="sheet-die-success">{{computed::d6}}</span> {{/rollTotal() computed::d6_success 1}}{{#rollTotal() computed::d6_fumble 1}}<span class="sheet-die-fumble">{{computed::d6}}</span> {{/rollTotal() computed::d6_fumble 1}}{{#rollTotal() computed::d6_fail 1}}<span class="sheet-die-fail">{{computed::d6}}</span> {{/rollTotal() computed::d6_fail 1}}{{/rollGreater() computed::d6 0}}
+      {{#rollGreater() computed::d7 0}}{{#rollTotal() computed::d7_crit 1}}<span class="sheet-die-crit">{{computed::d7}}</span> {{/rollTotal() computed::d7_crit 1}}{{#rollTotal() computed::d7_success 1}}<span class="sheet-die-success">{{computed::d7}}</span> {{/rollTotal() computed::d7_success 1}}{{#rollTotal() computed::d7_fumble 1}}<span class="sheet-die-fumble">{{computed::d7}}</span> {{/rollTotal() computed::d7_fumble 1}}{{#rollTotal() computed::d7_fail 1}}<span class="sheet-die-fail">{{computed::d7}}</span> {{/rollTotal() computed::d7_fail 1}}{{/rollGreater() computed::d7 0}}
+      {{#rollGreater() computed::d8 0}}{{#rollTotal() computed::d8_crit 1}}<span class="sheet-die-crit">{{computed::d8}}</span> {{/rollTotal() computed::d8_crit 1}}{{#rollTotal() computed::d8_success 1}}<span class="sheet-die-success">{{computed::d8}}</span> {{/rollTotal() computed::d8_success 1}}{{#rollTotal() computed::d8_fumble 1}}<span class="sheet-die-fumble">{{computed::d8}}</span> {{/rollTotal() computed::d8_fumble 1}}{{#rollTotal() computed::d8_fail 1}}<span class="sheet-die-fail">{{computed::d8}}</span> {{/rollTotal() computed::d8_fail 1}}{{/rollGreater() computed::d8 0}}
+      {{#rollGreater() computed::d9 0}}{{#rollTotal() computed::d9_crit 1}}<span class="sheet-die-crit">{{computed::d9}}</span> {{/rollTotal() computed::d9_crit 1}}{{#rollTotal() computed::d9_success 1}}<span class="sheet-die-success">{{computed::d9}}</span> {{/rollTotal() computed::d9_success 1}}{{#rollTotal() computed::d9_fumble 1}}<span class="sheet-die-fumble">{{computed::d9}}</span> {{/rollTotal() computed::d9_fumble 1}}{{#rollTotal() computed::d9_fail 1}}<span class="sheet-die-fail">{{computed::d9}}</span> {{/rollTotal() computed::d9_fail 1}}{{/rollGreater() computed::d9 0}}
+      {{#rollGreater() computed::d10 0}}{{#rollTotal() computed::d10_crit 1}}<span class="sheet-die-crit">{{computed::d10}}</span> {{/rollTotal() computed::d10_crit 1}}{{#rollTotal() computed::d10_success 1}}<span class="sheet-die-success">{{computed::d10}}</span> {{/rollTotal() computed::d10_success 1}}{{#rollTotal() computed::d10_fumble 1}}<span class="sheet-die-fumble">{{computed::d10}}</span> {{/rollTotal() computed::d10_fumble 1}}{{#rollTotal() computed::d10_fail 1}}<span class="sheet-die-fail">{{computed::d10}}</span> {{/rollTotal() computed::d10_fail 1}}{{/rollGreater() computed::d10 0}}
+      {{#rollGreater() computed::d11 0}}{{#rollTotal() computed::d11_crit 1}}<span class="sheet-die-crit">{{computed::d11}}</span> {{/rollTotal() computed::d11_crit 1}}{{#rollTotal() computed::d11_success 1}}<span class="sheet-die-success">{{computed::d11}}</span> {{/rollTotal() computed::d11_success 1}}{{#rollTotal() computed::d11_fumble 1}}<span class="sheet-die-fumble">{{computed::d11}}</span> {{/rollTotal() computed::d11_fumble 1}}{{#rollTotal() computed::d11_fail 1}}<span class="sheet-die-fail">{{computed::d11}}</span> {{/rollTotal() computed::d11_fail 1}}{{/rollGreater() computed::d11 0}}
+      {{#rollGreater() computed::d12 0}}{{#rollTotal() computed::d12_crit 1}}<span class="sheet-die-crit">{{computed::d12}}</span> {{/rollTotal() computed::d12_crit 1}}{{#rollTotal() computed::d12_success 1}}<span class="sheet-die-success">{{computed::d12}}</span> {{/rollTotal() computed::d12_success 1}}{{#rollTotal() computed::d12_fumble 1}}<span class="sheet-die-fumble">{{computed::d12}}</span> {{/rollTotal() computed::d12_fumble 1}}{{#rollTotal() computed::d12_fail 1}}<span class="sheet-die-fail">{{computed::d12}}</span> {{/rollTotal() computed::d12_fail 1}}{{/rollGreater() computed::d12 0}}
+      {{#rollGreater() computed::d13 0}}{{#rollTotal() computed::d13_crit 1}}<span class="sheet-die-crit">{{computed::d13}}</span> {{/rollTotal() computed::d13_crit 1}}{{#rollTotal() computed::d13_success 1}}<span class="sheet-die-success">{{computed::d13}}</span> {{/rollTotal() computed::d13_success 1}}{{#rollTotal() computed::d13_fumble 1}}<span class="sheet-die-fumble">{{computed::d13}}</span> {{/rollTotal() computed::d13_fumble 1}}{{#rollTotal() computed::d13_fail 1}}<span class="sheet-die-fail">{{computed::d13}}</span> {{/rollTotal() computed::d13_fail 1}}{{/rollGreater() computed::d13 0}}
+      {{#rollGreater() computed::d14 0}}{{#rollTotal() computed::d14_crit 1}}<span class="sheet-die-crit">{{computed::d14}}</span> {{/rollTotal() computed::d14_crit 1}}{{#rollTotal() computed::d14_success 1}}<span class="sheet-die-success">{{computed::d14}}</span> {{/rollTotal() computed::d14_success 1}}{{#rollTotal() computed::d14_fumble 1}}<span class="sheet-die-fumble">{{computed::d14}}</span> {{/rollTotal() computed::d14_fumble 1}}{{#rollTotal() computed::d14_fail 1}}<span class="sheet-die-fail">{{computed::d14}}</span> {{/rollTotal() computed::d14_fail 1}}{{/rollGreater() computed::d14 0}}
+      {{#rollGreater() computed::d15 0}}{{#rollTotal() computed::d15_crit 1}}<span class="sheet-die-crit">{{computed::d15}}</span> {{/rollTotal() computed::d15_crit 1}}{{#rollTotal() computed::d15_success 1}}<span class="sheet-die-success">{{computed::d15}}</span> {{/rollTotal() computed::d15_success 1}}{{#rollTotal() computed::d15_fumble 1}}<span class="sheet-die-fumble">{{computed::d15}}</span> {{/rollTotal() computed::d15_fumble 1}}{{#rollTotal() computed::d15_fail 1}}<span class="sheet-die-fail">{{computed::d15}}</span> {{/rollTotal() computed::d15_fail 1}}{{/rollGreater() computed::d15 0}}
+      {{#rollGreater() computed::d16 0}}{{#rollTotal() computed::d16_crit 1}}<span class="sheet-die-crit">{{computed::d16}}</span> {{/rollTotal() computed::d16_crit 1}}{{#rollTotal() computed::d16_success 1}}<span class="sheet-die-success">{{computed::d16}}</span> {{/rollTotal() computed::d16_success 1}}{{#rollTotal() computed::d16_fumble 1}}<span class="sheet-die-fumble">{{computed::d16}}</span> {{/rollTotal() computed::d16_fumble 1}}{{#rollTotal() computed::d16_fail 1}}<span class="sheet-die-fail">{{computed::d16}}</span> {{/rollTotal() computed::d16_fail 1}}{{/rollGreater() computed::d16 0}}
+      {{#rollGreater() computed::d17 0}}{{#rollTotal() computed::d17_crit 1}}<span class="sheet-die-crit">{{computed::d17}}</span> {{/rollTotal() computed::d17_crit 1}}{{#rollTotal() computed::d17_success 1}}<span class="sheet-die-success">{{computed::d17}}</span> {{/rollTotal() computed::d17_success 1}}{{#rollTotal() computed::d17_fumble 1}}<span class="sheet-die-fumble">{{computed::d17}}</span> {{/rollTotal() computed::d17_fumble 1}}{{#rollTotal() computed::d17_fail 1}}<span class="sheet-die-fail">{{computed::d17}}</span> {{/rollTotal() computed::d17_fail 1}}{{/rollGreater() computed::d17 0}}
+      {{#rollGreater() computed::d18 0}}{{#rollTotal() computed::d18_crit 1}}<span class="sheet-die-crit">{{computed::d18}}</span> {{/rollTotal() computed::d18_crit 1}}{{#rollTotal() computed::d18_success 1}}<span class="sheet-die-success">{{computed::d18}}</span> {{/rollTotal() computed::d18_success 1}}{{#rollTotal() computed::d18_fumble 1}}<span class="sheet-die-fumble">{{computed::d18}}</span> {{/rollTotal() computed::d18_fumble 1}}{{#rollTotal() computed::d18_fail 1}}<span class="sheet-die-fail">{{computed::d18}}</span> {{/rollTotal() computed::d18_fail 1}}{{/rollGreater() computed::d18 0}}
+      {{#rollGreater() computed::d19 0}}{{#rollTotal() computed::d19_crit 1}}<span class="sheet-die-crit">{{computed::d19}}</span> {{/rollTotal() computed::d19_crit 1}}{{#rollTotal() computed::d19_success 1}}<span class="sheet-die-success">{{computed::d19}}</span> {{/rollTotal() computed::d19_success 1}}{{#rollTotal() computed::d19_fumble 1}}<span class="sheet-die-fumble">{{computed::d19}}</span> {{/rollTotal() computed::d19_fumble 1}}{{#rollTotal() computed::d19_fail 1}}<span class="sheet-die-fail">{{computed::d19}}</span> {{/rollTotal() computed::d19_fail 1}}{{/rollGreater() computed::d19 0}}
+      {{#rollGreater() computed::d20 0}}{{#rollTotal() computed::d20_crit 1}}<span class="sheet-die-crit">{{computed::d20}}</span> {{/rollTotal() computed::d20_crit 1}}{{#rollTotal() computed::d20_success 1}}<span class="sheet-die-success">{{computed::d20}}</span> {{/rollTotal() computed::d20_success 1}}{{#rollTotal() computed::d20_fumble 1}}<span class="sheet-die-fumble">{{computed::d20}}</span> {{/rollTotal() computed::d20_fumble 1}}{{#rollTotal() computed::d20_fail 1}}<span class="sheet-die-fail">{{computed::d20}}</span> {{/rollTotal() computed::d20_fail 1}}{{/rollGreater() computed::d20 0}}
     </div>
     <div style="font-weight: bold; font-size: 13px;">
       Crits: <span style="color: #0055cc;">{{computed::crits}}</span> |
