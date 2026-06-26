@@ -40,7 +40,7 @@ main {
   width: 800px;
 }
 
-.tab-content-core {
+.tab-content-pc {
   display: none;
   width: 800px;
   grid-gap: 2px;
@@ -53,11 +53,6 @@ main {
     "weap       weap        weap        weap"
     "abilities  abilities   abilities   abilities"
     "expertise  expertise   expertise   expertise";
-}
-
-.tab-content-inventory {
-  display: none;
-  width: 800px;
 }
 
 .tab-content-npc {
@@ -74,7 +69,27 @@ main {
     "abilities  abilities   abilities   abilities";
 }
 
+.tab-content-vehicle {
+  display: none;
+  width: 800px;
+}
+
+.tab-content-inventory {
+  display: none;
+  width: 800px;
+}
+
+.tab-content-passives {
+  display: none;
+  width: 800px;
+}
+
 .tab-content-notes {
+  display: none;
+  width: 800px;
+}
+
+.tab-content-settings {
   display: none;
   width: 800px;
 }
@@ -112,23 +127,11 @@ main {
   color: #000;
 }
 
-/* Hide all tab contents by default (Selector list on one line for parser compatibility) */
-.tab-content-core,
-.tab-content-inventory,
-.tab-content-npc,
-.tab-content-vehicle,
-.tab-content-passives,
-.tab-content-notes {
-  display: none !important;
-}
+/* Hide all tab contents by default */
+.tab-content-pc, .tab-content-npc, .tab-content-vehicle, .tab-content-inventory, .tab-content-passives, .tab-content-notes, .tab-content-settings { display: none !important; }
 
-/* Tab button active state (Selector list on one line for parser compatibility) */
-.tabstoggle[value="core"]~.tab-buttons .tab-button-core,
-.tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory,
-.tabstoggle[value="passives"]~.tab-buttons .tab-button-passives,
-.tabstoggle[value="_npc"]~.tab-buttons .tab-button-npc,
-.tabstoggle[value="_vehicle"]~.tab-buttons .tab-button-vehicle,
-.tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
+/* Tab button active state */
+.tabstoggle[value="pc"]~.tab-buttons .tab-button-pc, .tabstoggle[value="npc"]~.tab-buttons .tab-button-npc, .tabstoggle[value="vehicle"]~.tab-buttons .tab-button-vehicle, .tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory, .tabstoggle[value="passives"]~.tab-buttons .tab-button-passives, .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes, .tabstoggle[value="settings"]~.tab-buttons .tab-button-settings {
   color: coral;
   border-bottom: 3px solid coral;
   font-weight: bold;
@@ -136,8 +139,16 @@ main {
 }
 
 /* Tab Content toggles */
-.tabstoggle[value="core"]~.tab-content-core {
+.tabstoggle[value="pc"]~.tab-content-pc {
   display: grid !important;
+}
+
+.tabstoggle[value="npc"]~.tab-content-npc {
+  display: grid !important;
+}
+
+.tabstoggle[value="vehicle"]~.tab-content-vehicle {
+  display: block !important;
 }
 
 .tabstoggle[value="inventory"]~.tab-content-inventory {
@@ -148,17 +159,18 @@ main {
   display: block !important;
 }
 
-.tabstoggle[value="_npc"]~.tab-content-npc {
-  display: grid !important;
-}
-
-.tabstoggle[value="_vehicle"]~.tab-content-vehicle {
-  display: block !important;
-}
-
 .tabstoggle[value="notes"]~.tab-content-notes {
   display: block !important;
 }
+
+.tabstoggle[value="settings"]~.tab-content-settings {
+  display: block !important;
+}
+
+/* Dynamic Tab Button Hiding based on Sheet Type */
+.sheet-type-toggle[value="PC"] ~ .tab-buttons .tab-button-npc, .sheet-type-toggle[value="PC"] ~ .tab-buttons .tab-button-vehicle { display: none !important; }
+.sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-pc, .sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-vehicle { display: none !important; }
+.sheet-type-toggle[value="VEHICLE"] ~ .tab-buttons .tab-button-pc, .sheet-type-toggle[value="VEHICLE"] ~ .tab-buttons .tab-button-npc { display: none !important; }
 
 /* --------------------------------------------------------------------------
    4. General Utilities

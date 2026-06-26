@@ -3,22 +3,26 @@
    ========================================================================== -->
 <main>
   <!-- Hidden input tracking the active tab (managed by Sheet Workers) -->
-  <input type="hidden" class="tabstoggle" name="attr_sheetTab" value="core" />
+  <input type="hidden" class="tabstoggle" name="attr_sheetTab" value="pc" />
+
+  <!-- Hidden input tracking the character sheet type (PC, NPC, VEHICLE) -->
+  <input type="hidden" class="sheet-type-toggle" name="attr_sheet_type" value="PC" />
 
   <!-- Navigation Tab Buttons -->
   <div class="tab-buttons f-row">
-    <button type="action" name="act_tabcore" class="tab-button tab-button-core">Core</button>
+    <button type="action" name="act_tabpc" class="tab-button tab-button-pc">PC</button>
+    <button type="action" name="act_tabnpc" class="tab-button tab-button-npc">NPC</button>
+    <button type="action" name="act_tabvehicle" class="tab-button tab-button-vehicle">Vehicle</button>
     <button type="action" name="act_tabinventory" class="tab-button tab-button-inventory">Inventory</button>
     <button type="action" name="act_tabpassives" class="tab-button tab-button-passives">Passives</button>
-    <button type="action" name="act_tab_npc" class="tab-button tab-button-npc">NPC</button>
-    <button type="action" name="act_tab_vehicle" class="tab-button tab-button-vehicle">Vehicle</button>
     <button type="action" name="act_tabnotes" class="tab-button tab-button-notes">Notes</button>
+    <button type="action" name="act_tabsettings" class="tab-button tab-button-settings">Settings</button>
   </div>
 
   <!-- ==========================================================================
-       1. Core Tab Panel
+       1. PC Tab Panel
        ========================================================================== -->
-  <div class="tab-content tab-content-core">
+  <div class="tab-content tab-content-pc">
 
     <!-- 1.1 S.P.L.I.C.E.D. Core Attributes -->
     <section class="spliced f-col">
@@ -455,56 +459,10 @@
     </section>
   </div>
 
-  <!-- ==========================================================================
-       2. Inventory Tab Panel
+    <!-- ==========================================================================
+       2. NPC Tab Panel
        ========================================================================== -->
-  <div class="tab-content tab-content-inventory">
-    <!-- Currency -->
-    <section class="currency f-row nowrap"
-      style="background-color: white; padding: 5px 15px; margin-bottom: 5px; box-sizing: border-box;">
-      <label style="display:flex; align-items:center; gap:10px; margin:0; width:100%;">
-        <b>Currency:</b>
-        <input type="text" name="attr_currency" value="0" style="flex:1; box-sizing: border-box;">
-      </label>
-    </section>
-
-    <!-- Items -->
-    <section class="inventory f-col">
-      <div class="f-row headers" style="margin-bottom: 5px;">
-        <span class="inv_qty_title">Qty</span>
-        <span class="inv_item_title">Item</span>
-        <span class="inv_notes_title">Notes</span>
-      </div>
-
-      <fieldset class="repeating_inventory">
-        <div class="f-row inv-row"
-          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
-          <input type="text" name="attr_inv_qty" class="inv_qty" placeholder="1">
-          <input type="text" name="attr_inv_item" class="inv_item" placeholder="Item Name">
-          <input type="text" name="attr_inv_notes" class="inv_notes" placeholder="Description or Stats">
-        </div>
-      </fieldset>
-    </section>
-  </div>
-
-  <!-- ==========================================================================
-       3. Passives Tab Panel
-       ========================================================================== -->
-  <div class="tab-content tab-content-passives">
-    <section class="passives f-col">
-      <fieldset class="repeating_passives">
-        <div class="f-row passive-row" style="margin-bottom: 5px; width: 100%;">
-          <textarea name="attr_passive_text" class="passive-text" placeholder="Passive ability description..."
-            style="width: 100%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
-        </div>
-      </fieldset>
-    </section>
-  </div>
-
-  <!-- ==========================================================================
-       4. NPC Tab Panel (Matches original class exactly)
-       ========================================================================== -->
-  <div class="tab-content-npc">
+  <div class="tab-content tab-content-npc">
     <!-- NPC Attributes Block (S.P.L.I.C.E.D.) -->
     <section class="spliced f-col">
       <div class="spliced-header">
@@ -856,10 +814,10 @@
     </section>
   </div>
 
-  <!-- ==========================================================================
-     5. Vehicle Tab Panel
-     ========================================================================== -->
-  <div class="tab-content-vehicle">
+    <!-- ==========================================================================
+       3. Vehicle Tab Panel
+       ========================================================================== -->
+  <div class="tab-content tab-content-vehicle">
     <div class="vehicle-grid"
       style="display: grid; grid-gap: 2px; grid-template-columns: 270px 180px 150px 200px; grid-template-rows: auto; grid-template-areas: 'veh_charac veh_charac veh_stats veh_crew' 'veh_act veh_act veh_health veh_def' 'veh_weap veh_weap veh_weap veh_weap' 'abilities abilities abilities abilities';">
 
@@ -1063,7 +1021,53 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
+       4. Inventory Tab Panel
+       ========================================================================== -->
+  <div class="tab-content tab-content-inventory">
+    <!-- Currency -->
+    <section class="currency f-row nowrap"
+      style="background-color: white; padding: 5px 15px; margin-bottom: 5px; box-sizing: border-box;">
+      <label style="display:flex; align-items:center; gap:10px; margin:0; width:100%;">
+        <b>Currency:</b>
+        <input type="text" name="attr_currency" value="0" style="flex:1; box-sizing: border-box;">
+      </label>
+    </section>
+
+    <!-- Items -->
+    <section class="inventory f-col">
+      <div class="f-row headers" style="margin-bottom: 5px;">
+        <span class="inv_qty_title">Qty</span>
+        <span class="inv_item_title">Item</span>
+        <span class="inv_notes_title">Notes</span>
+      </div>
+
+      <fieldset class="repeating_inventory">
+        <div class="f-row inv-row"
+          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
+          <input type="text" name="attr_inv_qty" class="inv_qty" placeholder="1">
+          <input type="text" name="attr_inv_item" class="inv_item" placeholder="Item Name">
+          <input type="text" name="attr_inv_notes" class="inv_notes" placeholder="Description or Stats">
+        </div>
+      </fieldset>
+    </section>
+  </div>
+
+    <!-- ==========================================================================
+       5. Passives Tab Panel
+       ========================================================================== -->
+  <div class="tab-content tab-content-passives">
+    <section class="passives f-col">
+      <fieldset class="repeating_passives">
+        <div class="f-row passive-row" style="margin-bottom: 5px; width: 100%;">
+          <textarea name="attr_passive_text" class="passive-text" placeholder="Passive ability description..."
+            style="width: 100%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
+        </div>
+      </fieldset>
+    </section>
+  </div>
+
+    <!-- ==========================================================================
        6. Notes Tab Panel
        ========================================================================== -->
   <div class="tab-content tab-content-notes">
@@ -1073,6 +1077,26 @@
         placeholder="Session notes, character backstory, campaign details..."></textarea>
     </section>
   </div>
+  <!-- ==========================================================================
+       7. Settings Tab Panel
+       ========================================================================== -->
+  <div class="tab-content tab-content-settings">
+    <section class="settings f-col" style="padding: 15px; max-width: 400px;">
+      <div style="font-size: 16px; font-weight: bold; margin-bottom: 12px; border-bottom: 2px solid #ccc; padding-bottom: 6px;">Sheet Type</div>
+      <div class="f-col" style="gap: 10px;">
+        <label style="display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer;">
+          <input type="radio" name="attr_sheet_type" value="PC" checked style="width: auto; margin: 0;"> PC
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer;">
+          <input type="radio" name="attr_sheet_type" value="NPC" style="width: auto; margin: 0;"> NPC
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer;">
+          <input type="radio" name="attr_sheet_type" value="VEHICLE" style="width: auto; margin: 0;"> Vehicle
+        </label>
+      </div>
+    </section>
+  </div>
+
 </main>
 
 <!-- ==========================================================================
@@ -1090,12 +1114,22 @@
     });
 
     // 2. NAVIGATIONAL TAB TOGGLES
-    on("clicked:tabcore clicked:tabinventory clicked:tabpassives clicked:tab_npc clicked:tab_vehicle clicked:tabnotes", function(info) {
+    on("clicked:tabpc clicked:tabnpc clicked:tabvehicle clicked:tabinventory clicked:tabpassives clicked:tabnotes clicked:tabsettings", function(info) {
         const tab = info.triggerName.replace("clicked:tab", "");
         setAttrs({ sheetTab: tab });
     });
 
-    // 3. UNIFIED ROLL LOGIC
+    // 3. SETTINGS: SHEET TYPE RADIO (PC / NPC / VEHICLE)
+    // When sheet_type changes, also switch the active tab to the appropriate main tab.
+    on("change:sheet_type", function() {
+        getAttrs(["sheet_type"], function(v) {
+            const type = v["sheet_type"] || "PC";
+            const tabMap = { "PC": "pc", "NPC": "npc", "VEHICLE": "vehicle" };
+            setAttrs({ sheetTab: tabMap[type] || "pc" });
+        });
+    });
+
+    // 4. UNIFIED ROLL LOGIC
     const performRoll = (label, dicePool, diceSize = "d6", isWeapon = false) => {
         const maxVal = parseInt(diceSize.replace("d", ""), 10) || 6;
         const template = isWeapon ? "weaponroll" : "splicedroll";
@@ -1162,7 +1196,7 @@
         });
     };
 
-    // 4. AUTOMATIC S.P.L.I.C.E.D. TOTAL CALCULATOR
+    // 5. AUTOMATIC S.P.L.I.C.E.D. TOTAL CALCULATOR
     const splicedStats = ["str", "per", "luk", "int", "crg", "end", "dex"];
     splicedStats.forEach(stat => {
         on(`change:${stat}_base change:${stat}_mod`, function() {
@@ -1176,7 +1210,7 @@
         });
     });
 
-    // 5. AUTOMATICALLY UNCHECK ALL ACTION POOL ENTRIES
+    // 6. AUTOMATICALLY UNCHECK ALL ACTION POOL ENTRIES
     on("clicked:clear_actions", function() {
         setAttrs({
             "act_general": 0, "act_move": 0, "act_reaction": 0,
@@ -1185,7 +1219,7 @@
         });
     });
 
-    // 6. LISTENERS FOR S.P.L.I.C.E.D. ATTRIBUTES
+    // 7. LISTENERS FOR S.P.L.I.C.E.D. ATTRIBUTES
     on("clicked:roll_str clicked:roll_per clicked:roll_luk clicked:roll_int clicked:roll_crg clicked:roll_end clicked:roll_dex", function(info) {
         const stat = info.triggerName.replace("clicked:roll_", "");
         getAttrs([stat], (v) => {
@@ -1195,7 +1229,7 @@
         });
     });
 
-    // 7. LISTENERS FOR WEAPONS
+    // 8. LISTENERS FOR WEAPONS
     on("clicked:roll_main_1 clicked:roll_off_1 clicked:roll_main_2 clicked:roll_off_2", function(info) {
         const slot = info.triggerName.replace("clicked:roll_", "");
         getAttrs([`${slot}_name`, `${slot}_dice_num`, `${slot}_dice_size`], (v) => {
