@@ -60,6 +60,20 @@ main {
   width: 800px;
 }
 
+.tab-content-npc {
+  display: none;
+  width: 800px;
+  grid-gap: 2px;
+  grid-template-columns: 270px 180px 150px 200px;
+  grid-template-rows: 110px 100px 100px 150px min-content;
+  grid-template-areas:
+    "spliced    npc_stats   npc_stats   charac"
+    "spliced    act_pool    act_pool    def"
+    "spliced    cond        cond        cond"
+    "weap       weap        weap        weap"
+    "abilities  abilities   abilities   abilities";
+}
+
 .tab-content-notes {
   display: none;
   width: 800px;
@@ -104,7 +118,7 @@ main {
 }
 
 /* Tab button active state (Selector list on one line for parser compatibility) */
-.tabstoggle[value="core"]~.tab-buttons .tab-button-core, .tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory, .tabstoggle[value="passives"]~.tab-buttons .tab-button-passives, .tabstoggle[value="npc"]~.tab-buttons .tab-button-npc, .tabstoggle[value="vehicle"]~.tab-buttons .tab-button-vehicle, .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
+.tabstoggle[value="core"]~.tab-buttons .tab-button-core, .tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory, .tabstoggle[value="passives"]~.tab-buttons .tab-button-passives, .tabstoggle[value="_npc"]~.tab-buttons .tab-button-npc, .tabstoggle[value="_vehicle"]~.tab-buttons .tab-button-vehicle, .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
   color: coral;
   border-bottom: 3px solid coral;
   font-weight: bold;
@@ -124,11 +138,11 @@ main {
   display: block !important;
 }
 
-.tabstoggle[value="npc"]~.tab-content-npc {
-  display: block !important;
+.tabstoggle[value="_npc"]~.tab-content-npc {
+  display: grid !important;
 }
 
-.tabstoggle[value="vehicle"]~.tab-content-vehicle {
+.tabstoggle[value="_vehicle"]~.tab-content-vehicle {
   display: block !important;
 }
 
@@ -357,6 +371,52 @@ section {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   7b. NPC Stats Box
+   -------------------------------------------------------------------------- */
+.npc_stats {
+  grid-area: npc_stats;
+  background-color: white;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.npc_stats-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.npc_stats-lbl {
+  font-size: 11px;
+  text-transform: lowercase;
+  color: #444;
+  font-weight: bold;
+  white-space: nowrap;
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.npc_stats-row input[type="number"] {
+  width: 50px !important;
+  text-align: center;
+  font-size: 11px;
+  padding: 2px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.npc_stats-slash {
+  font-size: 11px;
+  color: #444;
 }
 
 /* --------------------------------------------------------------------------

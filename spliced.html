@@ -495,7 +495,352 @@
        4. NPC Tab Panel (Matches original class exactly)
        ========================================================================== -->
   <div class="tab-content-npc">
-    <h3>NPC Details</h3>
+    <!-- NPC Attributes Block (S.P.L.I.C.E.D.) -->
+    <section class="spliced f-col">
+      <div class="spliced-header">
+        <span class="spliced-word"></span>
+        <span class="spliced-hdr-lbl">base</span>
+        <span class="spliced-sign"></span>
+        <span class="spliced-hdr-lbl">mod</span>
+        <span class="spliced-sign"></span>
+        <span class="spliced-hdr-lbl">total</span>
+        <span class="spliced-btn-space"></span>
+      </div>
+
+      <!-- Strength -->
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">S</span>trength</span>
+        <input type="number" name="attr_str_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_str_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_str" value="0" readonly>
+        <button type="action" name="act_roll_str">Roll</button>
+      </div>
+
+      <!-- Perception -->
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">P</span>erception</span>
+        <input type="number" name="attr_per_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_per_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_per" value="0" readonly>
+        <button type="action" name="act_roll_per">Roll</button>
+      </div>
+
+      <!-- Luck -->
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">L</span>uck</span>
+        <input type="number" name="attr_luk_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_luk_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_luk" value="0" readonly>
+        <button type="action" name="act_roll_luk">Roll</button>
+      </div>
+
+      <!-- Intelligence -->
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">I</span>ntelligence</span>
+        <input type="number" name="attr_int_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_int_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_int" value="0" readonly>
+        <button type="action" name="act_roll_int">Roll</button>
+      </div>
+
+      <!-- Courage -->
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">C</span>ourage</span>
+        <input type="number" name="attr_crg_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_crg_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_crg" value="0" readonly>
+        <button type="action" name="act_roll_crg">Roll</button>
+      </div>
+
+      <!-- Endurance -->
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">E</span>ndurance</span>
+        <input type="number" name="attr_end_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_end_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_end" value="0" readonly>
+        <button type="action" name="act_roll_end">Roll</button>
+      </div>
+
+      <!-- Dexterity -->
+      <div class="spliced-item">
+        <span class="spliced-word"><span class="spliced-letter">D</span>exterity</span>
+        <input type="number" name="attr_dex_base" value="0">
+        <span class="spliced-sign">+</span>
+        <input type="number" name="attr_dex_mod" value="0">
+        <span class="spliced-sign">=</span>
+        <input type="number" name="attr_dex" value="0" readonly>
+        <button type="action" name="act_roll_dex">Roll</button>
+      </div>
+    </section>
+
+    <!-- NPC Stats Section (Health and Evasion) -->
+    <section class="npc_stats f-col">
+      <div class="npc_stats-row">
+        <span class="npc_stats-lbl">health</span>
+        <input type="number" name="attr_hp" value="7">
+        <span class="npc_stats-slash">/</span>
+        <input type="number" name="attr_hp_max" value="7">
+      </div>
+      <div class="npc_stats-row">
+        <span class="npc_stats-lbl">evasion</span>
+        <input type="number" name="attr_evasion" value="10">
+      </div>
+    </section>
+
+    <!-- NPC Character Profile Section (No level) -->
+    <section class="charac f-col">
+      <div class="charac-row">
+        <input type="text" name="attr_character_name" placeholder="Character Name" class="charac-name-input">
+      </div>
+      <div class="charac-row flex-align">
+        <span class="charac-lbl">the</span>
+        <input type="text" name="attr_character_class" placeholder="Class">
+      </div>
+    </section>
+
+    <!-- Action Pool Section (Moves to Row 2 Columns 2 & 3) -->
+    <section class="act_pool">
+      <div class="action-pool-container">
+        <div class="action-grid">
+          <div class="action-cell">
+            <span class="action-lbl">general</span>
+            <input type="checkbox" name="attr_act_general">
+          </div>
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl1" placeholder="...">
+            <input type="checkbox" name="attr_act_custom1">
+          </div>
+          <div class="action-cell">
+            <span class="action-lbl">move</span>
+            <input type="checkbox" name="attr_act_move">
+          </div>
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl2" placeholder="...">
+            <input type="checkbox" name="attr_act_custom2">
+          </div>
+          <div class="action-cell">
+            <span class="action-lbl">reaction</span>
+            <input type="checkbox" name="attr_act_reaction">
+          </div>
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl3" placeholder="...">
+            <input type="checkbox" name="attr_act_custom3">
+          </div>
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl4" placeholder="...">
+            <input type="checkbox" name="attr_act_custom4">
+          </div>
+          <div class="action-cell">
+            <input type="text" name="attr_act_custom_lbl5" placeholder="...">
+            <input type="checkbox" name="attr_act_custom5">
+          </div>
+        </div>
+        <button type="action" name="act_clear_actions" class="action-clear-btn" title="Clear All Actions">↻</button>
+      </div>
+    </section>
+
+    <!-- Defense Section (Moves to Row 2 Column 4) -->
+    <section class="def f-col">
+      <div class="f-col def-col">
+        <label>Physical Defense <input type="number" name="attr_pdef" value="2"></label>
+        <label>Energy Defense <input type="number" name="attr_edef" value="2"></label>
+      </div>
+    </section>
+
+    <!-- Active Conditions (Moves to Row 3 Columns 2, 3, & 4) -->
+    <section class="cond f-col nowrap">
+      <textarea name="attr_cond" style="width: 100%; flex-grow: 1; resize: none; padding: 5px; box-sizing: border-box;" placeholder="Active conditions..."></textarea>
+    </section>
+
+    <!-- Weapons Table (Same inputs, same roll trigger) -->
+    <section class="weap f-col">
+      <div class="weapon_title f-row">
+        <div class="weap_name_title"><label> Weapon </label></div>
+        <div class="weap_attr_title"><label> Attr </label></div>
+        <div class="weap_type_title"><label> Type </label></div>
+        <div class="weap_d_type_title"><label> Damage </label></div>
+        <div class="weap_dice_title"><label> Dice </label></div>
+        <div class="weap_effect_title"><label> Effect </label></div>
+      </div>
+
+      <!-- Main Hand 1 -->
+      <div class="main_1 f-row">
+        <input type="text" name="attr_main_1_name" class="weap_name" value="Dagger">
+        <select name="attr_main_1_attr" class="weap_attr">
+          <option value="none"></option>
+          <option value="str">Str</option>
+          <option value="int">Int</option>
+        </select>
+        <select name="attr_main_1_type" class="weap_type">
+          <option value="none"></option>
+          <option value="Lgt">Lgt</option>
+          <option value="Med">Med</option>
+          <option value="Hvy">Hvy</option>
+          <option value="Mty">Mty</option>
+          <option value="Imp">Imp</option>
+        </select>
+        <select name="attr_main_1_d_type" class="weap_d_type">
+          <option value="none"></option>
+          <option value="Phys">Phys</option>
+          <option value="Eng">Eng</option>
+        </select>
+        <input type="number" name="attr_main_1_dice_num" class="weap_dice_num" value="1">
+        <select name="attr_main_1_dice_size" class="weap_dice_size">
+          <option value="d4">d4</option>
+          <option value="d6">d6</option>
+          <option value="d8">d8</option>
+          <option value="d10">d10</option>
+          <option value="d12">d12</option>
+          <option value="d20">d20</option>
+        </select>
+        <input type="text" name="attr_main_1_effect" class="weap_effect">
+        <button type="action" name="act_roll_main_1">Roll</button>
+      </div>
+
+      <!-- Off Hand 1 -->
+      <div class="off_1 f-row">
+        <input type="text" name="attr_off_1_name" class="weap_name">
+        <select name="attr_off_1_attr" class="weap_attr">
+          <option value="none" selected></option>
+          <option value="str">Str</option>
+          <option value="int">Int</option>
+        </select>
+        <select name="attr_off_1_type" class="weap_type">
+          <option value="none" selected></option>
+          <option value="Lgt">Lgt</option>
+          <option value="Med">Med</option>
+          <option value="Hvy">Hvy</option>
+          <option value="Mty">Mty</option>
+          <option value="Imp">Imp</option>
+        </select>
+        <select name="attr_off_1_d_type" class="weap_d_type">
+          <option value="none" selected></option>
+          <option value="Phys">Phys</option>
+          <option value="Eng">Eng</option>
+        </select>
+        <input type="number" name="attr_off_1_dice_num" class="weap_dice_num">
+        <select name="attr_off_1_dice_size" class="weap_dice_size">
+          <option value="none" selected></option>
+          <option value="d4">d4</option>
+          <option value="d6">d6</option>
+          <option value="d8">d8</option>
+          <option value="d10">d10</option>
+          <option value="d12">d12</option>
+          <option value="d20">d20</option>
+        </select>
+        <input type="text" name="attr_off_1_effect" class="weap_effect">
+        <button type="action" name="act_roll_off_1">Roll</button>
+      </div>
+
+      <!-- Main Hand 2 -->
+      <div class="main_2 f-row">
+        <input type="text" name="attr_main_2_name" class="weap_name">
+        <select name="attr_main_2_attr" class="weap_attr">
+          <option value="none" selected></option>
+          <option value="str">Str</option>
+          <option value="int">Int</option>
+        </select>
+        <select name="attr_main_2_type" class="weap_type">
+          <option value="none" selected></option>
+          <option value="Lgt">Lgt</option>
+          <option value="Med">Med</option>
+          <option value="Hvy">Hvy</option>
+          <option value="Mty">Mty</option>
+          <option value="Imp">Imp</option>
+        </select>
+        <select name="attr_main_2_d_type" class="weap_d_type">
+          <option value="none" selected></option>
+          <option value="Phys">Phys</option>
+          <option value="Eng">Eng</option>
+        </select>
+        <input type="number" name="attr_main_2_dice_num" class="weap_dice_num">
+        <select name="attr_main_2_dice_size" class="weap_dice_size">
+          <option value="none" selected></option>
+          <option value="d4">d4</option>
+          <option value="d6">d6</option>
+          <option value="d8">d8</option>
+          <option value="d10">d10</option>
+          <option value="d12">d12</option>
+          <option value="d20">d20</option>
+        </select>
+        <input type="text" name="attr_main_2_effect" class="weap_effect">
+        <button type="action" name="act_roll_main_2">Roll</button>
+      </div>
+
+      <!-- Off Hand 2 -->
+      <div class="off_2 f-row">
+        <input type="text" name="attr_off_2_name" class="weap_name">
+        <select name="attr_off_2_attr" class="weap_attr">
+          <option value="none" selected></option>
+          <option value="str">Str</option>
+          <option value="int">Int</option>
+        </select>
+        <select name="attr_off_2_type" class="weap_type">
+          <option value="none" selected></option>
+          <option value="Lgt">Lgt</option>
+          <option value="Med">Med</option>
+          <option value="Hvy">Hvy</option>
+          <option value="Mty">Mty</option>
+          <option value="Imp">Imp</option>
+        </select>
+        <select name="attr_off_2_d_type" class="weap_d_type">
+          <option value="none" selected></option>
+          <option value="Phys">Phys</option>
+          <option value="Eng">Eng</option>
+        </select>
+        <input type="number" name="attr_off_2_dice_num" class="weap_dice_num">
+        <select name="attr_off_2_dice_size" class="weap_dice_size">
+          <option value="none" selected></option>
+          <option value="d4">d4</option>
+          <option value="d6">d6</option>
+          <option value="d8">d8</option>
+          <option value="d10">d10</option>
+          <option value="d12">d12</option>
+          <option value="d20">d20</option>
+        </select>
+        <input type="text" name="attr_off_2_effect" class="weap_effect">
+        <button type="action" name="act_roll_off_2">Roll</button>
+      </div>
+    </section>
+
+    <!-- Repeating Abilities (Excluding Expertise) -->
+    <section class="abilities f-col">
+      <div class="f-row headers">
+        <span class="ability_name_title">Abilities</span>
+        <span class="ability_cost_title">Cost</span>
+        <span class="ability_type_title">Type</span>
+        <span class="ability_target_title">Target</span>
+        <span class="ability_range_title">Range</span>
+        <span class="ability_AOE_title">AOE</span>
+        <span class="ability_duration_title">Duration</span>
+        <span class="ability_effect_title">Effect</span>
+      </div>
+
+      <fieldset class="repeating_abilities">
+        <div class="f-row ability-row" style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
+          <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
+          <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
+          <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
+          <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
+          <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
+          <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
+          <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
+          <input type="text" name="attr_ability_effect" class="ability_effect" placeholder="Deals 2d6 fire damage to all targets in area.">
+        </div>
+      </fieldset>
+    </section>
   </div>
 
   <!-- ==========================================================================
