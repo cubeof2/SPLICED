@@ -67,6 +67,8 @@ main {
 /* Hide all tab contents by default */
 .tab-content-core,
 .tab-content-inventory,
+.tab-content-npc,
+.tab-content-vehicle,
 .tab-content-passives,
 .tab-content-notes {
   display: none !important;
@@ -76,7 +78,8 @@ main {
 .tabstoggle[value="core"]~.tab-buttons .tab-button-core,
 .tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory,
 .tabstoggle[value="passives"]~.tab-buttons .tab-button-passives,
-.tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
+.tabstoggle[value="npc"]~.tab-buttons .tab-button-npc,
+.tabstoggle[value="vehicle"]~.tab-buttons .tab-button-vehicle .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes {
   color: coral;
   border-bottom: 3px solid coral;
   font-weight: bold;
@@ -93,6 +96,14 @@ main {
 }
 
 .tabstoggle[value="passives"]~.tab-content-passives {
+  display: block !important;
+}
+
+.tabstoggle[value="npc"]~.tab-content-npc {
+  display: block !important;
+}
+
+.tabstoggle[value="vehicle"]~.tab-content-vehicle {
   display: block !important;
 }
 
