@@ -300,13 +300,13 @@ section {
 }
 
 .spliced-word {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: normal;
   letter-spacing: -0.3px;
 }
 
 .spliced-letter {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   line-height: 1;
   display: inline;
@@ -925,4 +925,100 @@ section {
   padding: 0 !important;
   font-weight: inherit !important;
   cursor: auto !important;
+}
+/* ==========================================================================
+   19. Vehicle Tab Custom Layout & Compact Fixes
+   ========================================================================== */
+
+/* 1. Fix SPD & MVR stretching, narrow the buttons, and control the gaps */
+.tab-content-vehicle .spliced-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important; /* Overrides space-between to allow exact gap control */
+    gap: 12px !important;               /* Adds uniform spacing between Title <-> Value <-> Button */
+}
+
+/* Give the titles a uniform width so the layout aligns beautifully */
+.tab-content-vehicle .spliced-item .spliced-word {
+    width: 28px !important;
+    text-align: left !important;
+    flex: 0 0 28px !important;
+}
+
+/* Keep the number box strictly sized */
+.tab-content-vehicle .spliced-item input[type="number"] {
+    width: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    flex: 0 0 38px !important;
+    padding: 2px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+/* Lock the roll button to a narrower, compact profile */
+.tab-content-vehicle .spliced-item button[type="action"] {
+    width: 36px !important;       /* Hardcoded narrow width */
+    min-width: 36px !important;
+    max-width: 36px !important;
+    flex: 0 0 36px !important;
+    padding: 2px 0 !important;    /* Removes heavy default side padding */
+    font-size: 10px !important;   /* Slighly smaller font to ensure "Roll" sits comfortably */
+    text-align: center !important;
+    height: 20px !important;
+    line-height: 14px !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. Fix Crew slots spilling: Reduce label width & input size to fit the 200px column */
+.tab-content-vehicle .npc_stats-row .npc_stats-lbl {
+    width: 40px !important; /* Shrinks the label from 72px to 40px to free up space in a 200px column */
+    flex-shrink: 0 !important;
+}
+
+.tab-content-vehicle .npc_stats-row input[type="number"] {
+    width: 36px !important; /* Overrides the global 50px width rule */
+    min-width: 36px !important;
+    max-width: 36px !important;
+    flex: 0 0 36px !important;
+    padding: 2px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+/* 3. Fix Health boxes spilling: Tighten padding and shrink inputs to fit the 150px column */
+.tab-content-vehicle .stats {
+    padding: 5px 6px !important; /* Shaves off extra side padding to give elements 8px more room */
+}
+
+.tab-content-vehicle .stat-item input[type="number"] {
+    width: 34px !important; /* Overrides global 40px width to fit the 150px column math perfectly */
+    min-width: 34px !important;
+    max-width: 34px !important;
+    flex: 0 0 34px !important;
+    padding: 2px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+/* 4. Global cleanup for vehicle tab number boxes (hides browser spinner arrows) */
+.tab-content-vehicle input[type="number"]::-webkit-outer-spin-button,
+.tab-content-vehicle input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+.tab-content-vehicle input[type="number"] {
+    -moz-appearance: textfield !important; /* Firefox support */
+}
+
+/* 5. Force flex containers to center vertically so elements don't misalign */
+.tab-content-vehicle .spliced-item,
+.tab-content-vehicle .npc_stats-row,
+.tab-content-vehicle .stat-item {
+    display: flex !important;
+    align-items: center !important;
 }

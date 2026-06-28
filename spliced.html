@@ -817,209 +817,211 @@
     <!-- ==========================================================================
        3. Vehicle Tab Panel
        ========================================================================== -->
-  <div class="tab-content tab-content-vehicle">
-    <div class="vehicle-grid"
-      style="display: grid; grid-gap: 2px; grid-template-columns: 270px 180px 150px 200px; grid-template-rows: auto; grid-template-areas: 'veh_charac veh_charac veh_stats veh_crew' 'veh_act veh_act veh_health veh_def' 'veh_weap veh_weap veh_weap veh_weap' 'abilities abilities abilities abilities';">
-
-      <!-- Vehicle Profile & Scale -->
-      <section class="charac f-col" style="grid-area: veh_charac;">
-        <div class="charac-row flex-align">
-          <input type="text" name="attr_vehicle_name" placeholder="Vehicle Name" class="charac-name-input">
-        </div>
-        <div class="charac-row flex-align">
-          <span class="charac-lbl">Scale</span>
-          <select name="attr_vehicle_scale" style="flex:1;">
-            <option value="Single operator">Single operator</option>
-            <option value="Multi operator">Multi operator</option>
-            <option value="Building-scale">Building-scale</option>
-            <option value="City-scale">City-scale</option>
-            <option value="Planet-scale">Planet-scale</option>
-          </select>
-          <span class="charac-lbl" style="margin-left: 10px;">Detect</span>
-          <select name="attr_veh_detection" style="flex:1;">
-            <option value="none">None</option>
-            <option value="adjacent">Adjacent</option>
-            <option value="short">Short</option>
-            <option value="medium" selected>Medium</option>
-            <option value="long">Long</option>
-            <option value="long+">Long+</option>
-          </select>
-        </div>
-      </section>
-
-      <!-- Speed & Maneuverability -->
-      <section class="spliced f-col" style="grid-area: veh_stats; justify-content: center; padding: 5px;">
-        <div class="spliced-item" style="border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
-          <span class="spliced-word" style="font-weight: bold; font-size: 11px;">SPD</span>
-          <input type="number" name="attr_veh_spd" value="2" min="0" max="5">
-          <button type="action" name="act_roll_veh_spd">Roll</button>
-        </div>
-        <div class="spliced-item" style="padding-top: 5px;">
-          <span class="spliced-word" style="font-weight: bold; font-size: 11px;">MVR</span>
-          <input type="number" name="attr_veh_mvr" value="2" min="0" max="5">
-          <button type="action" name="act_roll_veh_mvr">Roll</button>
-        </div>
-      </section>
-
-      <!-- Crew Slots -->
-      <section class="npc_stats f-col" style="grid-area: veh_crew; padding: 5px;">
-        <div class="npc_stats-row" style="justify-content: space-between;">
-          <span class="npc_stats-lbl">Crew Min/Max</span>
-          <input type="number" name="attr_veh_crew_min" value="1" title="Minimum crew needed (Mandatory slots)">
-          <span class="npc_stats-slash">/</span>
-          <input type="number" name="attr_veh_crew_max" value="8" title="Maximum crew allowed">
-        </div>
-        <textarea name="attr_veh_crew_slots" placeholder="Pilot (1, Mandatory)..."
-          style="width: 100%; height: 40px; resize: none; margin-top: 5px; font-size: 10px; padding: 3px; box-sizing: border-box;"
-          title="Crew slots, number, and mandatory/optional status"></textarea>
-      </section>
-
-      <!-- Action Pool -->
-      <section class="act_pool" style="grid-area: veh_act;">
-        <div class="action-pool-container">
-          <div class="action-grid">
-            <div class="action-cell">
-              <span class="action-lbl">general</span>
-              <input type="checkbox" name="attr_veh_act_general">
-            </div>
-            <div class="action-cell">
-              <input type="text" name="attr_veh_act_custom_lbl1" placeholder="...">
-              <input type="checkbox" name="attr_veh_act_custom1">
-            </div>
-            <div class="action-cell">
-              <span class="action-lbl">move</span>
-              <input type="checkbox" name="attr_veh_act_move">
-            </div>
-            <div class="action-cell">
-              <input type="text" name="attr_veh_act_custom_lbl2" placeholder="...">
-              <input type="checkbox" name="attr_veh_act_custom2">
-            </div>
-            <div class="action-cell">
-              <span class="action-lbl">reaction</span>
-              <input type="checkbox" name="attr_veh_act_reaction">
-            </div>
-            <div class="action-cell">
-              <input type="text" name="attr_veh_act_custom_lbl3" placeholder="...">
-              <input type="checkbox" name="attr_veh_act_custom3">
-            </div>
-            <div class="action-cell">
-              <input type="text" name="attr_veh_act_custom_lbl4" placeholder="...">
-              <input type="checkbox" name="attr_veh_act_custom4">
-            </div>
-            <div class="action-cell">
-              <input type="text" name="attr_veh_act_custom_lbl5" placeholder="...">
-              <input type="checkbox" name="attr_veh_act_custom5">
-            </div>
+    <div class="tab-content tab-content-vehicle">
+      <div class="vehicle-grid" style="display: grid; grid-gap: 5px; grid-template-columns: 270px 180px 150px 200px; grid-template-rows: auto; grid-template-areas: 'veh_charac veh_charac veh_stats veh_crew' 'veh_act veh_act veh_health veh_def' 'veh_weap veh_weap veh_weap veh_weap' 'abilities abilities abilities abilities'; width: 800px;">
+    
+        <!-- Vehicle Profile & Scale -->
+        <section class="charac f-col" style="grid-area: veh_charac; gap: 5px;">
+          <div class="charac-row flex-align" style="display: flex; width: 100%;">
+            <input type="text" name="attr_vehicle_name" placeholder="Vehicle Name" class="charac-name-input" style="width: 100%;">
           </div>
-          <button type="action" name="act_clear_veh_actions" class="action-clear-btn"
-            title="Clear All Actions">↻</button>
-        </div>
-      </section>
-
-      <!-- Health & Status -->
-      <section class="stats f-col"
-        style="grid-area: veh_health; align-items: center; justify-content: center; padding: 5px;">
-        <div class="stat-item" style="margin-bottom: 5px; justify-content: center;">
-          <label style="justify-content: center; gap: 5px;">HEALTH: <span><input type="number" name="attr_veh_hp"
-                value="2"> / <input type="number" name="attr_veh_hp_max" value="2"></span></label>
-        </div>
-        <select name="attr_veh_state" style="width: 100%; font-size: 11px; text-align: center;">
-          <option value="ok" selected>OK</option>
-          <option value="disabled">Disabled</option>
-          <option value="destroyed">Destroyed</option>
-        </select>
-      </section>
-
-      <!-- Defenses -->
-      <section class="def f-col" style="grid-area: veh_def;">
-        <div class="f-col def-col">
-          <label>Physical Defense <input type="number" name="attr_veh_pdef" value="2"></label>
-          <label>Energy Defense <input type="number" name="attr_veh_edef" value="2"></label>
-        </div>
-      </section>
-
-      <!-- Vehicle Weapons (Repeating Section) -->
-      <section class="weap f-col" style="grid-area: veh_weap; padding: 5px;">
-        <div class="weapon_title f-row"
-          style="font-size: 11px; font-weight: bold; border-bottom: 1px solid #ccc; margin-bottom: 5px; padding-bottom: 2px;">
-          <div style="width: 20%;">Weapon</div>
-          <div style="width: 13%;">Mount</div>
-          <div style="width: 11%;">Sweep</div>
-          <div style="width: 11%;">Range</div>
-          <div style="width: 9%;">Type</div>
-          <div style="width: 10%;">Dice</div>
-          <div style="width: 21%;">Other / Characteristics</div>
-          <div style="width: 5%;">Roll</div>
-        </div>
-        <fieldset class="repeating_vehweap">
-          <div class="f-row" style="margin-bottom: 3px; gap: 2px;">
-            <input type="text" name="attr_vehweap_name" style="width: 20%;" placeholder="Plasma Cannon">
-            <select name="attr_vehweap_mount" style="width: 13%;">
-              <option value="front">Front</option>
-              <option value="back">Back</option>
-              <option value="left">Left</option>
-              <option value="right">Right</option>
-              <option value="front_right">Front Right</option>
-              <option value="front_left">Front Left</option>
-              <option value="back_right">Back Right</option>
-              <option value="back_left">Back Left</option>
-              <option value="turret">Turret</option>
+          <div class="charac-row flex-align" style="display: flex; gap: 5px; align-items: center;">
+            <span class="charac-lbl" style="font-size: 11px; font-weight: bold;">Scale</span>
+            <select name="attr_vehicle_scale" style="flex: 1; min-width: 0;">
+              <option value="Single operator">Single operator</option>
+              <option value="Multi operator">Multi operator</option>
+              <option value="Building-scale">Building-scale</option>
+              <option value="City-scale">City-scale</option>
+              <option value="Planet-scale">Planet-scale</option>
             </select>
-            <select name="attr_vehweap_sweep" style="width: 11%;">
-              <option value="fixed">Fixed</option>
-              <option value="gimbaled">Gimbaled</option>
-              <option value="turret">Turret</option>
-            </select>
-            <select name="attr_vehweap_range" style="width: 11%;">
+            <span class="charac-lbl" style="font-size: 11px; font-weight: bold; margin-left: 5px;">Detect</span>
+            <select name="attr_veh_detection" style="flex: 1; min-width: 0;">
+              <option value="none">None</option>
               <option value="adjacent">Adjacent</option>
               <option value="short">Short</option>
-              <option value="medium">Medium</option>
+              <option value="medium" selected>Medium</option>
               <option value="long">Long</option>
-              <option value="long_plus">Long+</option>
+              <option value="long+">Long+</option>
             </select>
-            <select name="attr_vehweap_type" style="width: 9%;">
-              <option value="phys">Physical</option>
-              <option value="energy">Energy</option>
-            </select>
-            <div style="width: 10%; display: flex; align-items: center; gap: 1px;">
-              <input type="number" name="attr_vehweap_dicenum"
-                style="width: 45%; margin:0; padding:0; text-align: center;" value="1">
-              <select name="attr_vehweap_dicesize" style="width: 55%; margin:0; padding:0;">
-                <option value="d4">d4</option>
-                <option value="d6">d6</option>
-                <option value="d8">d8</option>
-                <option value="d10" selected>d10</option>
-                <option value="d12">d12</option>
-                <option value="d20">d20</option>
-              </select>
+          </div>
+        </section>
+    
+        <!-- Speed & Maneuverability -->
+        <section class="spliced f-col" style="grid-area: veh_stats; justify-content: center; padding: 5px; gap: 5px;">
+          <div class="spliced-item" style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
+            <span class="spliced-word" style="font-weight: bold; font-size: 11px;">SPD</span>
+            <input type="number" name="attr_veh_spd" value="2" min="0" max="5" class="veh-small-input" style="width: 45px; text-align: center;">
+            <button type="action" name="act_roll_veh_spd" style="padding: 2px 8px; font-size: 11px;">Roll</button>
+          </div>
+          <div class="spliced-item" style="display: flex; align-items: center; justify-content: space-between;">
+            <span class="spliced-word" style="font-weight: bold; font-size: 11px;">MVR</span>
+            <input type="number" name="attr_veh_mvr" value="2" min="0" max="5" class="veh-small-input" style="width: 45px; text-align: center;">
+            <button type="action" name="act_roll_veh_mvr" style="padding: 2px 8px; font-size: 11px;">Roll</button>
+          </div>
+        </section>
+    
+        <!-- Crew Slots -->
+        <section class="npc_stats f-col" style="grid-area: veh_crew; padding: 5px;">
+          <div class="npc_stats-row" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <span class="npc_stats-lbl" style="font-weight: bold; font-size: 11px;">Crew</span>
+            <div style="display: flex; align-items: center; gap: 4px;">
+              <input type="number" name="attr_veh_crew_min" value="1" title="Minimum crew needed (Mandatory slots)" class="veh-small-input" style="width: 40px; text-align: center;">
+              <span class="npc_stats-slash">/</span>
+              <input type="number" name="attr_veh_crew_max" value="8" title="Maximum crew allowed" class="veh-small-input" style="width: 40px; text-align: center;">
             </div>
-            <input type="text" name="attr_vehweap_effect" style="width: 21%;" placeholder="e.g. Max roll on MVR 4+">
-            <button type="action" name="act_rollweap" style="width: 5%; font-size: 9px; padding: 0;">Roll</button>
           </div>
-        </fieldset>
-      </section>
-
-      <!-- Vehicle Abilities -->
-      <section class="abilities f-col" style="grid-area: abilities; background-color: coral; padding: 5px;">
-        <div class="f-row headers"
-          style="font-size: 11px; font-weight: bold; border-bottom: 1px solid #c24000; margin-bottom: 3px; color: white;">
-          <span style="width: 25%;">Vehicle Ability</span>
-          <span style="width: 20%;">Assigned Role / Check</span>
-          <span style="width: 55%;">Effect / Sustained Costs</span>
-        </div>
-        <fieldset class="repeating_vehabil">
-          <div class="f-row ability-row"
-            style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
-            <input type="text" name="attr_vehabil_name" style="width: 25%;" placeholder="Countermeasures">
-            <input type="text" name="attr_vehabil_check" style="width: 20%;" placeholder="Flight Eng. LUK check">
-            <input type="text" name="attr_vehabil_effect" style="width: 55%;"
-              placeholder="Fools incoming missiles if successful...">
+          <textarea name="attr_veh_crew_slots" placeholder="Pilot (1, Mandatory)..."
+            style="width: 100%; height: 38px; resize: none; margin-top: 5px; font-size: 10px; padding: 3px; box-sizing: border-box;"
+            title="Crew slots, number, and mandatory/optional status"></textarea>
+        </section>
+    
+        <!-- Action Pool -->
+        <section class="act_pool" style="grid-area: veh_act;">
+          <div class="action-pool-container" style="display: flex; align-items: center; gap: 5px;">
+            <div class="action-grid" style="flex: 1;">
+              <div class="action-cell">
+                <span class="action-lbl">general</span>
+                <input type="checkbox" name="attr_veh_act_general">
+              </div>
+              <div class="action-cell">
+                <input type="text" name="attr_veh_act_custom_lbl1" placeholder="...">
+                <input type="checkbox" name="attr_veh_act_custom1">
+              </div>
+              <div class="action-cell">
+                <span class="action-lbl">move</span>
+                <input type="checkbox" name="attr_veh_act_move">
+              </div>
+              <div class="action-cell">
+                <input type="text" name="attr_veh_act_custom_lbl2" placeholder="...">
+                <input type="checkbox" name="attr_veh_act_custom2">
+              </div>
+              <div class="action-cell">
+                <input type="text" name="attr_veh_act_custom_lbl3" placeholder="...">
+                <input type="checkbox" name="attr_veh_act_custom3">
+              </div>
+              <div class="action-cell">
+                <input type="text" name="attr_veh_act_custom_lbl3" placeholder="...">
+                <input type="checkbox" name="attr_veh_act_custom3">
+              </div>
+              <div class="action-cell">
+                <input type="text" name="attr_veh_act_custom_lbl4" placeholder="...">
+                <input type="checkbox" name="attr_veh_act_custom4">
+              </div>
+              <div class="action-cell">
+                <input type="text" name="attr_veh_act_custom_lbl5" placeholder="...">
+                <input type="checkbox" name="attr_veh_act_custom5">
+              </div>
+            </div>
+            <button type="action" name="act_clear_veh_actions" class="action-clear-btn" title="Clear All Actions" style="height: 100%; padding: 0 8px;">↻</button>
           </div>
-        </fieldset>
-      </section>
-
+        </section>
+    
+        <!-- Health & Status -->
+        <section class="stats f-col" style="grid-area: veh_health; align-items: center; justify-content: center; padding: 5px; gap: 5px;">
+          <div class="stat-item" style="display: flex; align-items: center; justify-content: center; gap: 4px; width: 100%;">
+            <span style="font-weight: bold; font-size: 11px; text-transform: uppercase;">Health:</span>
+            <input type="number" name="attr_veh_hp" value="2" class="veh-small-input" style="width: 40px; text-align: center;">
+            <span style="font-size: 11px;">/</span>
+            <input type="number" name="attr_veh_hp_max" value="2" class="veh-small-input" style="width: 40px; text-align: center;">
+          </div>
+          <select name="attr_veh_state" style="width: 100%; font-size: 11px; text-align: center; height: 24px;">
+            <option value="ok" selected>OK</option>
+            <option value="disabled">Disabled</option>
+            <option value="destroyed">Destroyed</option>
+          </select>
+        </section>
+    
+        <!-- Defenses -->
+        <section class="def f-col" style="grid-area: veh_def; padding: 5px; justify-content: center;">
+          <div class="f-col def-col" style="gap: 4px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 11px;">Physical Defense</span>
+              <input type="number" name="attr_veh_pdef" value="2" class="veh-small-input" style="width: 40px; text-align: center;">
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 11px;">Energy Defense</span>
+              <input type="number" name="attr_veh_edef" value="2" class="veh-small-input" style="width: 40px; text-align: center;">
+            </div>
+          </div>
+        </section>
+    
+        <!-- Vehicle Weapons (Repeating Section) -->
+        <section class="weap f-col" style="grid-area: veh_weap; padding: 5px;">
+          <div class="weapon_title f-row" style="display: flex; font-size: 11px; font-weight: bold; border-bottom: 1px solid #ccc; margin-bottom: 5px; padding-bottom: 2px;">
+            <div style="width: 20%;">Weapon</div>
+            <div style="width: 13%;">Mount</div>
+            <div style="width: 11%;">Sweep</div>
+            <div style="width: 11%;">Range</div>
+            <div style="width: 9%;">Type</div>
+            <div style="width: 10%;">Dice</div>
+            <div style="width: 21%;">Other / Characteristics</div>
+            <div style="width: 5%; text-align: center;">Roll</div>
+          </div>
+          <fieldset class="repeating_vehweap">
+            <div class="f-row" style="display: flex; margin-bottom: 3px; gap: 2px; align-items: center;">
+              <input type="text" name="attr_vehweap_name" style="width: 20%;" placeholder="Plasma Cannon">
+              <select name="attr_vehweap_mount" style="width: 13%;">
+                <option value="front">Front</option>
+                <option value="back">Back</option>
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+                <option value="front_right">Front Right</option>
+                <option value="front_left">Front Left</option>
+                <option value="back_right">Back Right</option>
+                <option value="back_left">Back Left</option>
+                <option value="turret">Turret</option>
+              </select>
+              <select name="attr_vehweap_sweep" style="width: 11%;">
+                <option value="fixed">Fixed</option>
+                <option value="gimbaled">Gimbaled</option>
+                <option value="turret">Turret</option>
+              </select>
+              <select name="attr_vehweap_range" style="width: 11%;">
+                <option value="adjacent">Adjacent</option>
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+                <option value="long_plus">Long+</option>
+              </select>
+              <select name="attr_vehweap_type" style="width: 9%;">
+                <option value="phys">Physical</option>
+                <option value="energy">Energy</option>
+              </select>
+              <div style="width: 10%; display: flex; align-items: center; gap: 1px;">
+                <input type="number" name="attr_vehweap_dicenum" style="width: 45%; margin:0; padding:0; text-align: center;" value="1">
+                <select name="attr_vehweap_dicesize" style="width: 55%; margin:0; padding:0;">
+                  <option value="d4">d4</option>
+                  <option value="d6">d6</option>
+                  <option value="d8">d8</option>
+                  <option value="d10" selected>d10</option>
+                  <option value="d12">d12</option>
+                  <option value="d20">d20</option>
+                </select>
+              </div>
+              <input type="text" name="attr_vehweap_effect" style="width: 21%;" placeholder="e.g. Max roll on MVR 4+">
+              <button type="action" name="act_rollweap" style="width: 5%; font-size: 9px; padding: 2px 0; text-align: center;">Roll</button>
+            </div>
+          </fieldset>
+        </section>
+    
+        <!-- Vehicle Abilities -->
+        <section class="abilities f-col" style="grid-area: abilities; background-color: coral; padding: 5px; border-radius: 3px;">
+          <div class="f-row headers" style="display: flex; font-size: 11px; font-weight: bold; border-bottom: 1px solid #c24000; margin-bottom: 5px; padding-bottom: 2px; color: white;">
+            <span style="width: 25%;">Vehicle Ability</span>
+            <span style="width: 20%;">Assigned Role / Check</span>
+            <span style="width: 55%;">Effect / Sustained Costs</span>
+          </div>
+          <fieldset class="repeating_vehabil">
+            <div class="f-row ability-row" style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 3px; width: 100%;">
+              <input type="text" name="attr_vehabil_name" style="width: 25%;" placeholder="Countermeasures">
+              <input type="text" name="attr_vehabil_check" style="width: 20%;" placeholder="Flight Eng. LUK check">
+              <input type="text" name="attr_vehabil_effect" style="width: 55%;" placeholder="Fools incoming missiles if successful...">
+            </div>
+          </fieldset>
+        </section>
+    
+      </div>
     </div>
-  </div>
 
     <!-- ==========================================================================
        4. Inventory Tab Panel
