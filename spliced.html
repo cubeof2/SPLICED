@@ -423,17 +423,45 @@
       </div>
 
       <fieldset class="repeating_abilities">
-        <div class="f-row ability-row"
-          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
-          <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
-          <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
-          <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
-          <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
-          <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
-          <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
-          <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
-          <input type="text" name="attr_ability_effect" class="ability_effect"
-            placeholder="Deals 2d6 fire damage to all targets in area.">
+        <div class="f-col ability-entry" style="gap: 2px; margin-bottom: 6px;">
+          <div class="f-row ability-row"
+            style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
+            <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
+            <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
+            <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
+            <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
+            <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
+            <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
+            <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
+            <input type="text" name="attr_ability_effect" class="ability_effect"
+              placeholder="Deals 2d6 fire damage to all targets in area.">
+          </div>
+          <div class="f-row ability-roll-row"
+            style="display: flex; flex-direction: row; gap: 4px; align-items: center; width: 100%;">
+            <span style="font-size: 11px; font-weight: bold; margin-left: 2px;">Check</span>
+            <select name="attr_ability_check_attr" style="width: 80px;">
+              <option value="str">Strength</option>
+              <option value="per">Perception</option>
+              <option value="luk" selected>Luck</option>
+              <option value="int">Intelligence</option>
+              <option value="crg">Courage</option>
+              <option value="end">Endurance</option>
+              <option value="dex">Dexterity</option>
+            </select>
+            <button type="action" name="act_rollcheck">Roll</button>
+            
+            <span style="font-size: 11px; font-weight: bold; margin-left: 10px;">Damage</span>
+            <input type="number" name="attr_ability_dmg_num" style="width: 40px; text-align: center;">
+            <select name="attr_ability_dmg_size" style="width: 50px;">
+              <option value="d4">d4</option>
+              <option value="d6" selected>d6</option>
+              <option value="d8">d8</option>
+              <option value="d10">d10</option>
+              <option value="d12">d12</option>
+              <option value="d20">d20</option>
+            </select>
+            <button type="action" name="act_rolldmg">Roll</button>
+          </div>
         </div>
       </fieldset>
     </section>
@@ -798,17 +826,45 @@
       </div>
 
       <fieldset class="repeating_abilities">
-        <div class="f-row ability-row"
-          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
-          <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
-          <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
-          <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
-          <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
-          <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
-          <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
-          <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
-          <input type="text" name="attr_ability_effect" class="ability_effect"
-            placeholder="Deals 2d6 fire damage to all targets in area.">
+        <div class="f-col ability-entry" style="gap: 2px; margin-bottom: 6px;">
+          <div class="f-row ability-row"
+            style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
+            <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
+            <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
+            <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
+            <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
+            <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
+            <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
+            <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
+            <input type="text" name="attr_ability_effect" class="ability_effect"
+              placeholder="Deals 2d6 fire damage to all targets in area.">
+          </div>
+          <div class="f-row ability-roll-row"
+            style="display: flex; flex-direction: row; gap: 4px; align-items: center; width: 100%;">
+            <span style="font-size: 11px; font-weight: bold; margin-left: 2px;">Check</span>
+            <select name="attr_ability_check_attr" style="width: 80px;">
+              <option value="str">Strength</option>
+              <option value="per">Perception</option>
+              <option value="luk" selected>Luck</option>
+              <option value="int">Intelligence</option>
+              <option value="crg">Courage</option>
+              <option value="end">Endurance</option>
+              <option value="dex">Dexterity</option>
+            </select>
+            <button type="action" name="act_rollcheck">Roll</button>
+            
+            <span style="font-size: 11px; font-weight: bold; margin-left: 10px;">Damage</span>
+            <input type="number" name="attr_ability_dmg_num" style="width: 40px; text-align: center;">
+            <select name="attr_ability_dmg_size" style="width: 50px;">
+              <option value="d4">d4</option>
+              <option value="d6" selected>d6</option>
+              <option value="d8">d8</option>
+              <option value="d10">d10</option>
+              <option value="d12">d12</option>
+              <option value="d20">d20</option>
+            </select>
+            <button type="action" name="act_rolldmg">Roll</button>
+          </div>
         </div>
       </fieldset>
     </section>
@@ -959,7 +1015,7 @@
           </div>
           <fieldset class="repeating_vehweap">
             <div class="f-row" style="display: flex; margin-bottom: 3px; gap: 2px; align-items: center;">
-              <input type="text" name="attr_vehweap_name" style="width: 20%;" placeholder="Plasma Cannon">
+              <input type="text" name="attr_vehweap_name" style="width: 20%">
               <select name="attr_vehweap_mount" style="width: 13%;">
                 <option value="front">Front</option>
                 <option value="back">Back</option>
@@ -998,7 +1054,7 @@
                   <option value="d20">d20</option>
                 </select>
               </div>
-              <input type="text" name="attr_vehweap_effect" style="width: 21%;" placeholder="e.g. Max roll on MVR 4+">
+              <input type="text" name="attr_vehweap_effect" style="width: 21%;">
               <button type="action" name="act_rollweap" style="width: 5%; font-size: 9px; padding: 2px 0; text-align: center;">Roll</button>
             </div>
           </fieldset>
@@ -1012,10 +1068,33 @@
             <span style="width: 55%;">Effect / Sustained Costs</span>
           </div>
           <fieldset class="repeating_vehabil">
-            <div class="f-row ability-row" style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 3px; width: 100%;">
-              <input type="text" name="attr_vehabil_name" style="width: 25%;" placeholder="Countermeasures">
-              <input type="text" name="attr_vehabil_check" style="width: 20%;" placeholder="Flight Eng. LUK check">
-              <input type="text" name="attr_vehabil_effect" style="width: 55%;" placeholder="Fools incoming missiles if successful...">
+            <div class="f-col vehabil-entry" style="gap: 2px; margin-bottom: 6px;">
+              <div class="f-row ability-row" style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
+                <input type="text" name="attr_vehabil_name" style="width: 25%;" placeholder="Countermeasures">
+                <input type="text" name="attr_vehabil_check" style="width: 20%;" placeholder="Flight Eng. LUK check">
+                <input type="text" name="attr_vehabil_effect" style="width: 55%;" placeholder="Fools incoming missiles if successful...">
+              </div>
+              <div class="f-row ability-roll-row"
+                style="display: flex; flex-direction: row; gap: 4px; align-items: center; width: 100%;">
+                <span style="font-size: 11px; font-weight: bold; margin-left: 2px;">Check</span>
+                <select name="attr_vehabil_check_attr" style="width: 80px;">
+                  <option value="veh_spd" selected>Speed</option>
+                  <option value="veh_mvr">Maneuv</option>
+                </select>
+                <button type="action" name="act_rollcheck">Roll</button>
+                
+                <span style="font-size: 11px; font-weight: bold; margin-left: 10px;">Damage</span>
+                <input type="number" name="attr_vehabil_dmg_num" style="width: 40px; text-align: center;">
+                <select name="attr_vehabil_dmg_size" style="width: 50px;">
+                  <option value="d4">d4</option>
+                  <option value="d6" selected>d6</option>
+                  <option value="d8">d8</option>
+                  <option value="d10">d10</option>
+                  <option value="d12">d12</option>
+                  <option value="d20">d20</option>
+                </select>
+                <button type="action" name="act_rolldmg">Roll</button>
+              </div>
             </div>
           </fieldset>
         </section>
@@ -1280,6 +1359,74 @@
             const diceSize = v[`${prefix}vehweap_dicesize`] || "d10";
             performRoll(name, diceNum, diceSize, true);
         });
+    });
+
+    // 9. LISTENERS FOR REPEATING ABILITIES (PC & NPC)
+    on("clicked:repeating_abilities:rollcheck clicked:repeating_abilities:rolldmg", function(info) {
+        const trigger = info.triggerName || "";
+        const rowId = trigger.replace("clicked:repeating_abilities_", "").replace("_rollcheck", "").replace("_rolldmg", "");
+        const prefix = `repeating_abilities_${rowId}_`;
+        const isDmg = trigger.includes("rolldmg");
+
+        if (isDmg) {
+            const fieldNum = `${prefix}ability_dmg_num`;
+            const fieldSize = `${prefix}ability_dmg_size`;
+
+            getAttrs([`${prefix}ability_name`, fieldNum, fieldSize], function(v) {
+                const name = v[`${prefix}ability_name`] || "Ability";
+                const diceNum = parseInt(v[fieldNum], 10) || 1;
+                const diceSize = v[fieldSize] || "d6";
+                performRoll(name, diceNum, diceSize, true);
+            });
+        } else {
+            const fieldAttr = `${prefix}ability_check_attr`;
+            
+            getAttrs([`${prefix}ability_name`, fieldAttr], function(v) {
+                const name = v[`${prefix}ability_name`] || "Ability";
+                const attrName = v[fieldAttr] || "luk";
+
+                getAttrs([attrName], function(attrVals) {
+                    const statVal = parseInt(attrVals[attrName], 10) || 0;
+                    const diceNum = statVal + 3;
+                    const diceSize = "d6";
+                    performRoll(name + " Check", diceNum, diceSize, false);
+                });
+            });
+        }
+    });
+
+    // V4. ROLL VEHICLE ABILITIES FROM REPEATING SECTION
+    on("clicked:repeating_vehabil:rollcheck clicked:repeating_vehabil:rolldmg", function(info) {
+        const trigger = info.triggerName || "";
+        const rowId = trigger.replace("clicked:repeating_vehabil_", "").replace("_rollcheck", "").replace("_rolldmg", "");
+        const prefix = `repeating_vehabil_${rowId}_`;
+        const isDmg = trigger.includes("rolldmg");
+
+        if (isDmg) {
+            const fieldNum = `${prefix}vehabil_dmg_num`;
+            const fieldSize = `${prefix}vehabil_dmg_size`;
+
+            getAttrs([`${prefix}vehabil_name`, fieldNum, fieldSize], function(v) {
+                const name = v[`${prefix}vehabil_name`] || "Vehicle Ability";
+                const diceNum = parseInt(v[fieldNum], 10) || 1;
+                const diceSize = v[fieldSize] || "d6";
+                performRoll(name, diceNum, diceSize, true);
+            });
+        } else {
+            const fieldAttr = `${prefix}vehabil_check_attr`;
+            
+            getAttrs([`${prefix}vehabil_name`, fieldAttr], function(v) {
+                const name = v[`${prefix}vehabil_name`] || "Vehicle Ability";
+                const attrName = v[fieldAttr] || "veh_spd";
+
+                getAttrs([attrName], function(attrVals) {
+                    const statVal = parseInt(attrVals[attrName], 10) || 0;
+                    const diceNum = statVal + 3;
+                    const diceSize = "d6";
+                    performRoll(name + " Check", diceNum, diceSize, false);
+                });
+            });
+        }
     });
 </script>
 
