@@ -156,8 +156,8 @@
       <div>
         <h3>1</h3>
         <b>Unconscious</b> <br>
-        until healed<br>
-        or recharged
+        until heal<br>
+        or recharge
       </div>
       <div>
         <h3>2</h3>
@@ -874,30 +874,21 @@
        3. Vehicle Tab Panel
        ========================================================================== -->
     <div class="tab-content tab-content-vehicle">
-      <div class="vehicle-grid" style="display: grid; grid-gap: 5px; grid-template-columns: 270px 180px 150px 200px; grid-template-rows: auto; grid-template-areas: 'veh_charac veh_charac veh_stats veh_crew' 'veh_act veh_act veh_health veh_def' 'veh_weap veh_weap veh_weap veh_weap' 'abilities abilities abilities abilities'; width: 800px;">
+      <div class="vehicle-grid" style="display: grid; grid-gap: 5px; grid-template-columns: 144px 180px 150px 326px; grid-template-rows: auto; grid-template-areas: 'veh_charac veh_stats veh_crew veh_crew' 'veh_act veh_act veh_health veh_def' 'veh_weap veh_weap veh_weap veh_weap' 'abilities abilities abilities abilities'; width: 800px;">
     
         <!-- Vehicle Profile & Scale -->
         <section class="charac f-col" style="grid-area: veh_charac; gap: 5px;">
           <div class="charac-row flex-align" style="display: flex; width: 100%;">
             <input type="text" name="attr_vehicle_name" placeholder="Vehicle Name" class="charac-name-input" style="width: 100%;">
           </div>
-          <div class="charac-row flex-align" style="display: flex; gap: 5px; align-items: center;">
-            <span class="charac-lbl" style="font-size: 11px; font-weight: bold;">Scale</span>
-            <select name="attr_vehicle_scale" style="flex: 1; min-width: 0;">
+          <div class="charac-row f-col" style="gap: 2px;">
+            <span class="charac-lbl" style="font-size: 11px; font-weight: bold; width: auto;">Scale</span>
+            <select name="attr_vehicle_scale" style="width: 100%;">
               <option value="Single operator">Single operator</option>
               <option value="Multi operator">Multi operator</option>
               <option value="Building-scale">Building-scale</option>
               <option value="City-scale">City-scale</option>
               <option value="Planet-scale">Planet-scale</option>
-            </select>
-            <span class="charac-lbl" style="font-size: 11px; font-weight: bold; margin-left: 5px;">Detect</span>
-            <select name="attr_veh_detection" style="flex: 1; min-width: 0;">
-              <option value="none">None</option>
-              <option value="adjacent">Adjacent</option>
-              <option value="short">Short</option>
-              <option value="medium" selected>Medium</option>
-              <option value="long">Long</option>
-              <option value="long+">Long+</option>
             </select>
           </div>
         </section>
@@ -917,18 +908,41 @@
         </section>
     
         <!-- Crew Slots -->
-        <section class="npc_stats f-col" style="grid-area: veh_crew; padding: 5px;">
-          <div class="npc_stats-row" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-            <span class="npc_stats-lbl" style="font-weight: bold; font-size: 11px;">Crew</span>
-            <div style="display: flex; align-items: center; gap: 4px;">
-              <input type="number" name="attr_veh_crew_min" value="1" title="Minimum crew needed (Mandatory slots)" class="veh-small-input" style="width: 40px; text-align: center;">
-              <span class="npc_stats-slash">/</span>
-              <input type="number" name="attr_veh_crew_max" value="8" title="Maximum crew allowed" class="veh-small-input" style="width: 40px; text-align: center;">
+        <section class="act_pool" style="grid-area: veh_crew;">
+          <div class="crew-grid">
+            <div class="crew-cell">
+              <span class="action-lbl">pilot</span>
+              <input type="text" name="attr_veh_crew_1" placeholder="...">
+            </div>
+            <div class="crew-cell">
+              <input type="text" name="attr_veh_crew_lbl2" placeholder="...">
+              <input type="text" name="attr_veh_crew_2" placeholder="...">
+            </div>
+            <div class="crew-cell">
+              <input type="text" name="attr_veh_crew_lbl3" placeholder="...">
+              <input type="text" name="attr_veh_crew_3" placeholder="...">
+            </div>
+            <div class="crew-cell">
+              <input type="text" name="attr_veh_crew_lbl4" placeholder="...">
+              <input type="text" name="attr_veh_crew_4" placeholder="...">
+            </div>
+            <div class="crew-cell">
+              <input type="text" name="attr_veh_crew_lbl5" placeholder="...">
+              <input type="text" name="attr_veh_crew_5" placeholder="...">
+            </div>
+            <div class="crew-cell">
+              <input type="text" name="attr_veh_crew_lbl6" placeholder="...">
+              <input type="text" name="attr_veh_crew_6" placeholder="...">
+            </div>
+            <div class="crew-cell">
+              <input type="text" name="attr_veh_crew_lbl7" placeholder="...">
+              <input type="text" name="attr_veh_crew_7" placeholder="...">
+            </div>
+            <div class="crew-cell">
+              <input type="text" name="attr_veh_crew_lbl8" placeholder="...">
+              <input type="text" name="attr_veh_crew_8" placeholder="...">
             </div>
           </div>
-          <textarea name="attr_veh_crew_slots" placeholder="Pilot (1, Mandatory)..."
-            style="width: 100%; height: 38px; resize: none; margin-top: 5px; font-size: 10px; padding: 3px; box-sizing: border-box;"
-            title="Crew slots, number, and mandatory/optional status"></textarea>
         </section>
     
         <!-- Action Pool -->
@@ -998,6 +1012,17 @@
               <span style="font-size: 11px;">Energy Defense</span>
               <input type="number" name="attr_veh_edef" value="2" class="veh-small-input" style="width: 40px; text-align: center;">
             </div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 11px;">Detection Range</span>
+              <select name="attr_veh_detection" style="width: 90px; font-size: 11px;">
+                <option value="none">None</option>
+                <option value="adjacent">Adjacent</option>
+                <option value="short">Short</option>
+                <option value="medium" selected>Medium</option>
+                <option value="long">Long</option>
+                <option value="long+">Long+</option>
+              </select>
+            </div>
           </div>
         </section>
     
@@ -1064,8 +1089,8 @@
         <section class="abilities f-col" style="grid-area: abilities; background-color: coral; padding: 5px; border-radius: 3px;">
           <div class="f-row headers" style="display: flex; font-size: 11px; font-weight: bold; border-bottom: 1px solid #c24000; margin-bottom: 5px; padding-bottom: 2px; color: white;">
             <span style="width: 25%;">Vehicle Ability</span>
-            <span style="width: 20%;">Assigned Role / Check</span>
-            <span style="width: 55%;">Effect / Sustained Costs</span>
+            <span style="width: 20%;">Role</span>
+            <span style="width: 55%;">Effect</span>
           </div>
           <fieldset class="repeating_vehabil">
             <div class="f-col vehabil-entry" style="gap: 2px; margin-bottom: 6px;">
