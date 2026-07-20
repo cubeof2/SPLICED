@@ -713,15 +713,15 @@ section {
 }
 
 .ability_name_title {
-  width: 22.5%;
+  width: 25%;
 }
 
 .ability_cost_title {
-  width: 6%;
+  width: 5%;
 }
 
 .ability_type_title {
-  width: 7%;
+  width: 9%;
 }
 
 .ability_target_title {
@@ -733,11 +733,29 @@ section {
 }
 
 .ability_AOE_title {
-  width: 7%;
+  width: 10%;
 }
 
 .ability_effect_title {
-  width: 38.5%;
+  width: 40%;
+}
+
+/* Center align ability titles */
+.ability_name_title,
+.ability_cost_title,
+.ability_type_title,
+.ability_target_title,
+.ability_range_title,
+.ability_AOE_title,
+.ability_duration_title,
+.ability_effect_title {
+  display: inline-block;
+  text-align: center;
+}
+
+/* Duration title width */
+.ability_duration_title {
+  width: 8%;
 }
 
 .ability_name {
