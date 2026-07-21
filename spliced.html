@@ -33,7 +33,7 @@
         <span class="spliced-hdr-lbl">mod</span>
         <span class="spliced-sign"></span>
         <span class="spliced-hdr-lbl">total</span>
-        <span class="spliced-btn-space"></span>
+        <span></span>
       </div>
 
       <!-- Strength -->
@@ -126,7 +126,7 @@
       </div>
       <div class="genome-row">
         <span class="genome-lbl">recessive</span>
-        <input type="text" name="attr_genome_recessive_2" value="" value="n/a">
+        <input type="text" name="attr_genome_recessive_2" placeholder="n/a">
       </div>
     </section>
 
@@ -500,7 +500,7 @@
         <span class="spliced-hdr-lbl">mod</span>
         <span class="spliced-sign"></span>
         <span class="spliced-hdr-lbl">total</span>
-        <span class="spliced-btn-space"></span>
+        <span></span>
       </div>
 
       <!-- Strength -->
@@ -970,8 +970,8 @@
                 <input type="checkbox" name="attr_veh_act_custom3">
               </div>
               <div class="action-cell">
-                <input type="text" name="attr_veh_act_custom_lbl3" placeholder="...">
-                <input type="checkbox" name="attr_veh_act_custom3">
+                <span class="action-lbl">reaction</span>
+                <input type="checkbox" name="attr_veh_act_reaction">
               </div>
               <div class="action-cell">
                 <input type="text" name="attr_veh_act_custom_lbl4" placeholder="...">
@@ -1086,7 +1086,7 @@
         </section>
     
         <!-- Vehicle Abilities -->
-        <section class="abilities f-col" style="grid-area: abilities; background-color: coral; padding: 5px; border-radius: 3px;">
+        <section class="abilities f-col" style="grid-area: abilities; padding: 5px; border-radius: 3px;">
           <div class="f-row headers" style="display: flex; font-size: 11px; font-weight: bold; border-bottom: 1px solid #c24000; margin-bottom: 5px; padding-bottom: 2px; color: white;">
             <span style="width: 25%;">Vehicle Ability</span>
             <span style="width: 20%;">Role</span>
@@ -1389,7 +1389,7 @@
     // 9. LISTENERS FOR REPEATING ABILITIES (PC & NPC)
     on("clicked:repeating_abilities:rollcheck clicked:repeating_abilities:rolldmg", function(info) {
         const trigger = info.triggerName || "";
-        const rowId = trigger.replace("clicked:repeating_abilities_", "").replace("_rollcheck", "").replace("_rolldmg", "");
+        const rowId = trigger.replace(/^clicked:repeating_abilities_/, "").replace(/_roll(?:check|dmg)$/, "");
         const prefix = `repeating_abilities_${rowId}_`;
         const isDmg = trigger.includes("rolldmg");
 
@@ -1423,7 +1423,7 @@
     // V4. ROLL VEHICLE ABILITIES FROM REPEATING SECTION
     on("clicked:repeating_vehabil:rollcheck clicked:repeating_vehabil:rolldmg", function(info) {
         const trigger = info.triggerName || "";
-        const rowId = trigger.replace("clicked:repeating_vehabil_", "").replace("_rollcheck", "").replace("_rolldmg", "");
+        const rowId = trigger.replace(/^clicked:repeating_vehabil_/, "").replace(/_roll(?:check|dmg)$/, "");
         const prefix = `repeating_vehabil_${rowId}_`;
         const isDmg = trigger.includes("rolldmg");
 

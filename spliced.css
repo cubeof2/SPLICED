@@ -25,13 +25,6 @@
   padding: 3px 0 0 0;
 }
 
-.the-word {
-  font-style: italic;
-  font-size: 12px;
-  color: #888;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
 
 /* --------------------------------------------------------------------------
    2. Main Layout & Tab Containers
@@ -713,7 +706,7 @@ section {
 }
 
 .ability_name_title {
-  width: 25%;
+  width: 22%;
 }
 
 .ability_cost_title {
@@ -721,23 +714,23 @@ section {
 }
 
 .ability_type_title {
-  width: 9%;
-}
-
-.ability_target_title {
   width: 8%;
 }
 
+.ability_target_title {
+  width: 7%;
+}
+
 .ability_range_title {
-  width: 10%;
+  width: 9%;
 }
 
 .ability_AOE_title {
-  width: 10%;
+  width: 9%;
 }
 
 .ability_effect_title {
-  width: 40%;
+  width: 33%;
 }
 
 /* Center align ability titles */
@@ -755,11 +748,11 @@ section {
 
 /* Duration title width */
 .ability_duration_title {
-  width: 8%;
+  width: 7%;
 }
 
 .ability_name {
-  width: 25%;
+  width: 22%;
 }
 
 .ability_cost {
@@ -767,27 +760,27 @@ section {
 }
 
 .ability_type {
-  width: 9%;
+  width: 8%;
 }
 
 .ability_target {
-  width: 8%;
+  width: 7%;
 }
 
 .ability_range {
-  width: 10%;
+  width: 9%;
 }
 
 .ability_AOE {
-  width: 10%;
+  width: 9%;
 }
 
 .ability_duration {
-  width: 8%;
+  width: 7%;
 }
 
 .ability_effect {
-  width: 40%;
+  width: 33%;
 }
 
 /* --------------------------------------------------------------------------
@@ -1035,11 +1028,13 @@ section {
 .tab-content-vehicle input[type="number"]::-webkit-outer-spin-button,
 .tab-content-vehicle input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none !important;
+    appearance: none !important; /* Standard property for compatibility */
     margin: 0 !important;
 }
 
 .tab-content-vehicle input[type="number"] {
     -moz-appearance: textfield !important; /* Firefox support */
+    appearance: textfield !important; /* Standard property for compatibility */
 }
 
 /* 5. Force flex containers to center vertically so elements don't misalign */
@@ -1051,7 +1046,7 @@ section {
 }
 
 /* --------------------------------------------------------------------------
-   12. Vehicle Crew Grid (action-pool style with text inputs)
+   20. Vehicle Crew Grid (action-pool style with text inputs)
    -------------------------------------------------------------------------- */
 .crew-grid {
   display: grid;
