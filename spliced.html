@@ -970,8 +970,8 @@
                 <input type="checkbox" name="attr_veh_act_custom3">
               </div>
               <div class="action-cell">
-                <span class="action-lbl">reaction</span>
-                <input type="checkbox" name="attr_veh_act_reaction">
+                <input type="text" name="attr_veh_act_custom_lbl6" placeholder="...">
+                <input type="checkbox" name="attr_veh_act_custom6">
               </div>
               <div class="action-cell">
                 <input type="text" name="attr_veh_act_custom_lbl4" placeholder="...">
@@ -1350,9 +1350,9 @@
     // V1. CLEAR VEHICLE ACTION POOL
     on("clicked:clear_veh_actions", function() {
         setAttrs({
-            "veh_act_general": 0, "veh_act_move": 0, "veh_act_reaction": 0,
+            "veh_act_general": 0, "veh_act_move": 0,
             "veh_act_custom1": 0, "veh_act_custom2": 0, "veh_act_custom3": 0,
-            "veh_act_custom4": 0, "veh_act_custom5": 0
+            "veh_act_custom4": 0, "veh_act_custom5": 0, "veh_act_custom6": 0
         });
     });
 
