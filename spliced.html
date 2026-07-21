@@ -412,33 +412,35 @@
     <!-- 1.10 Repeating Abilities -->
     <section class="abilities f-col">
       <div class="f-row headers">
+        <span class="ability_type_title">Type</span>
         <span class="ability_name_title">Abilities</span>
         <span class="ability_cost_title">Cost</span>
-        <span class="ability_type_title">Type</span>
         <span class="ability_target_title">Target</span>
         <span class="ability_range_title">Range</span>
         <span class="ability_AOE_title">AOE</span>
         <span class="ability_duration_title">Duration</span>
-        <span class="ability_effect_title">Effect</span>
       </div>
 
       <fieldset class="repeating_abilities">
         <div class="f-col ability-entry" style="gap: 2px; margin-bottom: 6px;">
           <div class="f-row ability-row"
             style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
+            <select name="attr_ability_type" class="ability_type">
+              <option value="Action" selected>Action</option>
+              <option value="Reaction">Reaction</option>
+              <option value="Free">Free</option>
+            </select>
             <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
             <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
-            <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
             <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
             <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
             <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
             <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
-            <input type="text" name="attr_ability_effect" class="ability_effect"
-              placeholder="Deals 2d6 fire damage to all targets in area.">
           </div>
           <div class="f-row ability-roll-row"
             style="display: flex; flex-direction: row; gap: 4px; align-items: center; width: 100%;">
-            <span style="font-size: 11px; font-weight: bold; margin-left: 2px;">Check</span>
+            <input type="text" name="attr_ability_effect" class="ability_effect" placeholder="Description">
+            <span style="font-size: 11px; font-weight: bold; margin-left: auto;">Check</span>
             <select name="attr_ability_check_attr" style="width: 80px;">
               <option value="str">Strength</option>
               <option value="per">Perception</option>
@@ -449,7 +451,6 @@
               <option value="dex">Dexterity</option>
             </select>
             <button type="action" name="act_rollcheck">Roll</button>
-            
             <span style="font-size: 11px; font-weight: bold; margin-left: 10px;">Damage</span>
             <input type="number" name="attr_ability_dmg_num" style="width: 40px; text-align: center;">
             <select name="attr_ability_dmg_size" style="width: 50px;">
@@ -459,6 +460,11 @@
               <option value="d10">d10</option>
               <option value="d12">d12</option>
               <option value="d20">d20</option>
+            </select>
+            <select name="attr_ability_dmg_type" style="width: 70px;">
+              <option value="Physical" selected>Physical</option>
+              <option value="Energy">Energy</option>
+              <option value="Pure">Pure</option>
             </select>
             <button type="action" name="act_rolldmg">Roll</button>
           </div>
@@ -815,33 +821,35 @@
     <!-- Repeating Abilities (Excluding Expertise) -->
     <section class="abilities f-col">
       <div class="f-row headers">
+        <span class="ability_type_title">Type</span>
         <span class="ability_name_title">Abilities</span>
         <span class="ability_cost_title">Cost</span>
-        <span class="ability_type_title">Type</span>
         <span class="ability_target_title">Target</span>
         <span class="ability_range_title">Range</span>
         <span class="ability_AOE_title">AOE</span>
         <span class="ability_duration_title">Duration</span>
-        <span class="ability_effect_title">Effect</span>
       </div>
 
       <fieldset class="repeating_abilities">
         <div class="f-col ability-entry" style="gap: 2px; margin-bottom: 6px;">
           <div class="f-row ability-row"
             style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
+            <select name="attr_ability_type" class="ability_type">
+              <option value="Action" selected>Action</option>
+              <option value="Reaction">Reaction</option>
+              <option value="Free">Free</option>
+            </select>
             <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
             <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
-            <input type="text" name="attr_ability_type" class="ability_type" placeholder="Energy">
             <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
             <input type="text" name="attr_ability_range" class="ability_range" placeholder="30 ft">
             <input type="text" name="attr_ability_AOE" class="ability_AOE" placeholder="10 ft rad">
             <input type="text" name="attr_ability_duration" class="ability_duration" placeholder="Instant">
-            <input type="text" name="attr_ability_effect" class="ability_effect"
-              placeholder="Deals 2d6 fire damage to all targets in area.">
           </div>
           <div class="f-row ability-roll-row"
             style="display: flex; flex-direction: row; gap: 4px; align-items: center; width: 100%;">
-            <span style="font-size: 11px; font-weight: bold; margin-left: 2px;">Check</span>
+            <input type="text" name="attr_ability_effect" class="ability_effect" placeholder="Description">
+            <span style="font-size: 11px; font-weight: bold; margin-left: auto;">Check</span>
             <select name="attr_ability_check_attr" style="width: 80px;">
               <option value="str">Strength</option>
               <option value="per">Perception</option>
@@ -852,7 +860,6 @@
               <option value="dex">Dexterity</option>
             </select>
             <button type="action" name="act_rollcheck">Roll</button>
-            
             <span style="font-size: 11px; font-weight: bold; margin-left: 10px;">Damage</span>
             <input type="number" name="attr_ability_dmg_num" style="width: 40px; text-align: center;">
             <select name="attr_ability_dmg_size" style="width: 50px;">
@@ -862,6 +869,11 @@
               <option value="d10">d10</option>
               <option value="d12">d12</option>
               <option value="d20">d20</option>
+            </select>
+            <select name="attr_ability_dmg_type" style="width: 70px;">
+              <option value="Physical" selected>Physical</option>
+              <option value="Energy">Energy</option>
+              <option value="Pure">Pure</option>
             </select>
             <button type="action" name="act_rolldmg">Roll</button>
           </div>
