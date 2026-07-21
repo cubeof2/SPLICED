@@ -1100,26 +1100,25 @@
         <!-- Vehicle Abilities -->
         <section class="abilities f-col" style="grid-area: abilities; padding: 5px; border-radius: 3px;">
           <div class="f-row headers" style="display: flex; font-size: 11px; font-weight: bold; border-bottom: 1px solid #c24000; margin-bottom: 5px; padding-bottom: 2px; color: white;">
-            <span style="width: 25%;">Vehicle Ability</span>
             <span style="width: 20%;">Role</span>
-            <span style="width: 55%;">Effect</span>
+            <span style="width: 15%;">Name</span>
+            <span style="width: 65%;">Effect</span>
           </div>
           <fieldset class="repeating_vehabil">
             <div class="f-col vehabil-entry" style="gap: 2px; margin-bottom: 6px;">
               <div class="f-row ability-row" style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
-                <input type="text" name="attr_vehabil_name" style="width: 25%;" placeholder="Countermeasures">
-                <input type="text" name="attr_vehabil_check" style="width: 20%;" placeholder="Flight Eng. LUK check">
-                <input type="text" name="attr_vehabil_effect" style="width: 55%;" placeholder="Fools incoming missiles if successful...">
+                <input type="text" name="attr_vehabil_check" style="width: 20%;">
+                <input type="text" name="attr_vehabil_name" style="width: 15%;">
+                <input type="text" name="attr_vehabil_effect" style="width: 65%;">
               </div>
               <div class="f-row ability-roll-row"
                 style="display: flex; flex-direction: row; gap: 4px; align-items: center; width: 100%;">
-                <span style="font-size: 11px; font-weight: bold; margin-left: 2px;">Check</span>
+                <span style="font-size: 11px; font-weight: bold; margin-left: auto;">Check</span>
                 <select name="attr_vehabil_check_attr" style="width: 80px;">
                   <option value="veh_spd" selected>Speed</option>
                   <option value="veh_mvr">Maneuv</option>
                 </select>
                 <button type="action" name="act_rollcheck">Roll</button>
-                
                 <span style="font-size: 11px; font-weight: bold; margin-left: 10px;">Damage</span>
                 <input type="number" name="attr_vehabil_dmg_num" style="width: 40px; text-align: center;">
                 <select name="attr_vehabil_dmg_size" style="width: 50px;">
@@ -1129,6 +1128,11 @@
                   <option value="d10">d10</option>
                   <option value="d12">d12</option>
                   <option value="d20">d20</option>
+                </select>
+                <select name="attr_vehabil_dmg_type" style="width: 70px;">
+                  <option value="Physical" selected>Physical</option>
+                  <option value="Energy">Energy</option>
+                  <option value="Pure">Pure</option>
                 </select>
                 <button type="action" name="act_rolldmg">Roll</button>
               </div>
@@ -1394,7 +1398,7 @@
             const name = v[`${prefix}vehweap_name`] || "Vehicle Weapon";
             const diceNum = parseInt(v[`${prefix}vehweap_dicenum`], 10) || 1;
             const diceSize = v[`${prefix}vehweap_dicesize`] || "d10";
-            performRoll(name, diceNum, diceSize, true);
+            performRoll(name, diceNum, diceSize, false);
         });
     });
 
