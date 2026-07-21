@@ -1401,7 +1401,7 @@
                 const name = v[`${prefix}ability_name`] || "Ability";
                 const diceNum = parseInt(v[fieldNum], 10) || 1;
                 const diceSize = v[fieldSize] || "d6";
-                performRoll(name, diceNum, diceSize, true);
+                performRoll(name + " Damage", diceNum, diceSize, false);
             });
         } else {
             const fieldAttr = `${prefix}ability_check_attr`;
@@ -1435,7 +1435,7 @@
                 const name = v[`${prefix}vehabil_name`] || "Vehicle Ability";
                 const diceNum = parseInt(v[fieldNum], 10) || 1;
                 const diceSize = v[fieldSize] || "d6";
-                performRoll(name, diceNum, diceSize, true);
+                performRoll(name + " Damage", diceNum, diceSize, false);
             });
         } else {
             const fieldAttr = `${prefix}vehabil_check_attr`;
