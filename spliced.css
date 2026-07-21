@@ -1080,6 +1080,10 @@ section {
   border-radius: 2px;
 }
 
+.crew-cell input[name^="attr_veh_crew_lbl"] {
+  font-weight: bold;
+}
+
 /* --------------------------------------------------------------------------
    21. Auto-Expanding Click-to-Focus Text Boxes
    -------------------------------------------------------------------------- */
