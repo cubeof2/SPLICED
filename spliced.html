@@ -15,6 +15,7 @@
     <button type="action" name="act_tabvehicle" class="tab-button tab-button-vehicle">Vehicle</button>
     <button type="action" name="act_tabinventory" class="tab-button tab-button-inventory">Inventory</button>
     <button type="action" name="act_tabpassives" class="tab-button tab-button-passives">Passives</button>
+    <button type="action" name="act_tabgenomes" class="tab-button tab-button-genomes">Genomes</button>
     <button type="action" name="act_tabnotes" class="tab-button tab-button-notes">Notes</button>
     <button type="action" name="act_tabsettings" class="tab-button tab-button-settings">Settings</button>
   </div>
@@ -252,20 +253,22 @@
       </div>
     </section>
 
-    <!-- 1.8 Active Conditions -->
-    <section class="cond f-col nowrap">
+    <!-- 1.8 Active Conditions & Languages -->
+    <section class="cond f-row nowrap" style="gap: 5px;">
       <textarea name="attr_cond" class="auto-expand-cond" placeholder="Active conditions..."></textarea>
+      <textarea name="attr_languages" class="auto-expand-cond" placeholder="Languages..."></textarea>
     </section>
 
     <!-- 1.9 Weapons Table -->
     <section class="weap f-col">
       <div class="weapon_title f-row">
-        <div class="weap_name_title"><label> Weapon </label></div>
-        <div class="weap_attr_title"><label> Attr </label></div>
-        <div class="weap_type_title"><label> Type </label></div>
-        <div class="weap_d_type_title"><label> Damage </label></div>
-        <div class="weap_dice_title"><label> Dice </label></div>
-        <div class="weap_effect_title"><label> Effect </label></div>
+        <div class="weap_name_title"><label>Weapon</label></div>
+        <div class="weap_attr_title"><label>Attr</label></div>
+        <div class="weap_type_title"><label>Size</label></div>
+        <div class="weap_d_type_title"><label>Type</label></div>
+        <div class="weap_dice_title"><label>Dice</label></div>
+        <div class="weap_effect_title"><label>Effect</label></div>
+        <div class="weap_roll_title"></div>
       </div>
 
       <!-- Main Hand 1 -->
@@ -285,9 +288,10 @@
           <option value="Imp">Imp</option>
         </select>
         <select name="attr_main_1_d_type" class="weap_d_type">
-          <option value="none"></option>
+          <option value="none" selected></option>
           <option value="Phys">Phys</option>
           <option value="Eng">Eng</option>
+          <option value="Pure">Pure</option>
         </select>
         <input type="number" name="attr_main_1_dice_num" class="weap_dice_num" value="1">
         <select name="attr_main_1_dice_size" class="weap_dice_size">
@@ -322,6 +326,7 @@
           <option value="none" selected></option>
           <option value="Phys">Phys</option>
           <option value="Eng">Eng</option>
+          <option value="Pure">Pure</option>
         </select>
         <input type="number" name="attr_off_1_dice_num" class="weap_dice_num">
         <select name="attr_off_1_dice_size" class="weap_dice_size">
@@ -357,6 +362,7 @@
           <option value="none" selected></option>
           <option value="Phys">Phys</option>
           <option value="Eng">Eng</option>
+          <option value="Pure">Pure</option>
         </select>
         <input type="number" name="attr_main_2_dice_num" class="weap_dice_num">
         <select name="attr_main_2_dice_size" class="weap_dice_size">
@@ -392,6 +398,7 @@
           <option value="none" selected></option>
           <option value="Phys">Phys</option>
           <option value="Eng">Eng</option>
+          <option value="Pure">Pure</option>
         </select>
         <input type="number" name="attr_off_2_dice_num" class="weap_dice_num">
         <select name="attr_off_2_dice_size" class="weap_dice_size">
@@ -425,7 +432,8 @@
           <div class="f-row ability-row"
             style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
             <select name="attr_ability_type" class="ability_type">
-              <option value="Action" selected>Action</option>
+              <option value="none" selected></option>
+              <option value="Action">Action</option>
               <option value="Reaction">Reaction</option>
               <option value="Free">Free</option>
             </select>
@@ -441,9 +449,10 @@
             <textarea name="attr_ability_effect" class="ability_effect auto-expand" placeholder="Description"></textarea>
             <span style="font-size: 11px; font-weight: bold; margin-left: auto;">Check</span>
             <select name="attr_ability_check_attr" style="width: 80px;">
+              <option value="none" selected></option>
               <option value="str">Strength</option>
               <option value="per">Perception</option>
-              <option value="luk" selected>Luck</option>
+              <option value="luk">Luck</option>
               <option value="int">Intelligence</option>
               <option value="crg">Courage</option>
               <option value="end">Endurance</option>
@@ -453,15 +462,17 @@
             <span style="font-size: 11px; font-weight: bold; margin-left: 10px;">Damage</span>
             <input type="number" name="attr_ability_dmg_num" style="width: 40px; text-align: center;">
             <select name="attr_ability_dmg_size" style="width: 50px;">
+              <option value="none" selected></option>
               <option value="d4">d4</option>
-              <option value="d6" selected>d6</option>
+              <option value="d6">d6</option>
               <option value="d8">d8</option>
               <option value="d10">d10</option>
               <option value="d12">d12</option>
               <option value="d20">d20</option>
             </select>
             <select name="attr_ability_dmg_type" style="width: 70px;">
-              <option value="Physical" selected>Physical</option>
+              <option value="none" selected></option>
+              <option value="Physical">Physical</option>
               <option value="Energy">Energy</option>
               <option value="Pure">Pure</option>
             </select>
@@ -660,20 +671,22 @@
       </div>
     </section>
 
-    <!-- Active Conditions (Moves to Row 3 Columns 2, 3, & 4) -->
-    <section class="cond f-col nowrap">
+    <!-- Active Conditions & Languages -->
+    <section class="cond f-row nowrap" style="gap: 5px;">
       <textarea name="attr_cond" class="auto-expand-cond" placeholder="Active conditions..."></textarea>
+      <textarea name="attr_languages" class="auto-expand-cond" placeholder="Languages..."></textarea>
     </section>
 
     <!-- Weapons Table (Same inputs, same roll trigger) -->
     <section class="weap f-col">
       <div class="weapon_title f-row">
-        <div class="weap_name_title"><label> Weapon </label></div>
-        <div class="weap_attr_title"><label> Attr </label></div>
-        <div class="weap_type_title"><label> Type </label></div>
-        <div class="weap_d_type_title"><label> Damage </label></div>
-        <div class="weap_dice_title"><label> Dice </label></div>
-        <div class="weap_effect_title"><label> Effect </label></div>
+        <div class="weap_name_title"><label>Weapon</label></div>
+        <div class="weap_attr_title"><label>Attr</label></div>
+        <div class="weap_type_title"><label>Size</label></div>
+        <div class="weap_d_type_title"><label>Type</label></div>
+        <div class="weap_dice_title"><label>Dice</label></div>
+        <div class="weap_effect_title"><label>Effect</label></div>
+        <div class="weap_roll_title"></div>
       </div>
 
       <!-- Main Hand 1 -->
@@ -693,9 +706,10 @@
           <option value="Imp">Imp</option>
         </select>
         <select name="attr_main_1_d_type" class="weap_d_type">
-          <option value="none"></option>
+          <option value="none" selected></option>
           <option value="Phys">Phys</option>
           <option value="Eng">Eng</option>
+          <option value="Pure">Pure</option>
         </select>
         <input type="number" name="attr_main_1_dice_num" class="weap_dice_num" value="1">
         <select name="attr_main_1_dice_size" class="weap_dice_size">
@@ -730,6 +744,7 @@
           <option value="none" selected></option>
           <option value="Phys">Phys</option>
           <option value="Eng">Eng</option>
+          <option value="Pure">Pure</option>
         </select>
         <input type="number" name="attr_off_1_dice_num" class="weap_dice_num">
         <select name="attr_off_1_dice_size" class="weap_dice_size">
@@ -765,6 +780,7 @@
           <option value="none" selected></option>
           <option value="Phys">Phys</option>
           <option value="Eng">Eng</option>
+          <option value="Pure">Pure</option>
         </select>
         <input type="number" name="attr_main_2_dice_num" class="weap_dice_num">
         <select name="attr_main_2_dice_size" class="weap_dice_size">
@@ -800,6 +816,7 @@
           <option value="none" selected></option>
           <option value="Phys">Phys</option>
           <option value="Eng">Eng</option>
+          <option value="Pure">Pure</option>
         </select>
         <input type="number" name="attr_off_2_dice_num" class="weap_dice_num">
         <select name="attr_off_2_dice_size" class="weap_dice_size">
@@ -849,9 +866,10 @@
             <textarea name="attr_ability_effect" class="ability_effect auto-expand" placeholder="Description"></textarea>
             <span style="font-size: 11px; font-weight: bold; margin-left: auto;">Check</span>
             <select name="attr_ability_check_attr" style="width: 80px;">
+              <option value="none" selected></option>
               <option value="str">Strength</option>
               <option value="per">Perception</option>
-              <option value="luk" selected>Luck</option>
+              <option value="luk">Luck</option>
               <option value="int">Intelligence</option>
               <option value="crg">Courage</option>
               <option value="end">Endurance</option>
@@ -1075,8 +1093,10 @@
                 <option value="long_plus">Long+</option>
               </select>
               <select name="attr_vehweap_type" style="width: 9%;">
+                <option value="none" selected></option>
                 <option value="phys">Physical</option>
                 <option value="energy">Energy</option>
+                <option value="pure">Pure</option>
               </select>
               <div style="width: 10%; display: flex; align-items: center; gap: 1px;">
                 <input type="number" name="attr_vehweap_dicenum" style="width: 45%; margin:0; padding:0; text-align: center;" value="1">
@@ -1104,7 +1124,8 @@
             <div class="f-col vehabil-entry" style="gap: 2px; margin-bottom: 6px;">
               <div class="f-row ability-row" style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
                 <select name="attr_vehabil_type" class="ability_type">
-                  <option value="Action" selected>Action</option>
+                  <option value="none" selected></option>
+                  <option value="Action">Action</option>
                   <option value="Reaction">Reaction</option>
                   <option value="Free">Free</option>
                 </select>
@@ -1116,22 +1137,25 @@
                 <input type="text" name="attr_vehabil_check" style="width: 30%;" placeholder="Role">
                 <span style="font-size: 11px; font-weight: bold; margin-left: auto;">Check</span>
                 <select name="attr_vehabil_check_attr" style="width: 80px;">
-                  <option value="veh_spd" selected>Speed</option>
+                  <option value="none" selected></option>
+                  <option value="veh_spd">Speed</option>
                   <option value="veh_mvr">Maneuv</option>
                 </select>
                 <button type="action" name="act_rollcheck">Roll</button>
                 <span style="font-size: 11px; font-weight: bold; margin-left: 10px;">Damage</span>
                 <input type="number" name="attr_vehabil_dmg_num" style="width: 40px; text-align: center;">
                 <select name="attr_vehabil_dmg_size" style="width: 50px;">
+                  <option value="none" selected></option>
                   <option value="d4">d4</option>
-                  <option value="d6" selected>d6</option>
+                  <option value="d6">d6</option>
                   <option value="d8">d8</option>
                   <option value="d10">d10</option>
                   <option value="d12">d12</option>
                   <option value="d20">d20</option>
                 </select>
                 <select name="attr_vehabil_dmg_type" style="width: 70px;">
-                  <option value="Physical" selected>Physical</option>
+                  <option value="none" selected></option>
+                  <option value="Physical">Physical</option>
                   <option value="Energy">Energy</option>
                   <option value="Pure">Pure</option>
                 </select>
@@ -1163,14 +1187,16 @@
         <span class="inv_qty_title">Qty</span>
         <span class="inv_item_title">Item</span>
         <span class="inv_notes_title">Notes</span>
+        <span class="inv_eq_title">Equipped</span>
       </div>
 
       <fieldset class="repeating_inventory">
         <div class="f-row inv-row"
-          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%;">
-          <input type="text" name="attr_inv_qty" class="inv_qty" placeholder="1">
+          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%; align-items: center;">
+          <input type="text" name="attr_inv_qty" class="inv_qty" value="1">
           <input type="text" name="attr_inv_item" class="inv_item" placeholder="Item Name">
-          <input type="text" name="attr_inv_notes" class="inv_notes" placeholder="Description or Stats">
+          <textarea name="attr_inv_notes" class="inv_notes auto-expand" placeholder="Description or Stats"></textarea>
+          <input type="checkbox" name="attr_inv_equipped" class="inv_eq">
         </div>
       </fieldset>
     </section>
@@ -1185,6 +1211,22 @@
         <div class="f-row passive-row" style="margin-bottom: 5px; width: 100%;">
           <textarea name="attr_passive_text" class="passive-text" placeholder="Passive ability description..."
             style="width: 100%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
+        </div>
+      </fieldset>
+    </section>
+  </div>
+
+    <!-- ==========================================================================
+       5b. Genomes Tab Panel
+       ========================================================================== -->
+  <div class="tab-content tab-content-genomes">
+    <section class="genomes f-col">
+      <fieldset class="repeating_genomes">
+        <div class="f-row genome-row" style="margin-bottom: 5px; width: 100%; gap: 5px;">
+          <textarea name="attr_genome_name" class="genome-text"
+            style="width: 50%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
+          <textarea name="attr_genome_effect" class="genome-text"
+            style="width: 50%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
         </div>
       </fieldset>
     </section>
@@ -1237,7 +1279,7 @@
     });
 
     // 2. NAVIGATIONAL TAB TOGGLES
-    on("clicked:tabpc clicked:tabnpc clicked:tabvehicle clicked:tabinventory clicked:tabpassives clicked:tabnotes clicked:tabsettings", function(info) {
+    on("clicked:tabpc clicked:tabnpc clicked:tabvehicle clicked:tabinventory clicked:tabpassives clicked:tabgenomes clicked:tabnotes clicked:tabsettings", function(info) {
         const tab = info.triggerName.replace("clicked:tab", "");
         setAttrs({ sheetTab: tab });
     });
@@ -1356,7 +1398,8 @@
     on("clicked:roll_main_1 clicked:roll_off_1 clicked:roll_main_2 clicked:roll_off_2", function(info) {
         const slot = info.triggerName.replace("clicked:roll_", "");
         getAttrs([`${slot}_name`, `${slot}_dice_num`, `${slot}_dice_size`], (v) => {
-            performRoll(v[`${slot}_name`] || "Attack", parseInt(v[`${slot}_dice_num`], 10) || 1, v[`${slot}_dice_size`] || "d6", true);
+            const diceSize = (v[`${slot}_dice_size`] && v[`${slot}_dice_size`] !== "none") ? v[`${slot}_dice_size`] : "d6";
+            performRoll(v[`${slot}_name`] || "Attack", parseInt(v[`${slot}_dice_num`], 10) || 1, diceSize, true);
         });
     });
     
@@ -1388,9 +1431,6 @@
 
     // V3. ROLL VEHICLE WEAPONS FROM REPEATING SECTION
     on("clicked:repeating_vehweap:rollweap", function(info) {
-        // Roll20 action button clicks do not populate sourceAttribute (which is for change events).
-        // Instead, info.triggerName provides the full clicked attribute path, preserving case-sensitive row ID.
-        // e.g. "clicked:repeating_vehweap_-ABC123_rollweap"
         const trigger = info.triggerName || "";
         const rowId = trigger.replace("clicked:repeating_vehweap_", "").replace("_rollweap", "");
         const prefix = `repeating_vehweap_${rowId}_`;
@@ -1398,7 +1438,7 @@
         getAttrs([`${prefix}vehweap_name`, `${prefix}vehweap_dicenum`, `${prefix}vehweap_dicesize`], function(v) {
             const name = v[`${prefix}vehweap_name`] || "Vehicle Weapon";
             const diceNum = parseInt(v[`${prefix}vehweap_dicenum`], 10) || 1;
-            const diceSize = v[`${prefix}vehweap_dicesize`] || "d10";
+            const diceSize = (v[`${prefix}vehweap_dicesize`] && v[`${prefix}vehweap_dicesize`] !== "none") ? v[`${prefix}vehweap_dicesize`] : "d10";
             performRoll(name, diceNum, diceSize, false);
         });
     });
@@ -1417,7 +1457,7 @@
             getAttrs([`${prefix}ability_name`, fieldNum, fieldSize], function(v) {
                 const name = v[`${prefix}ability_name`] || "Ability";
                 const diceNum = parseInt(v[fieldNum], 10) || 1;
-                const diceSize = v[fieldSize] || "d6";
+                const diceSize = (v[fieldSize] && v[fieldSize] !== "none") ? v[fieldSize] : "d6";
                 performRoll(name + " Damage", diceNum, diceSize, false);
             });
         } else {
@@ -1425,7 +1465,12 @@
             
             getAttrs([`${prefix}ability_name`, fieldAttr], function(v) {
                 const name = v[`${prefix}ability_name`] || "Ability";
-                const attrName = v[fieldAttr] || "luk";
+                const attrName = v[fieldAttr];
+
+                if (!attrName || attrName === "none" || attrName === "") {
+                    performRoll(name + " Check", 3, "d6", false);
+                    return;
+                }
 
                 getAttrs([attrName], function(attrVals) {
                     const statVal = parseInt(attrVals[attrName], 10) || 0;
@@ -1451,7 +1496,7 @@
             getAttrs([`${prefix}vehabil_name`, fieldNum, fieldSize], function(v) {
                 const name = v[`${prefix}vehabil_name`] || "Vehicle Ability";
                 const diceNum = parseInt(v[fieldNum], 10) || 1;
-                const diceSize = v[fieldSize] || "d6";
+                const diceSize = (v[fieldSize] && v[fieldSize] !== "none") ? v[fieldSize] : "d6";
                 performRoll(name + " Damage", diceNum, diceSize, false);
             });
         } else {
@@ -1459,7 +1504,12 @@
             
             getAttrs([`${prefix}vehabil_name`, fieldAttr], function(v) {
                 const name = v[`${prefix}vehabil_name`] || "Vehicle Ability";
-                const attrName = v[fieldAttr] || "veh_spd";
+                const attrName = v[fieldAttr];
+
+                if (!attrName || attrName === "none" || attrName === "") {
+                    performRoll(name + " Check", 3, "d6", false);
+                    return;
+                }
 
                 getAttrs([attrName], function(attrVals) {
                     const statVal = parseInt(attrVals[attrName], 10) || 0;

@@ -77,6 +77,11 @@ main {
   width: 800px;
 }
 
+.tab-content-genomes {
+  display: none;
+  width: 800px;
+}
+
 .tab-content-notes {
   display: none;
   width: 800px;
@@ -121,10 +126,10 @@ main {
 }
 
 /* Hide all tab contents by default */
-.tab-content-pc, .tab-content-npc, .tab-content-vehicle, .tab-content-inventory, .tab-content-passives, .tab-content-notes, .tab-content-settings { display: none !important; }
+.tab-content-pc, .tab-content-npc, .tab-content-vehicle, .tab-content-inventory, .tab-content-passives, .tab-content-genomes, .tab-content-notes, .tab-content-settings { display: none !important; }
 
 /* Tab button active state */
-.tabstoggle[value="pc"]~.tab-buttons .tab-button-pc, .tabstoggle[value="npc"]~.tab-buttons .tab-button-npc, .tabstoggle[value="vehicle"]~.tab-buttons .tab-button-vehicle, .tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory, .tabstoggle[value="passives"]~.tab-buttons .tab-button-passives, .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes, .tabstoggle[value="settings"]~.tab-buttons .tab-button-settings {
+.tabstoggle[value="pc"]~.tab-buttons .tab-button-pc, .tabstoggle[value="npc"]~.tab-buttons .tab-button-npc, .tabstoggle[value="vehicle"]~.tab-buttons .tab-button-vehicle, .tabstoggle[value="inventory"]~.tab-buttons .tab-button-inventory, .tabstoggle[value="passives"]~.tab-buttons .tab-button-passives, .tabstoggle[value="genomes"]~.tab-buttons .tab-button-genomes, .tabstoggle[value="notes"]~.tab-buttons .tab-button-notes, .tabstoggle[value="settings"]~.tab-buttons .tab-button-settings {
   color: coral;
   border-bottom: 3px solid coral;
   font-weight: bold;
@@ -149,6 +154,10 @@ main {
 }
 
 .tabstoggle[value="passives"]~.tab-content-passives {
+  display: block !important;
+}
+
+.tabstoggle[value="genomes"]~.tab-content-genomes {
   display: block !important;
 }
 
@@ -645,56 +654,99 @@ section {
   background-color: white;
 }
 
+.weapon_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.weapon_title label {
+  margin: 0;
+  padding: 0 2px;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+}
+
+.weap_dice_title label {
+  text-align: center;
+}
+
 .weap_name_title {
   width: 28%;
 }
 
 .weap_attr_title {
-  width: 9%;
-}
-
-.weap_type_title {
-  width: 8%;
-}
-
-.weap_d_type_title {
-  width: 12%;
-}
-
-.weap_dice_title {
   width: 10%;
 }
 
+.weap_type_title {
+  width: 9%;
+}
+
+.weap_d_type_title {
+  width: 11%;
+}
+
+.weap_dice_title {
+  width: 12%;
+  text-align: center;
+}
+
 .weap_effect_title {
-  width: 33%;
+  width: 24%;
+}
+
+.weap_roll_title {
+  width: 6%;
 }
 
 .weap_name {
   width: 28%;
+  box-sizing: border-box;
 }
 
 .weap_attr {
   width: 10%;
+  box-sizing: border-box;
 }
 
 .weap_type {
   width: 9%;
+  box-sizing: border-box;
 }
 
 .weap_d_type {
   width: 11%;
+  box-sizing: border-box;
 }
 
 .weap_dice_num {
   width: 4%;
+  box-sizing: border-box;
 }
 
 .weap_dice_size {
   width: 8%;
+  box-sizing: border-box;
 }
 
 .weap_effect {
-  width: 30%;
+  width: 24%;
+  box-sizing: border-box;
+}
+
+.main_1 button,
+.off_1 button,
+.main_2 button,
+.off_2 button {
+  width: 6%;
+  box-sizing: border-box;
+  font-size: 11px;
+  padding: 2px 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -841,15 +893,23 @@ section {
   padding: 5px;
 }
 
+.inv_eq_title,
+.inv_eq {
+  width: 8%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 .inv_qty_title,
 .inv_qty {
-  width: 10%;
+  width: 5%;
+  text-align: center;
   box-sizing: border-box;
 }
 
 .inv_item_title,
 .inv_item {
-  width: 30%;
+  width: 27%;
   box-sizing: border-box;
 }
 
@@ -860,9 +920,10 @@ section {
 }
 
 /* --------------------------------------------------------------------------
-   16. Passives Section
+   16. Passives & Genomes Section
    -------------------------------------------------------------------------- */
-.passives {
+.passives,
+.genomes {
   background-color: white;
   box-sizing: border-box;
   padding: 5px;
