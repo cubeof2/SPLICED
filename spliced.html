@@ -418,8 +418,8 @@
     <!-- 1.10 Repeating Abilities -->
     <section class="abilities f-col">
       <div class="f-row headers">
-        <span class="ability_type_title">Type</span>
         <span class="ability_name_title">Abilities</span>
+        <span class="ability_type_title">Type</span>
         <span class="ability_cost_title">Cost</span>
         <span class="ability_target_title">Target</span>
         <span class="ability_range_title">Range</span>
@@ -431,13 +431,13 @@
         <div class="f-col ability-entry" style="gap: 2px; margin-bottom: 6px;">
           <div class="f-row ability-row"
             style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
+            <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
             <select name="attr_ability_type" class="ability_type">
               <option value="none" selected></option>
               <option value="Action">Action</option>
               <option value="Reaction">Reaction</option>
               <option value="Free">Free</option>
             </select>
-            <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
             <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
             <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
             <input type="text" name="attr_ability_range" class="ability_range" placeholder="short">
@@ -836,8 +836,8 @@
     <!-- Repeating Abilities (Excluding Expertise) -->
     <section class="abilities f-col">
       <div class="f-row headers">
-        <span class="ability_type_title">Type</span>
         <span class="ability_name_title">Abilities</span>
+        <span class="ability_type_title">Type</span>
         <span class="ability_cost_title">Cost</span>
         <span class="ability_target_title">Target</span>
         <span class="ability_range_title">Range</span>
@@ -849,13 +849,13 @@
         <div class="f-col ability-entry" style="gap: 2px; margin-bottom: 6px;">
           <div class="f-row ability-row"
             style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
+            <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
             <select name="attr_ability_type" class="ability_type">
               <option value="none" selected></option>
               <option value="Action">Action</option>
               <option value="Reaction">Reaction</option>
               <option value="Free">Free</option>
             </select>
-            <input type="text" name="attr_ability_name" class="ability_name" placeholder="e.g. Fireball">
             <input type="text" name="attr_ability_cost" class="ability_cost" placeholder="3">
             <input type="text" name="attr_ability_target" class="ability_target" placeholder="1 Enemy">
             <input type="text" name="attr_ability_range" class="ability_range" placeholder="short">
@@ -1126,13 +1126,13 @@
           <fieldset class="repeating_vehabil">
             <div class="f-col vehabil-entry" style="gap: 2px; margin-bottom: 6px;">
               <div class="f-row ability-row" style="display: flex; flex-direction: row; gap: 2px; width: 100%;">
+                <input type="text" name="attr_vehabil_name" style="width: 20%;" placeholder="Name">
                 <select name="attr_vehabil_type" class="ability_type">
                   <option value="none" selected></option>
                   <option value="Action">Action</option>
                   <option value="Reaction">Reaction</option>
                   <option value="Free">Free</option>
                 </select>
-                <input type="text" name="attr_vehabil_name" style="width: 20%;" placeholder="Name">
                 <textarea name="attr_vehabil_effect" class="auto-expand" style="width: 70%;" placeholder="Description"></textarea>
               </div>
               <div class="f-row ability-roll-row"
