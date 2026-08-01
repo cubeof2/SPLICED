@@ -658,7 +658,7 @@ section {
 
 .weapon_title {
   display: grid !important;
-  grid-template-columns: 130px 45px 45px 50px 75px 1fr 45px !important;
+  grid-template-columns: 130px 45px 45px 50px 94px 1fr 45px !important;
   gap: 4px !important;
   align-items: center !important;
   width: 100% !important;
@@ -698,7 +698,7 @@ section {
 
 .main_1, .off_1, .main_2, .off_2 {
   display: grid !important;
-  grid-template-columns: 130px 45px 45px 50px 26px 45px 1fr 45px !important;
+  grid-template-columns: 130px 45px 45px 50px 45px 45px 1fr 45px !important;
   gap: 4px !important;
   align-items: center !important;
   width: 100% !important;
