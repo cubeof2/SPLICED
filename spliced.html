@@ -1395,7 +1395,7 @@
 
             // Calculate totals
             diceArray.forEach(die => {
-                if (die === 3 || die === 6) counts.successes++;
+                if (die === 4 || die === 5 || die === 6) counts.successes++;
                 if (isWeapon) {
                     if (die === maxVal) counts.crits++;
                     if (die === 1) counts.fumbles++;
@@ -1418,7 +1418,7 @@
                         isCrit = 1;
                     } else if (die === 1) {
                         isFumble = 1;
-                    } else if (die === 3 || die === 6) {
+                    } else if (die === 4 || die === 5 || die === 6) {
                         isSuccess = 1;
                     } else {
                         isFail = 1;
@@ -1469,7 +1469,8 @@
     on("clicked:roll_str clicked:roll_per clicked:roll_luk clicked:roll_int clicked:roll_crg clicked:roll_end clicked:roll_dex", function(info) {
         const stat = info.triggerName.replace("clicked:roll_", "");
         getAttrs([stat], (v) => {
-            const pool = (parseInt(v[stat], 10) || 0) + 3;
+            const val = parseInt(v[stat], 10) || 0;
+            const pool = Math.max(1, (val * 2) - 1);
             const label = stat.toUpperCase() + " Roll";
             performRoll(label, pool, "d6", false);
         });
@@ -1502,7 +1503,7 @@
         const stat = info.triggerName.replace("clicked:roll_", ""); // Outputs 'veh_spd' or 'veh_mvr'
         getAttrs([stat], (v) => {
             const val = parseInt(v[stat], 10) || 0;
-            const pool = val + 3; // Rolls 3d6 base + xd6 (Vehicle Stat)
+            const pool = Math.max(1, (val * 2) - 1);
             const label = stat === "veh_spd" ? "Vehicle Speed Roll" : "Vehicle Maneuverability Roll";
             
             // Vehicles use standard attributes template (splicedroll), isWeapon = false
@@ -1549,13 +1550,13 @@
                 const attrName = v[fieldAttr];
 
                 if (!attrName || attrName === "none" || attrName === "") {
-                    performRoll(name, 3, "d6", false);
+                    performRoll(name, 1, "d6", false);
                     return;
                 }
 
                 getAttrs([attrName], function(attrVals) {
                     const statVal = parseInt(attrVals[attrName], 10) || 0;
-                    const diceNum = statVal + 3;
+                    const diceNum = Math.max(1, (statVal * 2) - 1);
                     const diceSize = "d6";
                     performRoll(name, diceNum, diceSize, false);
                 });
@@ -1588,13 +1589,13 @@
                 const attrName = v[fieldAttr];
 
                 if (!attrName || attrName === "none" || attrName === "") {
-                    performRoll(name, 3, "d6", false);
+                    performRoll(name, 1, "d6", false);
                     return;
                 }
 
                 getAttrs([attrName], function(attrVals) {
                     const statVal = parseInt(attrVals[attrName], 10) || 0;
-                    const diceNum = statVal + 3;
+                    const diceNum = Math.max(1, (statVal * 2) - 1);
                     const diceSize = "d6";
                     performRoll(name, diceNum, diceSize, false);
                 });
