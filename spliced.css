@@ -37,7 +37,7 @@ main {
   display: none;
   width: 800px;
   grid-gap: 2px;
-  grid-template-columns: 270px 180px 150px 200px;
+  grid-template-columns: 270px 190px 140px 200px;
   grid-template-rows: 110px 140px 100px 165px min-content min-content;
   grid-template-areas:
     "spliced    genome      genome      charac"
@@ -53,13 +53,17 @@ main {
   width: 800px;
   grid-gap: 2px;
   grid-template-columns: 270px 180px 150px 200px;
-  grid-template-rows: 110px 100px 100px 165px min-content;
+  grid-template-rows: 110px 100px 100px 165px min-content min-content min-content min-content min-content;
   grid-template-areas:
-    "spliced    npc_stats   npc_stats   charac"
-    "spliced    act_pool    act_pool    def"
-    "spliced    cond        cond        cond"
-    "weap       weap        weap        weap"
-    "abilities  abilities   abilities   abilities";
+    "spliced     npc_stats   npc_stats   charac"
+    "spliced     act_pool    act_pool    def"
+    "spliced     cond        cond        cond"
+    "weap        weap        weap        weap"
+    "abilities   abilities   abilities   abilities"
+    "sense-radii sense-radii sense-radii sense-radii"
+    "passives    passives    passives    passives"
+    "currency    currency    currency    currency"
+    "inventory   inventory   inventory   inventory";
 }
 
 .tab-content-vehicle {
@@ -171,7 +175,8 @@ main {
 
 /* Dynamic Tab Button Hiding based on Sheet Type */
 .sheet-type-toggle[value="PC"] ~ .tab-buttons .tab-button-npc, .sheet-type-toggle[value="PC"] ~ .tab-buttons .tab-button-vehicle { display: none !important; }
-.sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-pc, .sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-vehicle, .sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-genomes { display: none !important; }
+.sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-pc, .sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-vehicle, .sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-genomes, .sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-passives, .sheet-type-toggle[value="NPC"] ~ .tab-buttons .tab-button-inventory { display: none !important; }
+.sheet-type-toggle[value="NPC"] ~ .tab-content-passives, .sheet-type-toggle[value="NPC"] ~ .tab-content-inventory { display: none !important; }
 .sheet-type-toggle[value="VEHICLE"] ~ .tab-buttons .tab-button-pc, .sheet-type-toggle[value="VEHICLE"] ~ .tab-buttons .tab-button-npc, .sheet-type-toggle[value="VEHICLE"] ~ .tab-buttons .tab-button-genomes { display: none !important; }
 
 /* --------------------------------------------------------------------------
@@ -449,7 +454,7 @@ section {
 .stats {
   grid-area: stats;
   background-color: seashell;
-  padding: 5px 15px;
+  padding: 5px 6px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -471,6 +476,7 @@ section {
   align-items: center;
   font-size: 10px;
   width: 100%;
+  white-space: nowrap;
 }
 
 .stat-item label {
@@ -480,14 +486,22 @@ section {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  white-space: nowrap;
 }
 
 .stat-item input {
-  width: 40px !important;
+  width: 32px !important;
   text-align: center;
   margin: 0;
   padding: 2px 0;
   box-sizing: border-box;
+}
+
+.stat-item span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
 }
 
 .heal {
@@ -863,9 +877,14 @@ section {
    15. Inventory Section
    -------------------------------------------------------------------------- */
 .inventory {
+  grid-area: inventory;
   background-color: white;
   box-sizing: border-box;
   padding: 5px;
+}
+
+.currency {
+  grid-area: currency;
 }
 
 .inv_eq_title,
@@ -897,7 +916,17 @@ section {
 /* --------------------------------------------------------------------------
    16. Passives & Genomes Section
    -------------------------------------------------------------------------- */
-.passives,
+.sense-radii {
+  grid-area: sense-radii;
+}
+
+.passives {
+  grid-area: passives;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
 .genomes {
   background-color: white;
   box-sizing: border-box;
@@ -1118,6 +1147,14 @@ section {
 
 .crew-cell input[name^="attr_veh_crew_lbl"] {
   font-weight: bold;
+}
+
+.crew-cell input[type="checkbox"] {
+  width: 14px !important;
+  height: 14px !important;
+  margin: 0 0 0 2px !important;
+  flex: 0 0 14px !important;
+  cursor: pointer;
 }
 
 /* --------------------------------------------------------------------------

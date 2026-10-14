@@ -899,6 +899,124 @@
         </div>
       </fieldset>
     </section>
+
+    <!-- NPC Detection / Sense Radii Section -->
+    <section class="sense-radii f-col" style="background-color: white; padding: 8px; margin-bottom: 2px; border: 1px solid #ccc; border-radius: 3px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #ccc; padding-bottom: 4px; margin-bottom: 6px;">
+        <span style="font-weight: bold; font-size: 13px; text-transform: uppercase; color: #333;">Detection</span>
+        <span style="font-size: 10px; color: #666; font-style: italic;">nearer = observed, farther = hidden</span>
+      </div>
+      <div class="sense-grid" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;">
+        <div class="sense-item f-col" style="gap: 2px;">
+          <span style="font-size: 10px; font-weight: bold; text-transform: uppercase;">Light</span>
+          <select name="attr_sense_light" style="font-size: 11px; width: 100%; padding: 2px;">
+            <option value="touch">Touch</option>
+            <option value="adjacent">Adjacent</option>
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+            <option value="long+" selected>Long+</option>
+          </select>
+        </div>
+        <div class="sense-item f-col" style="gap: 2px;">
+          <span style="font-size: 10px; font-weight: bold; text-transform: uppercase;">Low Light</span>
+          <select name="attr_sense_low_light" style="font-size: 11px; width: 100%; padding: 2px;">
+            <option value="touch">Touch</option>
+            <option value="adjacent">Adjacent</option>
+            <option value="short">Short</option>
+            <option value="medium" selected>Medium</option>
+            <option value="long">Long</option>
+            <option value="long+">Long+</option>
+          </select>
+        </div>
+        <div class="sense-item f-col" style="gap: 2px;">
+          <span style="font-size: 10px; font-weight: bold; text-transform: uppercase;">Sound</span>
+          <select name="attr_sense_sound" style="font-size: 11px; width: 100%; padding: 2px;">
+            <option value="touch">Touch</option>
+            <option value="adjacent">Adjacent</option>
+            <option value="short">Short</option>
+            <option value="medium" selected>Medium</option>
+            <option value="long">Long</option>
+            <option value="long+">Long+</option>
+          </select>
+        </div>
+        <div class="sense-item f-col" style="gap: 2px;">
+          <span style="font-size: 10px; font-weight: bold; text-transform: uppercase;">Pressure</span>
+          <select name="attr_sense_pressure" style="font-size: 11px; width: 100%; padding: 2px;">
+            <option value="touch">Touch</option>
+            <option value="adjacent" selected>Adjacent</option>
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+            <option value="long+">Long+</option>
+          </select>
+        </div>
+        <div class="sense-item f-col" style="gap: 2px;">
+          <span style="font-size: 10px; font-weight: bold; text-transform: uppercase;">Scent</span>
+          <select name="attr_sense_scent" style="font-size: 11px; width: 100%; padding: 2px;">
+            <option value="touch">Touch</option>
+            <option value="adjacent" selected>Adjacent</option>
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+            <option value="long+">Long+</option>
+          </select>
+        </div>
+        <div class="sense-item f-col" style="gap: 2px;">
+          <span style="font-size: 10px; font-weight: bold; text-transform: uppercase;">Heat</span>
+          <select name="attr_sense_heat" style="font-size: 11px; width: 100%; padding: 2px;">
+            <option value="touch" selected>Touch</option>
+            <option value="adjacent">Adjacent</option>
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+            <option value="long+">Long+</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- NPC Passives -->
+    <section class="passives f-col">
+      <div class="f-row" style="margin-bottom: 4px;">
+        <span style="font-weight: bold; font-size: 13px;">Passives</span>
+      </div>
+      <fieldset class="repeating_passives">
+        <div class="f-row passive-row" style="margin-bottom: 5px; width: 100%;">
+          <textarea name="attr_passive_text" class="passive-text" placeholder="Passive ability description..."
+            style="width: 100%; height: 65px; resize: vertical; box-sizing: border-box; padding: 5px;"></textarea>
+        </div>
+      </fieldset>
+    </section>
+
+    <!-- NPC Currency -->
+    <section class="currency f-row nowrap"
+      style="background-color: white; padding: 5px 15px; margin-bottom: 2px; box-sizing: border-box;">
+      <label style="display:flex; align-items:center; gap:10px; margin:0; width:100%;">
+        <b>Currency:</b>
+        <input type="text" name="attr_currency" value="0" style="flex:1; box-sizing: border-box;">
+      </label>
+    </section>
+
+    <!-- NPC Inventory -->
+    <section class="inventory f-col">
+      <div class="f-row headers" style="margin-bottom: 5px;">
+        <span class="inv_qty_title">Qty</span>
+        <span class="inv_item_title">Item</span>
+        <span class="inv_notes_title">Notes</span>
+        <span class="inv_eq_title">Lootable</span>
+      </div>
+
+      <fieldset class="repeating_inventory">
+        <div class="f-row inv-row"
+          style="display: flex; flex-direction: row; gap: 2px; margin-bottom: 2px; width: 100%; align-items: center;">
+          <input type="text" name="attr_inv_qty" class="inv_qty" value="1">
+          <input type="text" name="attr_inv_item" class="inv_item" placeholder="Item Name">
+          <textarea name="attr_inv_notes" class="inv_notes auto-expand" placeholder="Description or Stats"></textarea>
+          <input type="checkbox" name="attr_inv_lootable" class="inv_eq" title="Lootable">
+        </div>
+      </fieldset>
+    </section>
   </div>
 
     <!-- ==========================================================================
@@ -940,38 +1058,50 @@
     
         <!-- Crew Slots -->
         <section class="act_pool" style="grid-area: veh_crew;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: bold; text-transform: uppercase; color: #555; border-bottom: 1px solid #ddd; margin-bottom: 2px; padding: 1px 2px;">
+            <span>Crew Roles</span>
+            <span title="Is role mandatory?">Mandatory?</span>
+          </div>
           <div class="crew-grid">
             <div class="crew-cell">
               <span class="action-lbl">pilot</span>
               <input type="text" name="attr_veh_crew_1" placeholder="...">
+              <input type="checkbox" name="attr_veh_crew_mand_1" value="1" checked style="pointer-events: none; opacity: 0.75;" title="Pilot role is always mandatory">
             </div>
             <div class="crew-cell">
               <input type="text" name="attr_veh_crew_lbl2" placeholder="...">
               <input type="text" name="attr_veh_crew_2" placeholder="...">
+              <input type="checkbox" name="attr_veh_crew_mand_2" value="1" title="Toggle if role is mandatory">
             </div>
             <div class="crew-cell">
               <input type="text" name="attr_veh_crew_lbl3" placeholder="...">
               <input type="text" name="attr_veh_crew_3" placeholder="...">
+              <input type="checkbox" name="attr_veh_crew_mand_3" value="1" title="Toggle if role is mandatory">
             </div>
             <div class="crew-cell">
               <input type="text" name="attr_veh_crew_lbl4" placeholder="...">
               <input type="text" name="attr_veh_crew_4" placeholder="...">
+              <input type="checkbox" name="attr_veh_crew_mand_4" value="1" title="Toggle if role is mandatory">
             </div>
             <div class="crew-cell">
               <input type="text" name="attr_veh_crew_lbl5" placeholder="...">
               <input type="text" name="attr_veh_crew_5" placeholder="...">
+              <input type="checkbox" name="attr_veh_crew_mand_5" value="1" title="Toggle if role is mandatory">
             </div>
             <div class="crew-cell">
               <input type="text" name="attr_veh_crew_lbl6" placeholder="...">
               <input type="text" name="attr_veh_crew_6" placeholder="...">
+              <input type="checkbox" name="attr_veh_crew_mand_6" value="1" title="Toggle if role is mandatory">
             </div>
             <div class="crew-cell">
               <input type="text" name="attr_veh_crew_lbl7" placeholder="...">
               <input type="text" name="attr_veh_crew_7" placeholder="...">
+              <input type="checkbox" name="attr_veh_crew_mand_7" value="1" title="Toggle if role is mandatory">
             </div>
             <div class="crew-cell">
               <input type="text" name="attr_veh_crew_lbl8" placeholder="...">
               <input type="text" name="attr_veh_crew_8" placeholder="...">
+              <input type="checkbox" name="attr_veh_crew_mand_8" value="1" title="Toggle if role is mandatory">
             </div>
           </div>
         </section>
@@ -1018,18 +1148,25 @@
         </section>
     
         <!-- Health & Status -->
-        <section class="stats f-col" style="grid-area: veh_health; align-items: center; justify-content: center; padding: 5px; gap: 5px;">
-          <div class="stat-item" style="display: flex; align-items: center; justify-content: center; gap: 4px; width: 100%;">
+        <section class="stats f-col" style="grid-area: veh_health; align-items: center; justify-content: center; padding: 5px; gap: 4px;">
+          <div class="stat-item" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <span style="font-weight: bold; font-size: 11px; text-transform: uppercase;">Health:</span>
-            <input type="number" name="attr_veh_hp" value="2" class="veh-small-input" style="width: 40px; text-align: center;">
-            <span style="font-size: 11px;">/</span>
-            <input type="number" name="attr_veh_hp_max" value="2" class="veh-small-input" style="width: 40px; text-align: center;">
+            <div style="display: flex; align-items: center; gap: 2px;">
+              <input type="number" name="attr_veh_hp" value="2" class="veh-small-input" style="width: 36px; text-align: center;">
+              <span style="font-size: 11px;">/</span>
+              <input type="number" name="attr_veh_hp_max" value="2" class="veh-small-input" style="width: 36px; text-align: center;">
+            </div>
           </div>
-          <select name="attr_veh_state" style="width: 100%; font-size: 11px; text-align: center; height: 24px;">
+          <div class="stat-item" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <span style="font-weight: bold; font-size: 10px; text-transform: uppercase; line-height: 1.1;" title="Low Health Threshold">Low HP Thresh:</span>
+            <input type="number" name="attr_veh_low_hp_threshold" value="1" class="veh-small-input" style="width: 36px; text-align: center;">
+          </div>
+          <select name="attr_veh_state" style="width: 100%; font-size: 11px; text-align: center; height: 22px;">
             <option value="ok" selected>OK</option>
             <option value="disabled">Disabled</option>
             <option value="destroyed">Destroyed</option>
           </select>
+          <textarea name="attr_veh_low_hp_effect" placeholder="Low health effect..." class="auto-expand" style="width: 100%; min-height: 22px; font-size: 10px; box-sizing: border-box;"></textarea>
         </section>
     
         <!-- Defenses -->
@@ -1375,13 +1512,38 @@
         });
     });
 
+    // Helper to format damage types consistently
+    const formatDamageType = (rawType) => {
+        if (!rawType || rawType === "none") return "";
+        const lower = String(rawType).toLowerCase().trim();
+        if (lower === "phys") return "Physical";
+        if (lower === "eng") return "Energy";
+        if (lower === "pure") return "Pure";
+        return rawType.charAt(0).toUpperCase() + rawType.slice(1);
+    };
+
     // 4. UNIFIED ROLL LOGIC
-    const performRoll = (label, dicePool, diceSize = "d6", isWeapon = false) => {
-        const maxVal = parseInt(diceSize.replace("d", ""), 10) || 6;
+    const performRoll = (label, dicePool, diceSize = "d6", isWeapon = false, dmgType = "", flatVal = null) => {
         const template = isWeapon ? "weaponroll" : "splicedroll";
+        
+        if (flatVal !== null && flatVal !== undefined) {
+            let rollString = `&{template:${template}} {{name=${label}}} {{is_flat=[[1]]}} {{flat_val=[[${flatVal}]]}}`;
+            if (dmgType) {
+                rollString += ` {{dmg_type=${dmgType}}}`;
+            }
+            startRoll(rollString, (results) => {
+                finishRoll(results.rollId, {});
+            });
+            return;
+        }
+
+        const maxVal = parseInt(diceSize.replace("d", ""), 10) || 6;
         
         // Dynamically initialize placeholders for up to 20 potential dice slots and their visual states
         let rollString = `&{template:${template}} {{name=${label}}} {{roll_data=[[${dicePool}${diceSize}]]}} {{successes=[[0]]}} {{crits=[[0]]}} {{fumbles=[[0]]}}`;
+        if (dmgType) {
+            rollString += ` {{dmg_type=${dmgType}}}`;
+        }
         for (let i = 1; i <= 20; i++) {
             rollString += ` {{d${i}=[[0]]}} {{d${i}_crit=[[0]]}} {{d${i}_success=[[0]]}} {{d${i}_fumble=[[0]]}} {{d${i}_fail=[[0]]}}`;
         }
@@ -1479,9 +1641,10 @@
     // 8. LISTENERS FOR WEAPONS
     on("clicked:roll_main_1 clicked:roll_off_1 clicked:roll_main_2 clicked:roll_off_2", function(info) {
         const slot = info.triggerName.replace("clicked:roll_", "");
-        getAttrs([`${slot}_name`, `${slot}_dice_num`, `${slot}_dice_size`], (v) => {
+        getAttrs([`${slot}_name`, `${slot}_dice_num`, `${slot}_dice_size`, `${slot}_d_type`], (v) => {
             const diceSize = (v[`${slot}_dice_size`] && v[`${slot}_dice_size`] !== "none") ? v[`${slot}_dice_size`] : "d6";
-            performRoll(v[`${slot}_name`] || "Attack", parseInt(v[`${slot}_dice_num`], 10) || 1, diceSize, true);
+            const dmgType = formatDamageType(v[`${slot}_d_type`]);
+            performRoll(v[`${slot}_name`] || "Attack", parseInt(v[`${slot}_dice_num`], 10) || 1, diceSize, true, dmgType);
         });
     });
     
@@ -1517,11 +1680,12 @@
         const rowId = trigger.replace("clicked:repeating_vehweap_", "").replace("_rollweap", "");
         const prefix = `repeating_vehweap_${rowId}_`;
 
-        getAttrs([`${prefix}vehweap_name`, `${prefix}vehweap_dicenum`, `${prefix}vehweap_dicesize`], function(v) {
+        getAttrs([`${prefix}vehweap_name`, `${prefix}vehweap_dicenum`, `${prefix}vehweap_dicesize`, `${prefix}vehweap_type`], function(v) {
             const name = v[`${prefix}vehweap_name`] || "Vehicle Weapon";
             const diceNum = parseInt(v[`${prefix}vehweap_dicenum`], 10) || 1;
             const diceSize = (v[`${prefix}vehweap_dicesize`] && v[`${prefix}vehweap_dicesize`] !== "none") ? v[`${prefix}vehweap_dicesize`] : "d10";
-            performRoll(name, diceNum, diceSize, false);
+            const dmgType = formatDamageType(v[`${prefix}vehweap_type`]);
+            performRoll(name, diceNum, diceSize, true, dmgType);
         });
     });
 
@@ -1535,12 +1699,23 @@
         if (isDmg) {
             const fieldNum = `${prefix}ability_dmg_num`;
             const fieldSize = `${prefix}ability_dmg_size`;
+            const fieldType = `${prefix}ability_dmg_type`;
 
-            getAttrs([`${prefix}ability_name`, fieldNum, fieldSize], function(v) {
+            getAttrs([`${prefix}ability_name`, fieldNum, fieldSize, fieldType], function(v) {
                 const name = v[`${prefix}ability_name`] || "Ability";
-                const diceNum = parseInt(v[fieldNum], 10) || 1;
-                const diceSize = (v[fieldSize] && v[fieldSize] !== "none") ? v[fieldSize] : "d6";
-                performRoll(name, diceNum, diceSize, false);
+                const hasNum = v[fieldNum] !== undefined && v[fieldNum] !== null && String(v[fieldNum]).trim() !== "";
+                const hasSize = v[fieldSize] && v[fieldSize] !== "none" && v[fieldSize] !== "";
+                const dmgType = formatDamageType(v[fieldType]);
+
+                if (hasNum && !hasSize) {
+                    // Flat damage/healing (dice roll not given but dice number is)
+                    const flatVal = parseInt(v[fieldNum], 10) || 0;
+                    performRoll(name, 0, "d6", false, dmgType, flatVal);
+                } else {
+                    const diceNum = parseInt(v[fieldNum], 10) || 1;
+                    const diceSize = hasSize ? v[fieldSize] : "d6";
+                    performRoll(name, diceNum, diceSize, false, dmgType);
+                }
             });
         } else {
             const fieldAttr = `${prefix}ability_check_attr`;
@@ -1574,12 +1749,23 @@
         if (isDmg) {
             const fieldNum = `${prefix}vehabil_dmg_num`;
             const fieldSize = `${prefix}vehabil_dmg_size`;
+            const fieldType = `${prefix}vehabil_dmg_type`;
 
-            getAttrs([`${prefix}vehabil_name`, fieldNum, fieldSize], function(v) {
+            getAttrs([`${prefix}vehabil_name`, fieldNum, fieldSize, fieldType], function(v) {
                 const name = v[`${prefix}vehabil_name`] || "Vehicle Ability";
-                const diceNum = parseInt(v[fieldNum], 10) || 1;
-                const diceSize = (v[fieldSize] && v[fieldSize] !== "none") ? v[fieldSize] : "d6";
-                performRoll(name, diceNum, diceSize, false);
+                const hasNum = v[fieldNum] !== undefined && v[fieldNum] !== null && String(v[fieldNum]).trim() !== "";
+                const hasSize = v[fieldSize] && v[fieldSize] !== "none" && v[fieldSize] !== "";
+                const dmgType = formatDamageType(v[fieldType]);
+
+                if (hasNum && !hasSize) {
+                    // Flat damage/healing (dice roll not given but dice number is)
+                    const flatVal = parseInt(v[fieldNum], 10) || 0;
+                    performRoll(name, 0, "d6", false, dmgType, flatVal);
+                } else {
+                    const diceNum = parseInt(v[fieldNum], 10) || 1;
+                    const diceSize = hasSize ? v[fieldSize] : "d6";
+                    performRoll(name, diceNum, diceSize, false, dmgType);
+                }
             });
         } else {
             const fieldAttr = `${prefix}vehabil_check_attr`;
@@ -1609,6 +1795,15 @@
 <rolltemplate class="sheet-rolltemplate-splicedroll">
   <div class="sheet-template-container" style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
     <div style="font-weight: bold; border-bottom: 1px solid #aaa; margin-bottom: 5px;">{{name}}</div>
+    {{#dmg_type}}
+    <div style="font-size: 11px; color: #555; margin-bottom: 5px;">Damage Type: <b style="color: #222;">{{dmg_type}}</b></div>
+    {{/dmg_type}}
+    {{#is_flat}}
+    <div style="margin: 6px 0; font-weight: bold; font-size: 14px;">
+      {{#dmg_type}}Damage: {{/dmg_type}}{{^dmg_type}}Amount: {{/dmg_type}}<span style="color: #27ae60; font-size: 16px;">{{flat_val}}</span>
+    </div>
+    {{/is_flat}}
+    {{^is_flat}}
     <div style="margin: 5px 0;">
       {{#rollGreater() computed::d1 0}}{{#rollTotal() computed::d1_crit 1}}<span class="sheet-die-crit">{{computed::d1}}</span> {{/rollTotal() computed::d1_crit 1}}{{#rollTotal() computed::d1_success 1}}<span class="sheet-die-success">{{computed::d1}}</span> {{/rollTotal() computed::d1_success 1}}{{#rollTotal() computed::d1_fumble 1}}<span class="sheet-die-fumble">{{computed::d1}}</span> {{/rollTotal() computed::d1_fumble 1}}{{#rollTotal() computed::d1_fail 1}}<span class="sheet-die-fail">{{computed::d1}}</span> {{/rollTotal() computed::d1_fail 1}}{{/rollGreater() computed::d1 0}}
       {{#rollGreater() computed::d2 0}}{{#rollTotal() computed::d2_crit 1}}<span class="sheet-die-crit">{{computed::d2}}</span> {{/rollTotal() computed::d2_crit 1}}{{#rollTotal() computed::d2_success 1}}<span class="sheet-die-success">{{computed::d2}}</span> {{/rollTotal() computed::d2_success 1}}{{#rollTotal() computed::d2_fumble 1}}<span class="sheet-die-fumble">{{computed::d2}}</span> {{/rollTotal() computed::d2_fumble 1}}{{#rollTotal() computed::d2_fail 1}}<span class="sheet-die-fail">{{computed::d2}}</span> {{/rollTotal() computed::d2_fail 1}}{{/rollGreater() computed::d2 0}}
@@ -1634,6 +1829,7 @@
     <div style="font-weight: bold; font-size: 13px;">
       Successes: <span style="color: #27ae60;">{{computed::successes}}</span>
     </div>
+    {{/is_flat}}
   </div>
 </rolltemplate>
 
@@ -1641,6 +1837,15 @@
 <rolltemplate class="sheet-rolltemplate-weaponroll">
   <div class="sheet-template-container" style="background-color: #f2f2f2; border: 2px solid #333; padding: 10px; font-family: monospace;">
     <div style="font-weight: bold; border-bottom: 1px solid #aaa; margin-bottom: 5px;">{{name}}</div>
+    {{#dmg_type}}
+    <div style="font-size: 11px; color: #555; margin-bottom: 5px;">Damage Type: <b style="color: #222;">{{dmg_type}}</b></div>
+    {{/dmg_type}}
+    {{#is_flat}}
+    <div style="margin: 6px 0; font-weight: bold; font-size: 14px;">
+      {{#dmg_type}}Damage: {{/dmg_type}}{{^dmg_type}}Amount: {{/dmg_type}}<span style="color: #27ae60; font-size: 16px;">{{flat_val}}</span>
+    </div>
+    {{/is_flat}}
+    {{^is_flat}}
     <div style="margin: 5px 0;">
       {{#rollGreater() computed::d1 0}}{{#rollTotal() computed::d1_crit 1}}<span class="sheet-die-crit">{{computed::d1}}</span> {{/rollTotal() computed::d1_crit 1}}{{#rollTotal() computed::d1_success 1}}<span class="sheet-die-success">{{computed::d1}}</span> {{/rollTotal() computed::d1_success 1}}{{#rollTotal() computed::d1_fumble 1}}<span class="sheet-die-fumble">{{computed::d1}}</span> {{/rollTotal() computed::d1_fumble 1}}{{#rollTotal() computed::d1_fail 1}}<span class="sheet-die-fail">{{computed::d1}}</span> {{/rollTotal() computed::d1_fail 1}}{{/rollGreater() computed::d1 0}}
       {{#rollGreater() computed::d2 0}}{{#rollTotal() computed::d2_crit 1}}<span class="sheet-die-crit">{{computed::d2}}</span> {{/rollTotal() computed::d2_crit 1}}{{#rollTotal() computed::d2_success 1}}<span class="sheet-die-success">{{computed::d2}}</span> {{/rollTotal() computed::d2_success 1}}{{#rollTotal() computed::d2_fumble 1}}<span class="sheet-die-fumble">{{computed::d2}}</span> {{/rollTotal() computed::d2_fumble 1}}{{#rollTotal() computed::d2_fail 1}}<span class="sheet-die-fail">{{computed::d2}}</span> {{/rollTotal() computed::d2_fail 1}}{{/rollGreater() computed::d2 0}}
@@ -1668,5 +1873,6 @@
       Successes: <span style="color: #27ae60;">{{computed::successes}}</span> |
       Fumbles: <span style="color: #cc0000;">{{computed::fumbles}}</span>
     </div>
+    {{/is_flat}}
   </div>
-</rolltemplate>
+</rolltemplate>
