@@ -1228,28 +1228,410 @@ section {
   border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
 }
 
-/* Large non-draggable Genome Text Boxes (300px tall by default) */
-.charsheet textarea.genome-expand {
-  height: 300px;
-  min-height: 300px;
-  line-height: 16px;
-  padding: 8px;
-  font-size: 11px;
-  font-family: "Lexend", sans-serif;
-  resize: none;
-  white-space: normal;
-  overflow-y: auto;
+/* --------------------------------------------------------------------------
+   22. Genomes Tab Redesign: Repeating Columns, Windowshade & Read/Edit Modes
+   -------------------------------------------------------------------------- */
+
+/* Container & Column Structure */
+.charsheet .genomes {
+  width: 100%;
   box-sizing: border-box;
+}
+
+.charsheet .genomes-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.charsheet .genome-col {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+/* Column Header */
+.charsheet .genome-col-header {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin-bottom: 6px !important;
+  padding-bottom: 4px !important;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.charsheet .genome-col-title-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: bold;
+  height: 22px;
+  padding: 1px 5px;
   border: 1px solid #ccc;
-  border-radius: 2px;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  vertical-align: middle;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #fff;
   margin: 0;
 }
 
-.charsheet textarea.genome-expand:focus {
+.charsheet .genome-col-title-input:focus {
   border-color: coral;
   outline: none;
-  box-shadow: 0 0 5px rgba(255, 127, 80, 0.5);
-  background-color: #ffffff;
+  box-shadow: 0 0 4px rgba(255, 127, 80, 0.4);
+}
+
+/* Repeating entries container */
+.charsheet .genome-col fieldset,
+.charsheet .genome-col .repcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.charsheet .genome-col .repitem {
+  margin-bottom: 4px;
+}
+
+/* Genome Entry Card */
+.charsheet .genome-card {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 4px 6px !important;
+  background-color: #fcfcfc;
+  border: 1px solid #d8d8d8;
+  border-radius: 3px;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.charsheet .genome-card:hover {
+  border-color: #b8b8b8;
+}
+
+/* Card Header Row */
+.charsheet .genome-header-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 4px !important;
+  width: 100% !important;
+}
+
+/* --------------------------------------------------------------------------
+   Compact 20px Button Base
+   -------------------------------------------------------------------------- */
+.charsheet .genome-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1px solid #ccc !important;
+  border-radius: 3px !important;
+  background-color: #f5f5f5 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  flex: 0 0 20px !important;
+  box-sizing: border-box !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  transition: all 0.15s ease-in-out;
+}
+
+.charsheet .genome-btn:hover {
+  background-color: #e5e5e5 !important;
+  border-color: #999 !important;
+}
+
+/* Hide raw checkbox input inside the button */
+.charsheet .genome-btn input[type="checkbox"] {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Windowshade Button (Expand / Collapse)
+   -------------------------------------------------------------------------- */
+.charsheet .genome-shade-btn {
+  color: #444 !important;
+  font-size: 9px !important;
+}
+
+/* Expanded state icon vs Collapsed state icon */
+.charsheet .genome-card:has(.genome-shade-checkbox:checked) .shade-icon-collapsed {
+  display: none !important;
+}
+
+.charsheet .genome-card:has(.genome-shade-checkbox:checked) .shade-icon-expanded {
+  display: block !important;
+}
+
+.charsheet .genome-card:has(.genome-shade-checkbox:not(:checked)) .shade-icon-expanded {
+  display: none !important;
+}
+
+.charsheet .genome-card:has(.genome-shade-checkbox:not(:checked)) .shade-icon-collapsed {
+  display: block !important;
+}
+
+.charsheet .genome-card:has(.genome-shade-checkbox:not(:checked)) .genome-shade-btn {
+  background-color: #fafafa !important;
+  border-style: dashed !important;
+  color: #888 !important;
+}
+
+/* Collapsed State: Hide Details */
+.charsheet .genome-card:has(.genome-shade-checkbox:not(:checked)) .genome-details {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Lock Button (Edit Mode vs. Reading Mode)
+   -------------------------------------------------------------------------- */
+.charsheet .genome-lock-btn {
+  font-size: 11px !important;
+}
+
+/* Unlocked (Edit Mode): subtle warm tint */
+.charsheet .genome-card:has(.genome-lock-checkbox:not(:checked)) .genome-lock-btn,
+.charsheet .genome-lock-btn {
+  background-color: #fff7ed !important;
+  border-color: #fed7aa !important;
+}
+
+.charsheet .genome-card:has(.genome-lock-checkbox:not(:checked)) .genome-lock-btn:hover {
+  background-color: #ffedd5 !important;
+  border-color: #fb923c !important;
+}
+
+.charsheet .genome-card:has(.genome-lock-checkbox:not(:checked)) .lock-icon-locked {
+  display: none !important;
+}
+
+.charsheet .genome-card:has(.genome-lock-checkbox:not(:checked)) .lock-icon-unlocked {
+  display: block !important;
+}
+
+/* Locked (Reading Mode): subtle green tint */
+.charsheet .genome-card:has(.genome-lock-checkbox:checked) .genome-lock-btn {
+  background-color: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+}
+
+.charsheet .genome-card:has(.genome-lock-checkbox:checked) .genome-lock-btn:hover {
+  background-color: #dcfce7 !important;
+  border-color: #86efac !important;
+}
+
+.charsheet .genome-card:has(.genome-lock-checkbox:checked) .lock-icon-unlocked {
+  display: none !important;
+}
+
+.charsheet .genome-card:has(.genome-lock-checkbox:checked) .lock-icon-locked {
+  display: block !important;
+}
+
+/* --------------------------------------------------------------------------
+   Column Lock Button
+   -------------------------------------------------------------------------- */
+.charsheet .col-lock-btn {
+  font-size: 11px !important;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:not(:checked)) .lock-icon-locked {
+  display: none !important;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:not(:checked)) .lock-icon-unlocked {
+  display: block !important;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:checked) .col-lock-btn {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:checked) .lock-icon-unlocked {
+  display: none !important;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:checked) .lock-icon-locked {
+  display: block !important;
+}
+
+/* Column Lock Effects on Entire Column */
+.charsheet .genome-col:has(.col-lock-checkbox:checked) .edit-mode {
+  display: none !important;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:checked) .read-mode {
+  display: block !important;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:checked) .genome-lock-btn {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:checked) .genome-col-title-input {
+  border-color: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  cursor: default;
+}
+
+.charsheet .genome-col:has(.col-lock-checkbox:checked) .repcontrol {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Title & Description Display (Edit Mode vs. Reading Mode)
+   -------------------------------------------------------------------------- */
+.charsheet .genome-title-wrapper {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.charsheet .genome-title-input {
+  width: 100% !important;
+  height: 20px !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  padding: 1px 5px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 3px !important;
+  box-sizing: border-box !important;
+  background-color: #fff;
+  margin: 0 !important;
+}
+
+.charsheet .genome-title-input:focus {
+  border-color: coral !important;
+  outline: none;
+  box-shadow: 0 0 3px rgba(255, 127, 80, 0.4);
+}
+
+.charsheet .genome-title-text {
+  font-size: 11px;
+  font-weight: bold;
+  color: #111;
+  padding: 2px 4px;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.charsheet .genome-title-text:empty::before {
+  content: "(Untitled Entry)";
+  color: #999;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.charsheet .genome-details {
+  width: 100% !important;
+  margin-top: 4px !important;
+  box-sizing: border-box !important;
+}
+
+.charsheet .genome-desc-input {
+  width: 100% !important;
+  min-height: 50px;
+  line-height: 15px;
+  padding: 4px 6px;
+  font-size: 11px;
+  font-family: "Lexend", sans-serif;
+  resize: vertical;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  margin: 0;
+}
+
+.charsheet .genome-desc-input:focus {
+  border-color: coral;
+  outline: none;
+  box-shadow: 0 0 4px rgba(255, 127, 80, 0.4);
+}
+
+.charsheet .genome-desc-box {
+  min-height: 20px;
+  padding: 4px 6px;
+  font-size: 11px;
+  line-height: 15px;
+  font-family: "Lexend", sans-serif;
+  color: #2b2b2b;
+  background-color: #f7f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.charsheet .genome-desc-text:empty::before {
+  content: "No details entered.";
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Default state: Show edit mode, hide read mode */
+.charsheet .genome-card .read-mode {
+  display: none !important;
+}
+
+.charsheet .genome-card .edit-mode {
+  display: block !important;
+}
+
+/* Card Locked (Reading Mode) */
+.charsheet .genome-card:has(.genome-lock-checkbox:checked) .edit-mode {
+  display: none !important;
+}
+
+.charsheet .genome-card:has(.genome-lock-checkbox:checked) .read-mode {
+  display: block !important;
+}
+
+.charsheet .genome-card:has(.genome-lock-checkbox:checked) {
+  background-color: #fdfdfd;
+  border-color: #cfd8dc;
+}
+
+/* Repeating control styling for clean buttons */
+.charsheet .genome-col .repcontrol {
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+
+.charsheet .genome-col .repcontrol .btn {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: #444;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.charsheet .genome-col .repcontrol .btn:hover {
+  background-color: #e8e8e8;
+  border-color: #999;
 }

@@ -1437,16 +1437,85 @@
        ========================================================================== -->
   <div class="tab-content tab-content-genomes">
     <section class="genomes f-col">
-      <div class="genome-headers f-row" style="width: 100%; gap: 5px; margin-bottom: 6px;">
-        <input type="text" name="attr_genome_col1_title" placeholder="genome name" class="genome-title-input" style="width: 50%; font-weight: bold; font-size: 13px; padding: 4px; border: 1px solid #ccc; border-radius: 2px; box-sizing: border-box;">
-        <input type="text" name="attr_genome_col2_title" placeholder="genome name" class="genome-title-input" style="width: 50%; font-weight: bold; font-size: 13px; padding: 4px; border: 1px solid #ccc; border-radius: 2px; box-sizing: border-box;">
-      </div>
-      <fieldset class="repeating_genomes">
-        <div class="f-row genome-row" style="margin-bottom: 5px; width: 100%; gap: 5px;">
-          <textarea name="attr_genome_name" class="genome-expand" placeholder="Genome entry..." style="width: 50%;"></textarea>
-          <textarea name="attr_genome_effect" class="genome-expand" placeholder="Genome entry..." style="width: 50%;"></textarea>
+      <div class="genomes-container">
+        
+        <!-- Column 1 -->
+        <div class="genome-col f-col">
+          <div class="genome-col-header f-row">
+            <input type="text" name="attr_genome_col1_title" placeholder="Genome 1 Name..." class="genome-col-title-input">
+            <label class="genome-btn col-lock-btn" title="Toggle Lock for Column 1">
+              <input type="checkbox" name="attr_genome_col1_lock" class="col-lock-checkbox" value="1">
+              <span class="lock-icon-unlocked">🔓</span>
+              <span class="lock-icon-locked">🔒</span>
+            </label>
+          </div>
+          <fieldset class="repeating_genomes1">
+            <div class="genome-card">
+              <div class="genome-header-row f-row">
+                <label class="genome-btn genome-shade-btn" title="Expand / Collapse details">
+                  <input type="checkbox" name="attr_is_expanded" class="genome-shade-checkbox" value="1" checked>
+                  <span class="shade-icon-expanded">▼</span>
+                  <span class="shade-icon-collapsed">▶</span>
+                </label>
+                <div class="genome-title-wrapper">
+                  <input type="text" name="attr_genome_title" class="genome-title-input edit-mode" placeholder="Rank + Title">
+                  <span name="attr_genome_title" class="genome-title-text read-mode"></span>
+                </div>
+                <label class="genome-btn genome-lock-btn" title="Toggle Edit / Read Mode">
+                  <input type="checkbox" name="attr_is_locked" class="genome-lock-checkbox" value="1">
+                  <span class="lock-icon-unlocked">🔓</span>
+                  <span class="lock-icon-locked">🔒</span>
+                </label>
+              </div>
+              <div class="genome-details f-col">
+                <textarea name="attr_genome_desc" class="genome-desc-input edit-mode" placeholder="Genome bonus details"></textarea>
+                <div class="genome-desc-box read-mode">
+                  <span name="attr_genome_desc" class="genome-desc-text"></span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
         </div>
-      </fieldset>
+
+        <!-- Column 2 -->
+        <div class="genome-col f-col">
+          <div class="genome-col-header f-row">
+            <input type="text" name="attr_genome_col2_title" placeholder="Genome 2 Name..." class="genome-col-title-input">
+            <label class="genome-btn col-lock-btn" title="Toggle Lock for Column 2">
+              <input type="checkbox" name="attr_genome_col2_lock" class="col-lock-checkbox" value="1">
+              <span class="lock-icon-unlocked">🔓</span>
+              <span class="lock-icon-locked">🔒</span>
+            </label>
+          </div>
+          <fieldset class="repeating_genomes2">
+            <div class="genome-card">
+              <div class="genome-header-row f-row">
+                <label class="genome-btn genome-shade-btn" title="Expand / Collapse details">
+                  <input type="checkbox" name="attr_is_expanded" class="genome-shade-checkbox" value="1" checked>
+                  <span class="shade-icon-expanded">▼</span>
+                  <span class="shade-icon-collapsed">▶</span>
+                </label>
+                <div class="genome-title-wrapper">
+                  <input type="text" name="attr_genome_title" class="genome-title-input edit-mode" placeholder="Rank + Title">
+                  <span name="attr_genome_title" class="genome-title-text read-mode"></span>
+                </div>
+                <label class="genome-btn genome-lock-btn" title="Toggle Edit / Read Mode">
+                  <input type="checkbox" name="attr_is_locked" class="genome-lock-checkbox" value="1">
+                  <span class="lock-icon-unlocked">🔓</span>
+                  <span class="lock-icon-locked">🔒</span>
+                </label>
+              </div>
+              <div class="genome-details f-col">
+                <textarea name="attr_genome_desc" class="genome-desc-input edit-mode" placeholder="Genome bonus details"></textarea>
+                <div class="genome-desc-box read-mode">
+                  <span name="attr_genome_desc" class="genome-desc-text"></span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+      </div>
     </section>
   </div>
 
@@ -1875,4 +1944,4 @@
     </div>
     {{/is_flat}}
   </div>
-</rolltemplate>
+</rolltemplate>
