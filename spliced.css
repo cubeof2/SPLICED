@@ -1582,8 +1582,16 @@ section {
   border: 1px solid #e2e8f0;
   border-radius: 3px;
   box-sizing: border-box;
+  word-break: break-word;
+}
+
+.charsheet .genome-desc-text {
+  display: block;
   white-space: pre-wrap;
   word-break: break-word;
+  text-indent: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .charsheet .genome-desc-text:empty::before {
